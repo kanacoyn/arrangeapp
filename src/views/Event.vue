@@ -19,6 +19,7 @@
                         maxlength="250"
                         value=""
                         class="inputbox"
+                        width="80"
                       />
                     </td>
                   </tr>
@@ -35,6 +36,7 @@
                         name="schedule"
                         id="schedule"
                         rows="10"
+                        width="80"
                       ></textarea>
                     </td>
                   </tr>
@@ -45,6 +47,7 @@
                       ※出欠登録ページの先頭に表示されます。<br /><textarea
                         name="explain"
                         rows="10"
+                        width="80"
                       ></textarea>
                     </td>
                   </tr>
@@ -59,6 +62,7 @@
                         name="email"
                         maxlength="100"
                         value=""
+                        width="80"
                       />
                     </td>
                   </tr>
@@ -140,4 +144,8 @@ export default class XXXComponent extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.register {
+  text-align: left;
+}
+</style>
