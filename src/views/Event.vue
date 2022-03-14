@@ -19,6 +19,7 @@
                         maxlength="250"
                         value=""
                         class="inputbox"
+                        v-model="eventName"
                       />
                     </td>
                   </tr>
@@ -35,6 +36,7 @@
                         name="schedule"
                         id="schedule"
                         rows="10"
+                        v-model="date"
                       ></textarea>
                     </td>
                   </tr>
@@ -45,6 +47,7 @@
                       ※出欠登録ページの先頭に表示されます。<br /><textarea
                         name="explain"
                         rows="10"
+                        v-model="description"
                       ></textarea>
                     </td>
                   </tr>
@@ -59,6 +62,7 @@
                         name="email"
                         maxlength="100"
                         value=""
+                        v-model="email"
                       />
                     </td>
                   </tr>
@@ -74,6 +78,7 @@
                         id="pw0"
                         value="0"
                         checked=""
+                        v-model="password"
                       />
                       <label for="pw0">設定しない</label><br />
                       <input type="radio" name="pw" id="pw1" value="1" />
@@ -98,6 +103,7 @@
                         id="eventchoice1"
                         value="1"
                         checked=""
+                        v-model="answerChoise"
                       />
                       <label for="eventchoice1">「○△×」から選択</label><br />
 
@@ -106,18 +112,22 @@
                         name="eventchoice"
                         id="eventchoice2"
                         value="2"
+                        v-model="answerChoise"
                       />
                       <label for="eventchoice2">「○×」から選択</label>
                     </td>
                   </tr>
                   <tr>
                     <th align="center">
-                      <input
-                        type="button"
-                        value="次に進む"
-                        onclick="confirmEvent"
-                        style="width: 200px"
-                      />
+                      <div class="row register-admin-btn">
+                        <button
+                          class="btn"
+                          type="button"
+                          v-on:click="registerEvent"
+                        >
+                          <span>次に進む</span>
+                        </button>
+                      </div>
                     </th>
                   </tr>
                 </table>
@@ -134,10 +144,27 @@
 import { Component, Vue } from "vue-property-decorator";
 @Component
 export default class XXXComponent extends Vue {
-  confirmEvent() {
+  // イベント名
+  private eventName = "";
+  // イベント説明ぶん
+  private description = "";
+  // 開催候補の日にち
+  private date = "";
+  // メールアドレス
+  private email = "";
+  // パスワード
+  private password = "";
+  // 回答方法の選択し
+  private answerChoice = "";
+
+  registerEvent() {
     this.$router.push("/confirmEvent");
   }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.register {
+  text-align: left;
+}
+</style>
