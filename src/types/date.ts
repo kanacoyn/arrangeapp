@@ -1,0 +1,21 @@
+import { format } from "date-fns";
+
+export class Date {
+  constructor(private _dateId: number, private _date: Date) {}
+
+  public get dateId(): number {
+    return this._dateId;
+  }
+
+  public set dateId(dateId: number) {
+    this._dateId = dateId;
+  }
+
+  public get date(): Date {
+    return this._date;
+  }
+
+  public set date(date: Date) {
+    this._date = date;
+  }
+}

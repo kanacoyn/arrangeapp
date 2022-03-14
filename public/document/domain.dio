@@ -1,0 +1,100 @@
+<mxfile host="65bd71144e">
+    <diagram id="u9Lxx2WIYV-frjOep1M6" name="イメージ">
+        <mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" page="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="dw9mYDTpXiiLTwS0WZqe-5" value="toppage" style="html=1;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="120" width="250" height="440" as="geometry"/>
+                </mxCell>
+                <mxCell id="dw9mYDTpXiiLTwS0WZqe-6" value="Object" style="html=1;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="110" width="240" height="450" as="geometry"/>
+                </mxCell>
+                <mxCell id="dw9mYDTpXiiLTwS0WZqe-7" value="Object" style="html=1;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="390" width="110" height="50" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="iY_FDmrv0a_Zm_YTn3jY" name="ページ2">
+        <mxGraphModel dx="792" dy="580" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="Lghqkx0r6IhKr8PeFFCe-0"/>
+                <mxCell id="Lghqkx0r6IhKr8PeFFCe-1" parent="Lghqkx0r6IhKr8PeFFCe-0"/>
+                <mxCell id="LO5_E5FxblRjFXSoPxNd-0" value="Event" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="Lghqkx0r6IhKr8PeFFCe-1" vertex="1">
+                    <mxGeometry x="150" y="90" width="310" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="LO5_E5FxblRjFXSoPxNd-1" value="- errorMessage: string&#10;- eventName: string&#10;- date: string&#10;- time: string&#10;- description: string&#10;- email: string&#10;- password:string&#10;- answerChoice: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LO5_E5FxblRjFXSoPxNd-0" vertex="1">
+                    <mxGeometry y="26" width="310" height="124" as="geometry"/>
+                </mxCell>
+                <mxCell id="LO5_E5FxblRjFXSoPxNd-4" value="AnswerList" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="Lghqkx0r6IhKr8PeFFCe-1" vertex="1">
+                    <mxGeometry x="540" y="400" width="305" height="214" as="geometry"/>
+                </mxCell>
+                <mxCell id="LO5_E5FxblRjFXSoPxNd-5" value="+ UserId: Number&#10;+ ReceiveAnswerList: Array&lt;RegisterUser&gt; &#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LO5_E5FxblRjFXSoPxNd-4" vertex="1">
+                    <mxGeometry y="26" width="305" height="154" as="geometry"/>
+                </mxCell>
+                <mxCell id="LO5_E5FxblRjFXSoPxNd-6" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="LO5_E5FxblRjFXSoPxNd-4" vertex="1">
+                    <mxGeometry y="180" width="305" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="LO5_E5FxblRjFXSoPxNd-7" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LO5_E5FxblRjFXSoPxNd-4" vertex="1">
+                    <mxGeometry y="188" width="305" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="LO5_E5FxblRjFXSoPxNd-8" style="edgeStyle=none;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.055;entryY=-0.023;entryDx=0;entryDy=0;entryPerimeter=0;" parent="Lghqkx0r6IhKr8PeFFCe-1" source="LO5_E5FxblRjFXSoPxNd-0" target="LO5_E5FxblRjFXSoPxNd-0" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="LO5_E5FxblRjFXSoPxNd-9" value="RegisterUser" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="Lghqkx0r6IhKr8PeFFCe-1" vertex="1">
+                    <mxGeometry x="540" y="110" width="280" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="LO5_E5FxblRjFXSoPxNd-10" value="+ UserId: Number&#10;+ Name: String&#10;+ RegisterDateList: array&lt;Date&gt;&#10;+ RegisterAnswer: String&#10;+ Comment: String&#10;+ &#10;&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LO5_E5FxblRjFXSoPxNd-9" vertex="1">
+                    <mxGeometry y="26" width="280" height="134" as="geometry"/>
+                </mxCell>
+                <mxCell id="LO5_E5FxblRjFXSoPxNd-11" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="LO5_E5FxblRjFXSoPxNd-9" vertex="1">
+                    <mxGeometry y="160" width="280" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="LO5_E5FxblRjFXSoPxNd-12" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LO5_E5FxblRjFXSoPxNd-9" vertex="1">
+                    <mxGeometry y="168" width="280" height="42" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="4peFY1SsCV5JWsE72zgK" name="トップページ">
+        <mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" page="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="eq6WqIo7whoS5hc65k3n-0"/>
+                <mxCell id="eq6WqIo7whoS5hc65k3n-1" parent="eq6WqIo7whoS5hc65k3n-0"/>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="2-NskRwTEvdCo14PE1WJ" name="イベント作成ページ">
+        <mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" page="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="S1Z-Oe1CNCrJqkri0Y32-0"/>
+                <mxCell id="S1Z-Oe1CNCrJqkri0Y32-1" parent="S1Z-Oe1CNCrJqkri0Y32-0"/>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="HiUMzGPyvUkpLL53WkTg" name="制作完了ページ">
+        <mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" page="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="4m2awLUIhMcEvnqyAA81-0"/>
+                <mxCell id="4m2awLUIhMcEvnqyAA81-1" parent="4m2awLUIhMcEvnqyAA81-0"/>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="HekRL9hFmYBBvmeORGYo" name="回答者向けページ">
+        <mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" page="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="vkX9GNOKAoRKWZsVzV6A-0"/>
+                <mxCell id="vkX9GNOKAoRKWZsVzV6A-1" parent="vkX9GNOKAoRKWZsVzV6A-0"/>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="IAWmAj4bGvsGtO064HKT" name="回答一覧ページ">
+        <mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" page="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="qjordl9vW4INNwHAtmQu-0"/>
+                <mxCell id="qjordl9vW4INNwHAtmQu-1" parent="qjordl9vW4INNwHAtmQu-0"/>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
