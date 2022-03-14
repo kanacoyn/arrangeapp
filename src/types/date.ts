@@ -1,5 +1,5 @@
-import { format } from "date-fns";
-import ja from "date-fns/locale/ja";
+// import { format } from "date-fns";
+// import ja from "date-fns/locale/ja";
 
 export class Date {
   constructor(private _dateId: number, private _date: Date) {}

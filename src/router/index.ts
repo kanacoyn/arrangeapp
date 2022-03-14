@@ -21,6 +21,10 @@ const routes: Array<RouteConfig> = [
   {
     path: '/answerQuestions',
     component: () => import('../views/AnswerQuestions.vue')
+  },
+  {
+    path: '/answerList',
+    component: () => import('../views/AnswerList.vue')
   }
 ]
 
