@@ -33,6 +33,11 @@ export default class XXXComponent extends Vue {
    * 名前を入力して回答を作成する.
    */
   addName(): void {
+    // 名前が未入力のとき
+    if (this.name === "") {
+      alert("名前を入力してください");
+      return;
+    }
     // 名前をstateに格納する
     this.$store.commit("addName", {
       registerUser: new RegisterUser(0, this.name, [], "", ""),
