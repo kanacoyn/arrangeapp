@@ -5,7 +5,7 @@ export class Date {
   constructor(private _dateId: number, private _date: Date) {}
 
   // public get formatDate(): string {
-  //   const formatString = format(this.date, "MM/dd(E)", { locale: ja });
+  //   const formatString = format(this.date.toDateString(), "MM/dd(E)", { locale: ja });
   //   return formatString;
   // }
 

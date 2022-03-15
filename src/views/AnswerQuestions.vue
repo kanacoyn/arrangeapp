@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>
+      <div>{{ currentEvent.eventName }}</div>
       <table>
         <tr v-for="date of currentEventDate" v-bind:key="date.id">
           {{
@@ -19,6 +20,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { RegisterUser } from "@/types/RegisterUser";
+import { Event } from "@/types/event";
 @Component
 export default class XXXComponent extends Vue {
   // 現在表示されているイベントの日程候補
@@ -26,8 +28,12 @@ export default class XXXComponent extends Vue {
   // 名前
   private name = "";
 
+  // 現在表示されているイベント
+  private currentEvent = new Event("", "", [], "", "", "");
+
   created(): void {
     this.currentEventDate = this.$store.getters.getDateList;
+    this.currentEvent = this.$store.getters.getEvent;
   }
   /**
    * 名前を入力して回答を作成する.
