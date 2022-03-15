@@ -220,10 +220,7 @@ export default class XXXComponent extends Vue {
 .register {
   text-align: left;
 }
-<<<<<<< HEAD
 .error {
   color: red;
 }
-=======
->>>>>>> develop
 </style>
