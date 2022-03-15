@@ -9,7 +9,7 @@ export class Event {
     private _password: string,
     private _answerChoice: string
   ) {}
-
+  
   public get eventName(): string {
     return this._eventName;
   }
