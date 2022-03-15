@@ -2,12 +2,13 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { Event } from "@/types/event";
 import { RegisterUser } from "@/types/RegisterUser";
+import { Date } from "@/types/date";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    event: new Event("", "", [], "", "", ""),
+    eventInfo: new Event("", "", [], "", "", ""),
     registerUser: new RegisterUser(0, "", [], "", ""),
   },
   mutations: {
@@ -28,7 +29,7 @@ export default new Vuex.Store({
      * @returns 候補日程
      */
     getDateList(state) {
-      return state.event.date;
+      return state.eventInfo.date;
     },
 
     /**
@@ -37,7 +38,7 @@ export default new Vuex.Store({
      * @returns イベント内容
      */
     getEvent(state) {
-      return state.event;
+      return state.eventInfo;
     },
   },
   modules: {},

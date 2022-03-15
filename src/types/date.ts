@@ -1,13 +1,13 @@
-// import { format } from "date-fns";
-// import ja from "date-fns/locale/ja";
+import { format } from "date-fns";
 
 export class Date {
+  toDateString: any;
   constructor(private _dateId: number, private _date: Date) {}
 
-  // public get formatDate(): string {
-  //   const formatString = format(this.date.toDateString(), "MM/dd(E)", { locale: ja });
-  //   return formatString;
-  // }
+  get formatDate(): string {
+    const formatDateList = format(this.date.toDateString(), "yyyy/MM/dd HH:mm");
+    return formatDateList;
+  }
 
   public get dateId(): number {
     return this._dateId;
