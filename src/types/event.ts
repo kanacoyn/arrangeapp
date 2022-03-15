@@ -1,7 +1,11 @@
 import { Date } from "./date";
 
 export class Event {
+  filter(arg0: (date: any) => boolean) {
+    throw new Error("Method not implemented.");
+  }
   constructor(
+    private _eventId: number,
     private _eventName: string,
     private _description: string,
     private _date: Array<Date>,
@@ -9,7 +13,17 @@ export class Event {
     private _password: string,
     private _answerChoice: string
   ) {}
+<<<<<<< HEAD
+  public get eventId(): number {
+    return this.eventId;
+  }
+
+  public set eventId(eventId: number) {
+    this.eventId = eventId;
+  }
+=======
   
+>>>>>>> develop
   public get eventName(): string {
     return this._eventName;
   }
