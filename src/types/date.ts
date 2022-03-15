@@ -1,6 +1,9 @@
 import { format } from "date-fns";
 
 export class Date {
+  static toDateString(): Date {
+    throw new Error("Method not implemented.");
+  }
   toDateString: any;
   constructor(private _dateId: number, private _date: Date) {}
 

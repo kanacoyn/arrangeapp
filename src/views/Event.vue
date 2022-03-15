@@ -7,13 +7,10 @@
             <div class="calenderTitle">
               カレンダーの日付を選択すると、<br />「候補日程」に日付が入力されます
             </div>
-            <input
-              type="date"
-              id="date"
-              name="開催候補日を選択"
-              v-on:change="dateOption"
-              v-model="selectedDateOption"
-            />
+            <input type="date" id="date" name="開催候補日を選択" />
+            <!-- v-on:change="dateOption"
+              v-model="selectedDateOption" -->
+
             <table
               cellspacing="0"
               class="yui-calendar y2022"
@@ -331,12 +328,12 @@
                         7/27(金) 20:00～<br />
                         7/28(土) 19:00～<br />
                         (←左に表示されているカレンダーから日程を選択することもできます。)<br />
-                        <textarea
-                          name="schedule"
-                          id="schedule"
-                          rows="10"
-                          v-model="date"
-                        ></textarea>
+
+                        <textarea name="schedule" id="schedule" rows="10">
+選択されたやつがここに表示
+                        </textarea>
+                        <!-- v-model="clickedDate" -->
+
                         <div class="error">{{ dateError }}</div>
                       </td>
                     </tr>
@@ -404,7 +401,6 @@
                           id="eventchoice1"
                           value="1"
                           checked=""
-                          v-model="answerChoise"
                         />
                         <label for="eventchoice1">「○△×」から選択</label><br />
 
@@ -413,7 +409,6 @@
                           name="eventchoice"
                           id="eventchoice2"
                           value="2"
-                          v-model="answerChoise"
                         />
                         <label for="eventchoice2">「○×」から選択</label>
                       </td>
@@ -426,7 +421,7 @@
                             type="button"
                             v-on:click="registerEvent"
                           >
-                            <span>次に進む</span>
+                            次に進む
                           </button>
                         </div>
                       </th>
@@ -451,7 +446,7 @@ export default class XXXComponent extends Vue {
   // イベント説明ぶん
   private description = "";
   // 開催候補の日にち
-  private date = [];
+  private date = "";
   // メールアドレス
   private email = "";
   // パスワード
@@ -464,12 +459,23 @@ export default class XXXComponent extends Vue {
   private dateError = "";
   // メールアドレス
   private emailError = "";
+  private message = "練習";
 
+  createEvent() {
+    // v-modelで回答を表示させる式
+    // v-on:clickの値をstateに送り一つづつとってくる式
+  }
+
+  // dateをidをもとにgettersから１つ取得する
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  getEventDateById() {
+    return this.$store.getters.getEventDateById(Date);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   registerEvent() {
     // 正規表示を定義
-    const regex = /^[a-zA-Z0-9.?/-]{8}$/;
     let existError = false;
-
     // イベント名のエラー
     if (this.eventName === "") {
       this.eventNameError = "イベント名が空白です";
@@ -477,7 +483,6 @@ export default class XXXComponent extends Vue {
     } else {
       this.eventNameError = "";
     }
-
     // メールアドレスのエラー
     if (this.email === "") {
       this.emailError = "メールアドレスが入力されていません";
@@ -488,21 +493,18 @@ export default class XXXComponent extends Vue {
     } else {
       this.emailError = "";
     }
-
     // 候補にちじのエラー
-    if (this.date === [0]) {
+    if (this.date === "") {
       this.dateError = "開催日時をご記入ください";
       existError = true;
     } else {
       this.dateError = "";
     }
-
     // 1つでもエラーがある場合は処理を終了する
     if (existError === true) {
       return; //処理終了のreturn
     }
-
-    this.$router.push("/confirmEvent");
+    this.$router.push("/eventConfrim");
   }
 
   InputOptionDate(): void {

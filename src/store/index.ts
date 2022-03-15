@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    eventInfo: new Event("", "", [], "", "", ""),
+    eventInfo: new Event(0, "", "", [], "", "", ""),
   },
   mutations: {
     InputOptionDate(state, payload) {
@@ -19,6 +19,16 @@ export default new Vuex.Store({
       state.eventInfo.date.push(selectedOptionDate);
     },
   },
+  getters: {
+    // getEventDateById(state) {
+    //   return (id: number) => {
+    //     return state.eventInfo.filter(
+    //       (date) => date.dateId === Number(date)
+    //     )[0];
+    //   };
+    // },
+  },
+
   actions: {},
   modules: {},
 });

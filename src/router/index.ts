@@ -14,6 +14,14 @@ const routes: Array<RouteConfig> = [
     path: "/event",
     component: () => import("../views/Event.vue"),
   },
+  {
+    path: "/eventConfirm",
+    component: () => import("../views/EventConfirm.vue"),
+  },
+  {
+    path: "/finishMaking",
+    component: () => import("../views/FinishMaking.vue"),
+  },
 ];
 
 const router = new VueRouter({
