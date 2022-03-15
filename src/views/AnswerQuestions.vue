@@ -1,12 +1,31 @@
 <template>
   <div>
-    <div>
+    <!-- <div>
       <div>{{ currentEvent.eventName }}</div>
       <table>
         <tr v-for="date of currentEventDate" v-bind:key="date.id">
           {{
-            date.date
+            date.formatDateList
           }}
+        </tr>
+      </table>
+    </div> -->
+    <div>
+      <table border="1">
+        <tr>
+          <th></th>
+          <th>山田</th>
+          <th>鈴木</th>
+        </tr>
+        <tr>
+          <td>3/15(火)</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>3/16(水)</td>
+          <td>-</td>
+          <td>-</td>
         </tr>
       </table>
     </div>
