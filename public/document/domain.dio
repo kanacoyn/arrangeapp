@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="u9Lxx2WIYV-frjOep1M6" name="イメージ">
-        <mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" page="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="188" dy="510" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -74,7 +74,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="HiUMzGPyvUkpLL53WkTg" name="制作完了ページ">
-        <mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" page="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="634" dy="510" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="4m2awLUIhMcEvnqyAA81-0"/>
                 <mxCell id="4m2awLUIhMcEvnqyAA81-1" parent="4m2awLUIhMcEvnqyAA81-0"/>
@@ -82,7 +82,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="HekRL9hFmYBBvmeORGYo" name="回答者向けページ">
-        <mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" page="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="634" dy="510" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="vkX9GNOKAoRKWZsVzV6A-0"/>
                 <mxCell id="vkX9GNOKAoRKWZsVzV6A-1" parent="vkX9GNOKAoRKWZsVzV6A-0"/>

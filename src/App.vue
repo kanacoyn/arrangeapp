@@ -4,6 +4,8 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/event">イベントを作る</router-link> |
       <router-link to="/eventConfirm">イベントを作成しますか</router-link> |
+      <router-link to="/answerQuestions">回答者遷移ページ</router-link> |
+      <router-link to="/answerList">回答を入力する</router-link> |
     </div>
     <router-view />
   </div>

@@ -526,6 +526,7 @@ export default class XXXComponent extends Vue {
   text-align: left;
   vertical-align: top;
 }
+<<<<<<< HEAD
 
 .error {
   color: red;
@@ -534,4 +535,9 @@ export default class XXXComponent extends Vue {
 #title {
   width: 150px;
 }
+=======
+.error {
+  color: red;
+}
+>>>>>>> develop
 </style>

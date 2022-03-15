@@ -7,7 +7,7 @@ export class Date {
   toDateString: any;
   constructor(private _dateId: number, private _date: Date) {}
 
-  get formatDate() {
+  get formatDate(): string {
     const formatDateList = format(this.date.toDateString(), "yyyy/MM/dd HH:mm");
     return formatDateList;
   }
