@@ -6,10 +6,19 @@
     </div>
     <div class="item">
       <div>日程候補</div>
-      <div class="datelist">
-        <div>3/22(火)19:00～</div>
-        <div>
-          <select name="choice" id="choice" v-model="answer">
+      <div
+        class="datelist"
+        v-for="date of eventInfo.date"
+        v-bind:key="date.dateId"
+      >
+        <div>{{ date.date }}</div>
+        <div class="datelist">
+          <select
+            name="choice"
+            id="choice"
+            v-model="selectAnswer"
+            v-on:change="selectItem"
+          >
             <option value="">選択してください</option>
             <option value="1">〇</option>
             <option value="2">△</option>
@@ -30,32 +39,57 @@
 
 <script lang="ts">
 import { RegisterUser } from "@/types/RegisterUser";
+import { Event } from "@/types/event";
 import { Component, Vue } from "vue-property-decorator";
+import { Date } from "@/types/date";
 @Component
 export default class XXXComponent extends Vue {
   // 名前
   private name = "";
   // 日程回答
-  private answer = "";
+  private selectAnswer = "";
   // コメント
   private comment = "";
+  // 現在表示されているイベント内容
+  private eventInfo = new Event(0, "", "", [], "", "", "");
 
+  created(): void {
+    this.eventInfo = new Event(
+      1,
+      "飲み会",
+      "池袋駅周辺で行います",
+      [
+        new Date(1, "2022/3/16", ""),
+        new Date(2, "2022/3/20", ""),
+        new Date(3, "2022/3/22", ""),
+      ],
+      "abc@gmail.com",
+      "12345",
+      ""
+    );
+  }
+
+  /**
+   * 回答内容を登録する.
+   */
   registerAnswer(): void {
     let userList = this.$store.getters.getUserList;
     let newId = 0;
     if (userList.length > 0) {
-      console.log(userList[0]);
+      console.log(userList);
       newId = Number(userList[0].userId) + 1;
     }
-
-    console.log("1" + newId);
     this.$store.commit("registerAnswer", {
       registerUser: new RegisterUser(newId, this.name, [], this.comment),
     });
-    console.log("2" + newId);
-    console.log(this.$store.state.userList);
     this.$router.push("/logList");
   }
+
+  // selectItem():void{
+  //   this.$store.commit("selectAnswer",{
+  //     date: new Date(-1, "")
+  //   })
+  // }
 }
 </script>
 
@@ -63,6 +97,7 @@ export default class XXXComponent extends Vue {
 .datelist {
   display: flex;
   justify-content: center;
+  margin-left: 20px;
 }
 
 .item {

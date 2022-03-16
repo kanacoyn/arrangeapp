@@ -21,8 +21,17 @@ export default new Vuex.Store({
       state.registerUser = payload;
     },
 
+    /**
+     * 回答者情報をステートに格納する.
+     * @param state - ステート
+     * @param payload 回答者情報
+     */
     registerAnswer(state, payload) {
-      state.userList.push(payload);
+      state.userList.push(payload.registerUser);
+    },
+
+    selectAnswer(state, payload) {
+      state.eventInfo.date.push(payload.date);
     },
 
     // InputOptionDate(state, payload) {
