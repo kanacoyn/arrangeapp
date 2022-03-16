@@ -1,12 +1,28 @@
 <template>
   <div>
-    <div>
+    <!-- <div>
       <div>{{ currentEvent.eventName }}</div>
       <table>
         <tr v-for="date of currentEventDate" v-bind:key="date.id">
           {{
-            date.date
+            date.formatDateList
           }}
+        </tr>
+      </table>
+    </div> -->
+    <div>
+      <table border="1">
+        <tr>
+          <th></th>
+          <th>山田</th>
+        </tr>
+        <tr>
+          <td>3/15(火)</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>3/15(火)</td>
+          <td>-</td>
         </tr>
       </table>
     </div>
@@ -29,11 +45,15 @@ export default class XXXComponent extends Vue {
   private name = "";
 
   // 現在表示されているイベント
-  private currentEvent = new Event("", "", [], "", "", "");
+  private currentEvent = new Event(0, "", "", [], "", "", "");
+
+  // 現在回答済のユーザー
+  private currentUserList = new Array<RegisterUser>();
 
   created(): void {
     this.currentEventDate = this.$store.getters.getDateList;
     this.currentEvent = this.$store.getters.getEvent;
+    this.currentUserList = this.$store.getters.getUserList;
   }
   /**
    * 名前を入力して回答を作成する.
@@ -44,9 +64,10 @@ export default class XXXComponent extends Vue {
       alert("名前を入力してください");
       return;
     }
+
     // 名前をstateに格納する
     this.$store.commit("addName", {
-      registerUser: new RegisterUser(0, this.name, [], "", ""),
+      registerUser: new RegisterUser(0, this.name, [], ""),
     });
 
     // 回答ページに遷移

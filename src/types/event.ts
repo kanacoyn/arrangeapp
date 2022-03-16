@@ -13,7 +13,6 @@ export class Event {
     private _password: string,
     private _answerChoice: string
   ) {}
-<<<<<<< HEAD
   public get eventId(): number {
     return this.eventId;
   }
@@ -21,9 +20,6 @@ export class Event {
   public set eventId(eventId: number) {
     this.eventId = eventId;
   }
-=======
-  
->>>>>>> develop
   public get eventName(): string {
     return this._eventName;
   }

@@ -2,14 +2,14 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { Event } from "@/types/event";
 import { RegisterUser } from "@/types/RegisterUser";
-import { Date } from "@/types/date";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     eventInfo: new Event(0, "", "", [], "", "", ""),
-    registerUser: new RegisterUser(0, "", [], "", ""),
+    registerUser: new RegisterUser(0, "", [], ""),
+    userList: new Array<RegisterUser>(),
   },
   mutations: {
     /**
@@ -21,14 +21,18 @@ export default new Vuex.Store({
       state.registerUser = payload;
     },
 
-    InputOptionDate(state, payload) {
-      const selectedDateOptionId = state.eventInfo.date.length;
-      const selectedOptionDate = new Date(
-        selectedDateOptionId + 1,
-        payload.Date
-      );
-      state.eventInfo.date.push(selectedOptionDate);
+    registerAnswer(state, payload) {
+      state.userList.push(payload);
     },
+
+    // InputOptionDate(state, payload) {
+    //   const selectedDateOptionId = state.eventInfo.date.length;
+    //   const selectedOptionDate = new Date(
+    //     selectedDateOptionId + 1,
+    //     payload.Date
+    //   );
+    //   state.eventInfo.date.push(selectedOptionDate);
+    // },
   },
   getters: {
     // getEventDateById(state) {
@@ -56,7 +60,15 @@ export default new Vuex.Store({
     getEvent(state) {
       return state.eventInfo;
     },
-  },
 
+    /**
+     * 回答済みのユーザーを取得する.
+     * @param state - ステート
+     * @returns 回答済みユーザー
+     */
+    getUserList(state) {
+      return state.userList;
+    },
+  },
   modules: {},
 });
