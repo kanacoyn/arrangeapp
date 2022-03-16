@@ -23,12 +23,13 @@
       <div class="input"><input type="text" size="50" v-model="comment" /></div>
     </div>
     <div>
-      <button type="button">登録する</button>
+      <button type="button" v-on:click="registerAnswer">登録する</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { RegisterUser } from "@/types/RegisterUser";
 import { Component, Vue } from "vue-property-decorator";
 @Component
 export default class XXXComponent extends Vue {
@@ -38,6 +39,23 @@ export default class XXXComponent extends Vue {
   private answer = "";
   // コメント
   private comment = "";
+
+  registerAnswer(): void {
+    let userList = this.$store.getters.getUserList;
+    let newId = 0;
+    if (userList.length > 0) {
+      console.log(userList[0]);
+      newId = Number(userList[0].userId) + 1;
+    }
+
+    console.log("1" + newId);
+    this.$store.commit("registerAnswer", {
+      registerUser: new RegisterUser(newId, this.name, [], this.comment),
+    });
+    console.log("2" + newId);
+    console.log(this.$store.state.userList);
+    this.$router.push("/logList");
+  }
 }
 </script>
 

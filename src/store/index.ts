@@ -9,10 +9,7 @@ export default new Vuex.Store({
   state: {
     eventInfo: new Event("", "", [], "", "", ""),
     registerUser: new RegisterUser(0, "", [], ""),
-    userList: new Array<RegisterUser>(
-      new RegisterUser(1, "鈴木", [], "20時以降可能です"),
-      new RegisterUser(2, "山田", [], "20時以降可能です")
-    ),
+    userList: new Array<RegisterUser>(),
   },
   mutations: {
     /**
@@ -22,6 +19,9 @@ export default new Vuex.Store({
      */
     addName(state, payload) {
       state.registerUser = payload;
+    },
+    registerAnswer(state, payload) {
+      state.userList.push(payload);
     },
   },
   actions: {},
