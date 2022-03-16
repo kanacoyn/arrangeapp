@@ -28,6 +28,7 @@ export default new Vuex.Store({
         payload.Date
       );
       state.eventInfo.date.push(selectedOptionDate);
+      console.log(payload.Date);
     },
   },
   getters: {
@@ -60,3 +61,6 @@ export default new Vuex.Store({
 
   modules: {},
 });
+function selectedOptionDate(selectedOptionDate: any) {
+  throw new Error("Function not implemented.");
+}

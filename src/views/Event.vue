@@ -7,7 +7,13 @@
             <div class="calenderTitle">
               カレンダーの日付を選択すると、<br />「候補日程」に日付が入力されます
             </div>
-            <input type="date" id="date" name="開催候補日を選択" />
+            <input
+              type="date"
+              id="date"
+              name="開催候補日を選択"
+              v-model="selectedDateOption"
+            />
+
             <!-- v-on:change="dateOption"
               v-model="selectedDateOption" -->
 
@@ -329,10 +335,15 @@
                         7/28(土) 19:00～<br />
                         (←左に表示されているカレンダーから日程を選択することもできます。)<br />
 
-                        <textarea name="schedule" id="schedule" rows="10">
-選択されたやつがここに表示
+                        <textarea
+                          name="schedule"
+                          id="schedule"
+                          rows="10"
+                          v-model="selectedDateOption"
+                        >
                         </textarea>
-                        <!-- v-model="clickedDate" -->
+
+                        <button v-on:click="onClick">ボタン</button>
 
                         <div class="error">{{ dateError }}</div>
                       </td>
@@ -459,17 +470,18 @@ export default class XXXComponent extends Vue {
   private dateError = "";
   // メールアドレス
   private emailError = "";
-  private message = "練習";
+
+  private selectedDateOption = "";
+
+  onClick() {
+    this.$store.commit("InputOptionDate", {
+      Date: this.selectedDateOption,
+    });
+  }
 
   createEvent() {
     // v-modelで回答を表示させる式
     // v-on:clickの値をstateに送り一つづつとってくる式
-  }
-
-  // dateをidをもとにgettersから１つ取得する
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  getEventDateById() {
-    return this.$store.getters.getEventDateById(Date);
   }
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -534,5 +546,4 @@ export default class XXXComponent extends Vue {
 #title {
   width: 150px;
 }
-
 </style>
