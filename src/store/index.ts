@@ -9,7 +9,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     eventInfo: new Event(0, "", "", [], "", "", ""),
-    registerUser: new RegisterUser(0, "", [], "", ""),
+    registerUser: new RegisterUser(0, "", [], ""),
+    userList: new Array<RegisterUser>(),
   },
   mutations: {
     /**
@@ -22,24 +23,22 @@ export default new Vuex.Store({
     },
 
     InputOptionDate(state, payload) {
-      const selectedDateOptionId = state.eventInfo.date.length;
+      const selectedDateOptionId = state.eventInfo.eventId;
       const selectedOptionDate = new Date(
-        selectedDateOptionId + 1,
+        selectedDateOptionId,
+        payload.Date,
         payload.Date
       );
       state.eventInfo.date.push(selectedOptionDate);
       console.log(payload.Date);
     },
+
+    // registerAnswer(state, payload) {
+    //   state.userList.push(payload);
+
+    // },
   },
   getters: {
-    // getEventDateById(state) {
-    //   return (id: number) => {
-    //     return state.eventInfo.filter(
-    //       (date) => date.dateId === Number(date)
-    //     )[0];
-    //   };
-    // },
-
     /**
      * 候補日程を取得する.
      * @param state - ステート
@@ -57,8 +56,16 @@ export default new Vuex.Store({
     getEvent(state) {
       return state.eventInfo;
     },
-  },
 
+    /**
+     * 回答済みのユーザーを取得する.
+     * @param state - ステート
+     * @returns 回答済みユーザー
+     */
+    getUserList(state) {
+      return state.userList;
+    },
+  },
   modules: {},
 });
 function selectedOptionDate(selectedOptionDate: any) {
