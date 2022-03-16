@@ -63,9 +63,10 @@ export default class XXXComponent extends Vue {
       alert("名前を入力してください");
       return;
     }
+
     // 名前をstateに格納する
     this.$store.commit("addName", {
-      registerUser: new RegisterUser(0, this.name, [], "", ""),
+      registerUser: new RegisterUser(0, this.name, [], ""),
     });
 
     // 回答ページに遷移

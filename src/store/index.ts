@@ -2,14 +2,13 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { Event } from "@/types/event";
 import { RegisterUser } from "@/types/RegisterUser";
-import { Date } from "@/types/date";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     eventInfo: new Event("", "", [], "", "", ""),
-    registerUser: new RegisterUser(0, "", [], "", ""),
+    registerUser: new RegisterUser(0, "", [], ""),
   },
   mutations: {
     /**
@@ -40,6 +39,7 @@ export default new Vuex.Store({
     getEvent(state) {
       return state.eventInfo;
     },
+
   },
   modules: {},
 });

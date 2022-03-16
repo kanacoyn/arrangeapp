@@ -40,7 +40,7 @@ export default class XXXComponent extends Vue {
   // コメント
   private comment = "";
   // 登録者情報
-  private currentRegisterUser = new RegisterUser(0, "", [], "", "");
+  private currentRegisterUser = new RegisterUser(0, "", [], "");
 
   created(): void {
     this.currentRegisterUser = this.$store.state.registerUser;
