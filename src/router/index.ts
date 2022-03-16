@@ -26,6 +26,14 @@ const routes: Array<RouteConfig> = [
     path: "/answerFinished",
     component: () => import("../views/AnswerFinished.vue"),
   },
+  {
+    path: "/eventConfirm",
+    component: () => import("../views/EventConfirm.vue"),
+  },
+  {
+    path: "/finishMaking",
+    component: () => import("../views/FinishMaking.vue"),
+  },
 ];
 
 const router = new VueRouter({

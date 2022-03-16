@@ -45,7 +45,7 @@ export default class XXXComponent extends Vue {
   private name = "";
 
   // 現在表示されているイベント
-  private currentEvent = new Event("", "", [], "", "", "");
+  private currentEvent = new Event(0, "", "", [], "", "", "");
 
   // 現在回答済のユーザー
   private currentUserList = new Array<RegisterUser>();
