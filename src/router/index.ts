@@ -22,6 +22,10 @@ const routes: Array<RouteConfig> = [
     path: "/event",
     component: () => import("../views/Event.vue"),
   },
+  {
+    path: "/answerFinished",
+    component: () => import("../views/AnswerFinished.vue"),
+  },
 ];
 
 const router = new VueRouter({

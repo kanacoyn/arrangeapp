@@ -9,6 +9,10 @@ export default new Vuex.Store({
   state: {
     eventInfo: new Event("", "", [], "", "", ""),
     registerUser: new RegisterUser(0, "", [], ""),
+    userList: new Array<RegisterUser>(
+      new RegisterUser(1, "鈴木", [], "20時以降可能です"),
+      new RegisterUser(2, "山田", [], "20時以降可能です")
+    ),
   },
   mutations: {
     /**
@@ -40,6 +44,14 @@ export default new Vuex.Store({
       return state.eventInfo;
     },
 
+    /**
+     * 回答済みのユーザーを取得する.
+     * @param state - ステート
+     * @returns 回答済みユーザー
+     */
+    getUserList(state) {
+      return state.userList;
+    },
   },
   modules: {},
 });

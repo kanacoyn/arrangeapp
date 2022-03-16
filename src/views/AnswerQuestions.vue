@@ -15,16 +15,13 @@
         <tr>
           <th></th>
           <th>山田</th>
-          <th>鈴木</th>
         </tr>
         <tr>
           <td>3/15(火)</td>
           <td>-</td>
-          <td>-</td>
         </tr>
         <tr>
-          <td>3/16(水)</td>
-          <td>-</td>
+          <td>3/15(火)</td>
           <td>-</td>
         </tr>
       </table>
@@ -50,9 +47,13 @@ export default class XXXComponent extends Vue {
   // 現在表示されているイベント
   private currentEvent = new Event("", "", [], "", "", "");
 
+  // 現在回答済のユーザー
+  private currentUserList = new Array<RegisterUser>();
+
   created(): void {
     this.currentEventDate = this.$store.getters.getDateList;
     this.currentEvent = this.$store.getters.getEvent;
+    this.currentUserList = this.$store.getters.getUserList;
   }
   /**
    * 名前を入力して回答を作成する.
