@@ -14,9 +14,6 @@
               v-model="selectedDateOption"
             />
 
-            <!-- v-on:change="dateOption"
-              v-model="selectedDateOption" -->
-
             <table
               cellspacing="0"
               class="yui-calendar y2022"
@@ -343,8 +340,6 @@
                         >
                         </textarea>
 
-                        <button v-on:click="onClick">ボタン</button>
-
                         <div class="error">{{ dateError }}</div>
                       </td>
                     </tr>
@@ -450,6 +445,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+
 @Component
 export default class XXXComponent extends Vue {
   // イベント名
@@ -473,19 +469,22 @@ export default class XXXComponent extends Vue {
 
   private selectedDateOption = "";
 
-  onClick() {
-    this.$store.commit("InputOptionDate", {
-      Date: this.selectedDateOption,
-    });
-  }
-
-  createEvent() {
-    // v-modelで回答を表示させる式
-    // v-on:clickの値をstateに送り一つづつとってくる式
-  }
+  //   createEvent() {
+  //     // v-modelで回答を表示させる式
+  //   }
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   registerEvent() {
+    this.$store.commit("InputOptionDate", {
+      eventName: this.eventName,
+      description: this.description,
+      date: this.selectedDateOption,
+      email: this.email,
+      password: this.password,
+      answerChoice: this.answerChoice,
+    });
+    console.log("テスト1");
+
     // 正規表示を定義
     let existError = false;
     // イベント名のエラー
@@ -506,7 +505,7 @@ export default class XXXComponent extends Vue {
       this.emailError = "";
     }
     // 候補にちじのエラー
-    if (this.date === "") {
+    if (this.date === "yyyy-MM-dd") {
       this.dateError = "開催日時をご記入ください";
       existError = true;
     } else {
@@ -516,20 +515,23 @@ export default class XXXComponent extends Vue {
     if (existError === true) {
       return; //処理終了のreturn
     }
-    this.$router.push("/eventConfrim");
+    console.log("テスト2");
+    this.$router.push("/eventConfirm");
   }
 
-  InputOptionDate(): void {
-    this.$store.commit("InputOptionDate", {
-      eventName: this.eventName,
-      description: this.description,
-      date: this.date,
-      email: this.email,
-      password: this.password,
-      answerChoice: this.answerChoice,
-    });
-    this.$router.push("/eventConfrim");
-  }
+  // registerEventに入れるstoreにイベント情報をpushする式
+  //   InputOptionDate(): void {
+  //     this.$store.commit("InputOptionDate", {
+  //       eventName: this.eventName,
+  //       description: this.description,
+  //       date: this.selectedDateOption,
+  //       email: this.email,
+  //       password: this.password,
+  //       answerChoice: this.answerChoice,
+  //     });
+  //     // this.$router.push("/eventConfrim");
+  //     console.log("テスト");
+  //   }
 }
 </script>
 
