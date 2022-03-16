@@ -29,11 +29,11 @@ export default class XXXComponent extends Vue {
   private name = "";
 
   // 現在表示されているイベント
-  // private currentEvent = new Event("", "", [], "", "", "");
+  private currentEvent = new Event(0, "", "", [], "", "", "");
 
   created(): void {
     this.currentEventDate = this.$store.getters.getDateList;
-    // this.currentEvent = this.$store.getters.getEvent;
+    this.currentEvent = this.$store.getters.getEvent;
   }
   /**
    * 名前を入力して回答を作成する.
