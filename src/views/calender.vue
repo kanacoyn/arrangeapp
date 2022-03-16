@@ -13,18 +13,53 @@
         </th>
       </thead>
       <tbody>
-        <tr v-for="(weekData, weekDataIndex) in calendar" :key="weekDataIndex">
+        <tr
+          v-for="(weekData, weekDataIndex) in calendar"
+          :key="weekDataIndex"
+          selectable
+        >
           <td
             v-for="(dayNumber, dayNumberIndex) in weekData"
             :key="dayNumberIndex"
             :class="{ today: isToday(dayNumber) }"
+            selectable
           >
             <span v-if="isToday(dayNumber)">今日</span>
-            <span v-else>{{ dayNumber }}</span>
+            <span v-else selectable>{{ dayNumber }}</span>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <tbody class="m3 calbody">
+      <tr class="w10">
+        <td class="calcell oom calcelltop calcellleft" id="cal1Container_cell0">
+          27
+        </td>
+        <td class="calcell oom calcelltop" id="cal1Container_cell1">28</td>
+        <td
+          class="calcell wd2 d1 selectable calcelltop"
+          id="cal1Container_cell2"
+        >
+          <a href="#" class="selector" v-on:change="addDate">1</a>
+        </td>
+        <td
+          class="calcell wd3 d2 selectable calcelltop"
+          id="cal1Container_cell3"
+        >
+          <a href="#" class="selector">2</a>
+        </td>
+        <td
+          class="calcell wd4 d3 selectable calcelltop"
+          id="cal1Container_cell4"
+        >
+          <input class="selector" value="3" />
+        </td>
+      </tr>
+    </tbody>
+
+    <textarea name="schedule" id="schedule" rows="10" v-model="addDate">
+    </textarea>
   </div>
 </template>
 
@@ -79,6 +114,14 @@ export default {
       }
     },
 
+    addDate: function () {
+      const dateOption = new Array(String);
+      this.dateOption.push(this.year, this.month, this.day);
+      let selectedDate = dateOption;
+      console.log("テスト");
+      return selectedDate;
+    },
+
     //ここから追加
     isToday: function (day) {
       let date = this.year + "-" + this.month + "-" + day;
@@ -96,12 +139,6 @@ export default {
     this.month = date.getMonth() + 1;
     let actualDay = date.getDate();
     this.today = this.year + "-" + this.month + "-" + actualDay;
-  },
-
-  // dateをidをもとにgettersから１つ取得する
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  getEventDateById() {
-    return this.$store.getters.getEventDateById(Date);
   },
 };
 </script>
