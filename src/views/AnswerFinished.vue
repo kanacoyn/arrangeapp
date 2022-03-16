@@ -12,19 +12,6 @@
         v-bind:key="date.dateId"
       >
         <div>{{ date.date }}</div>
-        <div class="datelist">
-          <select
-            name="choice"
-            id="choice"
-            v-model="selectAnswer"
-            v-on:change="selectItem"
-          >
-            <option value="">選択してください</option>
-            <option value="1">〇</option>
-            <option value="2">△</option>
-            <option value="3">✕</option>
-          </select>
-        </div>
       </div>
     </div>
     <div class="item">
@@ -46,8 +33,6 @@ import { Date } from "@/types/date";
 export default class XXXComponent extends Vue {
   // 名前
   private name = "";
-  // 日程回答
-  private selectAnswer = "";
   // コメント
   private comment = "";
   // 現在表示されているイベント内容
@@ -84,20 +69,12 @@ export default class XXXComponent extends Vue {
     });
     this.$router.push("/logList");
   }
-
-  // selectItem():void{
-  //   this.$store.commit("selectAnswer",{
-  //     date: new Date(-1, "")
-  //   })
-  // }
 }
 </script>
 
 <style scoped>
 .datelist {
-  display: flex;
   justify-content: center;
-  margin-left: 20px;
 }
 
 .item {
