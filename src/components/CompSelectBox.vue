@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 @Component
 export default class XXXComponent extends Vue {
   // 親コンポーネントから受け取る日付ID
@@ -26,11 +26,10 @@ export default class XXXComponent extends Vue {
   // 日程回答
   private selectAnswer = "";
 
-  // selectItem(): void {
-  //   this.$store.commit("selectAnswer", {
-  //     date: new Date(-1, ""),
-  //   });
-  // }
+  @Emit()
+  selectItem(): void {
+    console.log("select-itemイベント発生");
+  }
 }
 </script>
 

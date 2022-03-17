@@ -3,6 +3,7 @@
     <div class="item">
       <div>名前</div>
       <div class="input"><input type="text" v-model="name" /></div>
+      <div>{{ errorName }}</div>
     </div>
     <div class="item">
       <div>日程候補</div>
@@ -12,12 +13,17 @@
         v-bind:key="date.dateId"
       >
         <div>{{ date.date }}</div>
-        <comp-select-box v-bind:date-id="date.dateId"></comp-select-box>
+        <comp-select-box
+          v-bind:date-id="date.dateId"
+          v-on:select-item="onSelectItem"
+        ></comp-select-box>
+        <div>{{ errorDate }}</div>
       </div>
     </div>
     <div class="item">
       <div>コメント</div>
       <div class="input"><input type="text" size="50" v-model="comment" /></div>
+      <div>{{ errorComment }}</div>
     </div>
     <div>
       <button type="button" v-on:click="registerAnswer">登録する</button>
@@ -29,7 +35,6 @@
 import { RegisterUser } from "@/types/RegisterUser";
 import { Event } from "@/types/event";
 import { Component, Vue } from "vue-property-decorator";
-import { Date } from "@/types/date";
 import CompSelectBox from "@/components/CompSelectBox.vue";
 @Component({
   components: {
@@ -43,27 +48,37 @@ export default class AnswerFinished extends Vue {
   private comment = "";
   // 現在表示されているイベント内容
   private eventInfo = new Event(0, "", "", [], "", "", "");
+  // 名前のエラー
+  private errorName = "";
+  // 候補日のエラー
+  private errorDate = "";
+  // コメントのエラー
+  private errorComment = "";
+  // エラーチェック
+  private errorChecker = true;
 
   created(): void {
-    this.eventInfo = new Event(
-      1,
-      "飲み会",
-      "池袋駅周辺で行います",
-      [
-        new Date(1, "2022/3/16", ""),
-        new Date(2, "2022/3/20", ""),
-        new Date(3, "2022/3/22", ""),
-      ],
-      "abc@gmail.com",
-      "12345",
-      ""
-    );
+    this.eventInfo = this.$store.getters.getEvent;
+  }
+
+  onSelectItem(): void {
+    console.log("ok");
   }
 
   /**
    * 回答内容を登録する.
    */
   registerAnswer(): void {
+    // エラー処理
+    if (this.name === "") {
+      this.errorName = "名前を入力してください";
+      this.errorChecker = false;
+    }
+
+    if (this.errorChecker === false) {
+      return;
+    }
+
     let userList = this.$store.getters.getUserList;
     let newId = 0;
     if (userList.length > 0) {
