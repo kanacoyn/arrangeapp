@@ -5,6 +5,7 @@ export class EventDate {
     throw new Error("Method not implemented.");
   }
   toDateString: any;
+
   constructor(private _dateId: number, private _date: string) {}
 
   // get formatDate(): string {
