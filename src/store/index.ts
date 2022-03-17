@@ -2,32 +2,46 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { Event } from "@/types/event";
 import { RegisterUser } from "@/types/RegisterUser";
-import { Date } from "@/types/date";
+import { EventDate } from "@/types/date";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    eventInfo: new Event(0, "", "", [], "", "", ""),
-    registerUser: new RegisterUser(0, "", [], ""),
+    // eventInfo: new Event(0, "", "", [], "", "", ""),
+    eventInfo: new Event(
+      1,
+      "飲み会",
+      "池袋駅周辺で行います",
+      [
+        new EventDate(1, "2022/3/16"),
+        new EventDate(2, "2022/3/20"),
+        new EventDate(3, "2022/3/22"),
+      ],
+      "abc@gmail.com",
+      "12345",
+      ""
+    ),
+    registerUser: new RegisterUser(0, "", [], [],""),
     userList: new Array<RegisterUser>(),
   },
   mutations: {
     /**
-     * 名前を入力して回答を作成する.
+     * 回答者情報をステートに格納する.
      * @param state - ステート
-     * @param payload - ペイロード
+     * @param payload 回答者情報
      */
-    addName(state, payload) {
-      state.registerUser = payload;
+    registerAnswer(state, payload) {
+      state.userList.push(payload.registerUser);
     },
-
+    selectAnswer(state, payload) {
+      state.eventInfo.date.push(payload.date);
+    },
     InputOptionDate(state, payload) {
       const selectedDateOptionId = state.eventInfo.eventId;
-      const selectedOptionDate = new Date(
+      const selectedOptionDate = new EventDate(
         selectedDateOptionId,
         payload.Date,
-        payload.Date
       );
       state.eventInfo.date.push(selectedOptionDate);
       console.log(payload.Date);
@@ -35,7 +49,6 @@ export default new Vuex.Store({
 
     // registerAnswer(state, payload) {
     //   state.userList.push(payload);
-
     // },
   },
   getters: {

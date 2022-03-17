@@ -1,21 +1,19 @@
-import { format } from "date-fns";
+// import { format } from "date-fns";
 
-export class Date {
+export class EventDate {
   static toDateString(): Date {
     throw new Error("Method not implemented.");
   }
   toDateString: any;
   constructor(
     private _dateId: number,
-    private _date: Date,
-    // 回答
-    private _registerAnswer: string
+    private _date: string,
   ) {}
 
-  get formatDate(): string {
-    const formatDateList = format(this.date.toDateString(), "yyyy/MM/dd HH:mm");
-    return formatDateList;
-  }
+  // get formatDate(): string {
+  //   const formatDateList = format(this.date.toDateString(), "yyyy/MM/dd HH:mm");
+  //   return formatDateList;
+  // }
 
   public get dateId(): number {
     return this._dateId;
@@ -25,19 +23,11 @@ export class Date {
     this._dateId = dateId;
   }
 
-  public get date(): Date {
+  public get date(): string {
     return this._date;
   }
 
-  public set date(date: Date) {
+  public set date(date: string) {
     this._date = date;
-  }
-
-  public get registerAnswer(): string {
-    return this._registerAnswer;
-  }
-
-  public set registerAnswer(registerAnswer: string) {
-    this._registerAnswer = registerAnswer;
   }
 }

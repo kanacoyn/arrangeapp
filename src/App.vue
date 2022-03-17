@@ -5,10 +5,7 @@
       <router-link to="/event">イベントを作る</router-link> |
       <router-link to="/eventConfirm">イベントを作成しますか</router-link> |
       <router-link to="/answerQuestions">回答者遷移ページ</router-link> |
-      <router-link to="/answerList">回答を入力する</router-link> |
-
       <router-link to="/calender">カレンダー</router-link> |
-
       <router-link to="/answerFinished">回答完了</router-link> |
     </div>
     <router-view />
