@@ -17,37 +17,34 @@
                 <tbody id="confirm">
                   <tr>
                     <th class="must">イベント名</th>
-                    <td
-                      v-for="eventInfo of eventConfirm"
-                      v-bind:key="eventInfo.eventId"
-                    >
-                      {{ eventInfo.eventName }}
+                    <td>
+                      {{ this.eventConfirm.eventName }}
                     </td>
                   </tr>
 
                   <tr>
                     <th class="must">候補日程</th>
-                    <td>2月17日<br /></td>
+                    <td>{{ this.eventConfirm.date }}<br /></td>
                   </tr>
 
                   <tr>
                     <th>イベント説明文</th>
-                    <td>送別会</td>
+                    <td>{{ this.eventConfirm.description }}</td>
                   </tr>
 
                   <tr>
                     <th>メールアドレス</th>
-                    <td>ダミー</td>
+                    <td>{{ this.eventConfirm.email }}</td>
                   </tr>
 
                   <tr>
                     <th>パスワード設定</th>
-                    <td>ダミー</td>
+                    <td>{{ this.eventConfirm.password }}</td>
                   </tr>
 
                   <tr>
                     <th>回答の選択肢</th>
-                    <td>dami-</td>
+                    <td>{{ this.eventConfirm.answerChoice }}</td>
                   </tr>
                 </tbody>
                 <br />
@@ -67,7 +64,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Event } from "@/types/event";
-import { Date } from "@/types/date";
+import { EventDate } from "@/types/date";
 
 @Component
 export default class XXXComponent extends Vue {

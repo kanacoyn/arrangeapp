@@ -1,11 +1,11 @@
-import { Date } from "./date";
+import { EventDate } from "./date";
 
 export class Event {
   constructor(
     private _eventId: number,
     private _eventName: string,
     private _description: string,
-    private _date: Array<Date>,
+    private _date: Array<EventDate>,
     private _email: string,
     private _password: string,
     private _answerChoice: string
@@ -33,11 +33,11 @@ export class Event {
     this._description = description;
   }
 
-  public get date(): Array<Date> {
+  public get date(): Array<EventDate> {
     return this._date;
   }
 
-  public set date(date: Array<Date>) {
+  public set date(date: Array<EventDate>) {
     this._date = date;
   }
 

@@ -1,8 +1,6 @@
 <template>
   <div class="home">
-    イベントを作成する
-
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <router-link to="/event"> イベントを作成する</router-link>
   </div>
 </template>
 

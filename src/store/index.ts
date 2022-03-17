@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { Event } from "@/types/event";
 import { RegisterUser } from "@/types/RegisterUser";
-import { Date } from "@/types/date";
+import { EventDate } from "@/types/date";
 
 Vue.use(Vuex);
 
@@ -38,24 +38,30 @@ export default new Vuex.Store({
       state.registerUser = payload;
     },
 
-    InputOptionDate(state, payload) {
-      // イベント情報からdateをpushする
-      console.log("dateをpush挑戦");
-      state.eventInfo.date = payload.eventInfo.date;
-      console.log("dateをpush成功");
-      const selectedDateOptionId = state.eventInfo.eventId;
-      const selectedOptionDate = new Date(
-        selectedDateOptionId,
-        payload.Date,
-        payload.Date
-      );
-      console.log("成功");
-      state.eventInfo.date.push(selectedOptionDate);
-    },
+    // InputOptionDate(state, payload) {
+    //   // イベント情報からdateをpushする
+    //   console.log("dateをpush挑戦");
+    //   state.eventInfo.date = payload.eventInfo.date;
+    //   console.log("dateをpush成功");
+    //   const selectedDateOptionId = state.eventInfo.eventId;
+    //   const selectedOptionDate = new Date(
+    //     selectedDateOptionId,
+    //     payload.Date,
+    //     payload.Date
+    //   );
+    //   console.log("成功");
+    //   state.eventInfo.date.push(selectedOptionDate);
+    // },
 
     eventInfo(state, payload) {
       console.log("mutationをpush挑戦");
       state.eventInfo = payload.eventInfo;
+      const selectedDateOptionId = state.eventInfo.eventId;
+      const selectedOptionDate = new EventDate(
+        selectedDateOptionId,
+        payload.Date
+      );
+      state.eventInfo.date.push(selectedOptionDate);
     },
 
     // registerAnswer(state, payload) {
@@ -93,16 +99,3 @@ export default new Vuex.Store({
   },
   modules: {},
 });
-function selectedOptionDate(selectedOptionDate: any) {
-  throw new Error("Function not implemented.");
-}
-function push(
-  eventId: any,
-  eventName: any,
-  description: any,
-  email: any,
-  eventpassword: any,
-  answerChoice: any
-) {
-  throw new Error("Function not implemented.");
-}

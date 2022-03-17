@@ -1,5 +1,5 @@
 <template>
-  <div>イベント作成完了</div>
+  <div>イベント作成完了 /FinishMakingの数字フル？</div>
 </template>
 
 <script lang="ts">
