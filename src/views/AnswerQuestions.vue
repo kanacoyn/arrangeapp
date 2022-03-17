@@ -143,8 +143,6 @@ export default class AnswerFinished extends Vue {
 </script>
 
 <style scoped>
-.container{
-}
 .datelist {
   justify-content: center;
   display: flex;

@@ -14,15 +14,15 @@ export default new Vuex.Store({
       "飲み会",
       "池袋駅周辺で行います",
       [
-        new EventDate(1, "2022/3/16"),
-        new EventDate(2, "2022/3/20"),
-        new EventDate(3, "2022/3/22"),
+        new EventDate(1, "2022/3/16", 0),
+        new EventDate(2, "2022/3/20", 0),
+        new EventDate(3, "2022/3/22", 0),
       ],
       "abc@gmail.com",
       "12345",
       ""
     ),
-    registerUser: new RegisterUser(0, "", [], [],""),
+    registerUser: new RegisterUser(0, "", [], [], ""),
     userList: new Array<RegisterUser>(),
   },
   mutations: {
@@ -37,15 +37,15 @@ export default new Vuex.Store({
     selectAnswer(state, payload) {
       state.eventInfo.date.push(payload.date);
     },
-    InputOptionDate(state, payload) {
-      const selectedDateOptionId = state.eventInfo.eventId;
-      const selectedOptionDate = new EventDate(
-        selectedDateOptionId,
-        payload.Date,
-      );
-      state.eventInfo.date.push(selectedOptionDate);
-      console.log(payload.Date);
-    },
+    // InputOptionDate(state, payload) {
+    //   const selectedDateOptionId = state.eventInfo.eventId;
+    //   const selectedOptionDate = new EventDate(
+    //     selectedDateOptionId,
+    //     payload.Date
+    //   );
+    //   state.eventInfo.date.push(selectedOptionDate);
+    //   console.log(payload.Date);
+    // },
 
     // registerAnswer(state, payload) {
     //   state.userList.push(payload);
@@ -78,7 +78,6 @@ export default new Vuex.Store({
     getUserList(state) {
       return state.userList;
     },
-
   },
   modules: {},
 });

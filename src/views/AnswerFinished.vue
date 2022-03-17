@@ -9,9 +9,9 @@
       </tr>
       <tr class="total">
         <td>合計</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
+        <!-- <td v-for="date of eventInfo.date" v-bind:key="date.dateId">
+          {{ count }}
+        </td> -->
       </tr>
       <tr v-for="user of userList" v-bind:key="user.userId">
         <td>{{ user.name }}</td>
@@ -33,6 +33,7 @@ export default class XXXComponent extends Vue {
   private eventInfo = new Event(0, "", "", [], "", "", "");
   // 現在回答済のユーザー
   private userList = new Array<RegisterUser>();
+
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
     this.userList = this.$store.getters.getUserList;
