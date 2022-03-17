@@ -1,32 +1,52 @@
 <template>
   <div>
-    <div class="item">
-      <div>名前</div>
-      <div class="input"><input type="text" v-model="name" /></div>
-      <div>{{ errorName }}</div>
-    </div>
-    <div class="item">
-      <div>日程候補</div>
-      <div
-        class="datelist"
-        v-for="date of eventInfo.date"
-        v-bind:key="date.dateId"
-      >
-        <div>{{ date.date }}</div>
-        <comp-select-box
-          v-bind:date-id="date.dateId"
-          v-on:select-item="onSelectItem"
-        ></comp-select-box>
-        <div>{{ errorDate }}</div>
-      </div>
-    </div>
-    <div class="item">
-      <div>コメント</div>
-      <div class="input"><input type="text" size="50" v-model="comment" /></div>
-      <div>{{ errorComment }}</div>
+    <div class="result">
+      <table border="1">
+        <tr>
+          <th></th>
+          <th>〇</th>
+          <th>△</th>
+          <th>✕</th>
+        </tr>
+        <tr v-for="date of eventInfo.date" v-bind:key="date.dateId">
+          <td>{{ date.date }}</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+      </table>
     </div>
     <div>
-      <button type="button" v-on:click="registerAnswer">登録する</button>
+      <div class="item">
+        <div>名前</div>
+        <div class="input"><input type="text" v-model="name" /></div>
+        <div>{{ errorName }}</div>
+      </div>
+      <div class="item">
+        <div>日程候補</div>
+        <div
+          class="datelist"
+          v-for="date of eventInfo.date"
+          v-bind:key="date.dateId"
+        >
+          <div>{{ date.date }}</div>
+          <comp-select-box
+            v-bind:date-id="date.dateId"
+            v-on:select-item="onSelectItem"
+          ></comp-select-box>
+          <div>{{ errorDate }}</div>
+        </div>
+      </div>
+      <div class="item">
+        <div>コメント</div>
+        <div class="input">
+          <input type="text" size="50" v-model="comment" />
+        </div>
+        <div>{{ errorComment }}</div>
+      </div>
+      <div>
+        <button type="button" v-on:click="registerAnswer">登録する</button>
+      </div>
     </div>
   </div>
 </template>
