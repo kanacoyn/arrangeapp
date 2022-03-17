@@ -1,15 +1,15 @@
 <template>
-  <div>
+  <div class="container">
     <div class="result">
-      <table border="1">
+      <table align="center">
         <tr>
           <th></th>
-          <th>〇</th>
-          <th>△</th>
-          <th>✕</th>
+          <th v-for="date of eventInfo.date" v-bind:key="date.dateId">
+            {{ date.date }}
+          </th>
         </tr>
-        <tr v-for="date of eventInfo.date" v-bind:key="date.dateId">
-          <td>{{ date.date }}</td>
+        <tr class="total">
+          <td>合計</td>
           <td>-</td>
           <td>-</td>
           <td>-</td>
@@ -143,6 +143,8 @@ export default class AnswerFinished extends Vue {
 </script>
 
 <style scoped>
+.container{
+}
 .datelist {
   justify-content: center;
   display: flex;
@@ -156,5 +158,18 @@ export default class AnswerFinished extends Vue {
 .error {
   font-size: 13px;
   color: red;
+}
+th,
+td {
+  border: solid 1px;
+  padding: 10px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.total {
+  background-color: lavenderblush;
 }
 </style>

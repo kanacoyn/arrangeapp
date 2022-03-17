@@ -78,9 +78,7 @@ export default new Vuex.Store({
     getUserList(state) {
       return state.userList;
     },
+
   },
   modules: {},
 });
-function selectedOptionDate(selectedOptionDate: any) {
-  throw new Error("Function not implemented.");
-}

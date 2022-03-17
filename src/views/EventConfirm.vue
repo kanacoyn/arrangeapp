@@ -65,11 +65,11 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Event } from "@/types/event";
-import { Date } from "@/types/date";
+import { EventDate } from "@/types/date";
 
 @Component
 export default class XXXComponent extends Vue {
-  private eventConfirm = new Event(0, "", "", new Array<Date>(), "", "", "");
+  private eventConfirm = new Event(0, "", "", new Array<EventDate>(), "", "", "");
   private evntInfo = new Array<Event>();
 
   created(): void {
