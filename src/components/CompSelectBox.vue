@@ -17,16 +17,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 @Component
 export default class XXXComponent extends Vue {
+  // 親コンポーネントから受け取る日付ID
+  @Prop()
+  private dateId!: number;
   // 日程回答
   private selectAnswer = "";
 
-  // selectItem():void{
-  //   this.$store.commit("selectAnswer",{
-  //     date: new Date(-1, "")
-  //   })
+  // selectItem(): void {
+  //   this.$store.commit("selectAnswer", {
+  //     date: new Date(-1, ""),
+  //   });
   // }
 }
 </script>

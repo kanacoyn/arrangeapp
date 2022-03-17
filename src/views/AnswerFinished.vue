@@ -12,6 +12,7 @@
         v-bind:key="date.dateId"
       >
         <div>{{ date.date }}</div>
+        <comp-select-box v-bind:date-id="date.dateId"></comp-select-box>
       </div>
     </div>
     <div class="item">
@@ -29,8 +30,13 @@ import { RegisterUser } from "@/types/RegisterUser";
 import { Event } from "@/types/event";
 import { Component, Vue } from "vue-property-decorator";
 import { Date } from "@/types/date";
-@Component
-export default class XXXComponent extends Vue {
+import CompSelectBox from "@/components/CompSelectBox.vue";
+@Component({
+  components: {
+    CompSelectBox,
+  },
+})
+export default class AnswerFinished extends Vue {
   // 名前
   private name = "";
   // コメント
@@ -75,6 +81,8 @@ export default class XXXComponent extends Vue {
 <style scoped>
 .datelist {
   justify-content: center;
+  display: flex;
+  margin-bottom: 10px;
 }
 
 .item {
