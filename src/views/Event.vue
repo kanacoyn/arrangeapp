@@ -303,7 +303,7 @@
           <td id="mainColumn">
             <div class="mainbox">
               <h2><span>イベント新規作成</span></h2>
-              <form action="confirm">
+              <form>
                 <div class="register">
                   <table width="100%">
                     <tr>
@@ -407,6 +407,7 @@
                           id="eventchoice1"
                           value="1"
                           checked=""
+                          v-model="answerChoice"
                         />
                         <label for="eventchoice1">「○△×」から選択</label><br />
 
@@ -415,6 +416,7 @@
                           name="eventchoice"
                           id="eventchoice2"
                           value="2"
+                          v-model="answerChoice"
                         />
                         <label for="eventchoice2">「○×」から選択</label>
                       </td>
@@ -425,7 +427,7 @@
                           <button
                             class="btn"
                             type="button"
-                            v-on:click="registerEvent"
+                            v-on:click="eventInfo"
                           >
                             次に進む
                           </button>
@@ -468,14 +470,19 @@ export default class XXXComponent extends Vue {
   private emailError = "";
 
   private selectedDateOption = "";
+  private eventIdIndex = 1;
 
-  //   createEvent() {
-  //     // v-modelで回答を表示させる式
-  //   }
-
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  registerEvent() {
+  InputOptionDate(): void {
+    console.log("テスト1");
     this.$store.commit("InputOptionDate", {
+      date: this.selectedDateOption,
+    });
+    this.$router.push("/eventConfirm");
+  }
+
+  eventInfo(): void {
+    this.$store.commit("eventInfo", {
+      evetId: this.eventIdIndex,
       eventName: this.eventName,
       description: this.description,
       date: this.selectedDateOption,
@@ -483,7 +490,6 @@ export default class XXXComponent extends Vue {
       password: this.password,
       answerChoice: this.answerChoice,
     });
-    console.log("テスト1");
 
     // 正規表示を定義
     let existError = false;
@@ -515,23 +521,10 @@ export default class XXXComponent extends Vue {
     if (existError === true) {
       return; //処理終了のreturn
     }
-    console.log("テスト2");
-    this.$router.push("/eventConfirm");
-  }
 
-  // registerEventに入れるstoreにイベント情報をpushする式
-  //   InputOptionDate(): void {
-  //     this.$store.commit("InputOptionDate", {
-  //       eventName: this.eventName,
-  //       description: this.description,
-  //       date: this.selectedDateOption,
-  //       email: this.email,
-  //       password: this.password,
-  //       answerChoice: this.answerChoice,
-  //     });
-  //     // this.$router.push("/eventConfrim");
-  //     console.log("テスト");
-  //   }
+    this.$router.push("/eventConfirm");
+    console.log("mutation成功");
+  }
 }
 </script>
 

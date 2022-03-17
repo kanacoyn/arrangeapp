@@ -8,7 +8,23 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    eventInfo: new Event(0, "", "", [], "", "", ""),
+    // ダミー情報
+    // 1,
+    // "送別会",
+    // "課長の送別会です",
+    // ["2022/4/01"],
+    // "taro@taro",
+    // "password",
+    // "◯×"
+    eventInfo: new Event(
+      1,
+      "送別会",
+      "課長の送別会です",
+      [],
+      "taro@taro",
+      "password",
+      "◯×"
+    ),
     registerUser: new RegisterUser(0, "", [], ""),
     userList: new Array<RegisterUser>(),
   },
@@ -23,14 +39,23 @@ export default new Vuex.Store({
     },
 
     InputOptionDate(state, payload) {
+      // イベント情報からdateをpushする
+      console.log("dateをpush挑戦");
+      state.eventInfo.date = payload.eventInfo.date;
+      console.log("dateをpush成功");
       const selectedDateOptionId = state.eventInfo.eventId;
       const selectedOptionDate = new Date(
         selectedDateOptionId,
         payload.Date,
         payload.Date
       );
+      console.log("成功");
       state.eventInfo.date.push(selectedOptionDate);
-      console.log(payload.Date);
+    },
+
+    eventInfo(state, payload) {
+      console.log("mutationをpush挑戦");
+      state.eventInfo = payload.eventInfo;
     },
 
     // registerAnswer(state, payload) {
@@ -69,5 +94,15 @@ export default new Vuex.Store({
   modules: {},
 });
 function selectedOptionDate(selectedOptionDate: any) {
+  throw new Error("Function not implemented.");
+}
+function push(
+  eventId: any,
+  eventName: any,
+  description: any,
+  email: any,
+  eventpassword: any,
+  answerChoice: any
+) {
   throw new Error("Function not implemented.");
 }

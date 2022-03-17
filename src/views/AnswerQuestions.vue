@@ -46,12 +46,9 @@ export default class XXXComponent extends Vue {
 
   // 現在表示されているイベント
   private currentEvent = new Event(0, "", "", [], "", "", "");
-<<<<<<< HEAD
-=======
 
   // 現在回答済のユーザー
   private currentUserList = new Array<RegisterUser>();
->>>>>>> develop
 
   created(): void {
     this.currentEventDate = this.$store.getters.getDateList;

@@ -1,15 +1,14 @@
 import { format } from "date-fns";
 
 export class Date {
-  static toDateString(): Date {
+  static parse(datestring: any) {
     throw new Error("Method not implemented.");
   }
   toDateString: any;
   constructor(
     private _dateId: number,
     private _date: Date,
-    // 回答
-    private _registerAnswer: string
+    private _registerAnswer: string // 回答
   ) {}
 
   get formatDate(): string {
