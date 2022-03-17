@@ -1,6 +1,6 @@
 // import { format } from "date-fns";
 
-export class Date {
+export class EventDate {
   static toDateString(): Date {
     throw new Error("Method not implemented.");
   }
@@ -8,8 +8,6 @@ export class Date {
   constructor(
     private _dateId: number,
     private _date: string,
-    // 回答
-    private _registerAnswer: string
   ) {}
 
   // get formatDate(): string {
@@ -31,13 +29,5 @@ export class Date {
 
   public set date(date: string) {
     this._date = date;
-  }
-
-  public get registerAnswer(): string {
-    return this._registerAnswer;
-  }
-
-  public set registerAnswer(registerAnswer: string) {
-    this._registerAnswer = registerAnswer;
   }
 }

@@ -56,6 +56,7 @@ import { RegisterUser } from "@/types/RegisterUser";
 import { Event } from "@/types/event";
 import { Component, Vue } from "vue-property-decorator";
 import CompSelectBox from "@/components/CompSelectBox.vue";
+import { EventDate } from "@/types/date";
 @Component({
   components: {
     CompSelectBox,
@@ -76,13 +77,21 @@ export default class AnswerFinished extends Vue {
   private errorComment = "";
   // エラーチェック
   private errorChecker = true;
+  // 回答の配列
+  private answerArray = new Array<string>();
+  // 日付の配列
+  private dateArray = new Array<EventDate>();
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
   }
 
-  onSelectItem(): void {
-    console.log("ok");
+  /**
+   * 回答を配列に格納する.
+   * @param answer - セレクトボックスのvalue
+   */
+  onSelectItem(answer: string): void {
+    this.answerArray.push(answer);
   }
 
   /**
@@ -99,14 +108,24 @@ export default class AnswerFinished extends Vue {
       return;
     }
 
+    // IDを発行し、ユーザー情報を登録する
     let userList = this.$store.getters.getUserList;
     let newId = 0;
     if (userList.length > 0) {
       console.log(userList);
       newId = Number(userList[0].userId) + 1;
     }
+    // 候補日程をgettersで取得する
+    this.dateArray= this.$store.getters.getDateList;
+    // 回答内容を登録する
     this.$store.commit("registerAnswer", {
-      registerUser: new RegisterUser(newId, this.name, [], this.comment),
+      registerUser: new RegisterUser(
+        newId,
+        this.name,
+        this.dateArray,
+        this.answerArray,
+        this.comment
+      ),
     });
     this.$router.push("/logList");
   }

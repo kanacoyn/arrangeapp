@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { Event } from "@/types/event";
 import { RegisterUser } from "@/types/RegisterUser";
-import { Date } from "@/types/date";
+import { EventDate } from "@/types/date";
 
 Vue.use(Vuex);
 
@@ -14,27 +14,18 @@ export default new Vuex.Store({
       "飲み会",
       "池袋駅周辺で行います",
       [
-        new Date(1, "2022/3/16", ""),
-        new Date(2, "2022/3/20", ""),
-        new Date(3, "2022/3/22", ""),
+        new EventDate(1, "2022/3/16"),
+        new EventDate(2, "2022/3/20"),
+        new EventDate(3, "2022/3/22"),
       ],
       "abc@gmail.com",
       "12345",
       ""
     ),
-    registerUser: new RegisterUser(0, "", [], ""),
+    registerUser: new RegisterUser(0, "", [], [],""),
     userList: new Array<RegisterUser>(),
   },
   mutations: {
-    /**
-     * 名前を入力して回答を作成する.
-     * @param state - ステート
-     * @param payload - ペイロード
-     */
-    addName(state, payload) {
-      state.registerUser = payload;
-    },
-
     /**
      * 回答者情報をステートに格納する.
      * @param state - ステート
@@ -47,6 +38,10 @@ export default new Vuex.Store({
     selectAnswer(state, payload) {
       state.eventInfo.date.push(payload.date);
     },
+
+    /**
+     * 
+     */
 
     // InputOptionDate(state, payload) {
     //   const selectedDateOptionId = state.eventInfo.date.length;

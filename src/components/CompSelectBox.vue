@@ -5,7 +5,7 @@
         name="choice"
         id="choice"
         v-model="selectAnswer"
-        v-on:change="selectItem"
+        v-on:change="preclick"
       >
         <option value="">選択してください</option>
         <option value="1">〇</option>
@@ -27,8 +27,11 @@ export default class XXXComponent extends Vue {
   private selectAnswer = "";
 
   @Emit()
-  selectItem(): void {
-    console.log("select-itemイベント発生");
+  selectItem(answer: string): void {
+    console.log(answer);
+  }
+  preclick(): void {
+    this.selectItem(this.selectAnswer);
   }
 }
 </script>
