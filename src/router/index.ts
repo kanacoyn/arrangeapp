@@ -30,10 +30,6 @@ const routes: Array<RouteConfig> = [
     path: "/finishMaking",
     component: () => import("../views/FinishMaking.vue"),
   },
-  {
-    path: "/calender",
-    component: () => import("../views/calender.vue"),
-  },
 ];
 
 const router = new VueRouter({

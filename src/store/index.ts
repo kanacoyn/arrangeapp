@@ -22,7 +22,8 @@ export default new Vuex.Store({
       "12345",
       ""
     ),
-    registerUser: new RegisterUser(0, "", [], [],""),
+    registerUser: new RegisterUser(0, "", [], [], ""),
+
     userList: new Array<RegisterUser>(),
   },
   mutations: {
@@ -37,14 +38,25 @@ export default new Vuex.Store({
     selectAnswer(state, payload) {
       state.eventInfo.date.push(payload.date);
     },
+
+    eventInfo(state, payload) {
+      console.log("mutationをpush挑戦");
+      state.eventInfo = payload.eventInfo;
+      const selectedDateOptionId = state.eventInfo.eventId;
+      const selectedOptionDate = new EventDate(
+        selectedDateOptionId,
+        payload.Date
+      );
+      state.eventInfo.date.push(selectedOptionDate);
+    },
+
     InputOptionDate(state, payload) {
       const selectedDateOptionId = state.eventInfo.eventId;
       const selectedOptionDate = new EventDate(
         selectedDateOptionId,
-        payload.Date,
+        payload.Date
       );
       state.eventInfo.date.push(selectedOptionDate);
-      console.log(payload.Date);
     },
 
     // registerAnswer(state, payload) {
@@ -81,6 +93,3 @@ export default new Vuex.Store({
   },
   modules: {},
 });
-function selectedOptionDate(selectedOptionDate: any) {
-  throw new Error("Function not implemented.");
-}

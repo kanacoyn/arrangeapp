@@ -1,9 +1,6 @@
 import { EventDate } from "./date";
 
 export class Event {
-  filter(arg0: (date: any) => boolean) {
-    throw new Error("Method not implemented.");
-  }
   constructor(
     private _eventId: number,
     private _eventName: string,
