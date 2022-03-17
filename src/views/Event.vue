@@ -472,15 +472,16 @@ export default class XXXComponent extends Vue {
   private selectedDateOption = "";
   private eventIdIndex = 1;
 
-  InputOptionDate(): void {
-    console.log("テスト1");
-    this.$store.commit("InputOptionDate", {
-      date: this.selectedDateOption,
-    });
-    this.$router.push("/eventConfirm");
-  }
+  //   InputOptionDate(): void {
+  //     console.log("テスト1");
+  //     this.$store.commit("InputOptionDate", {
+  //       date: this.selectedDateOption,
+  //     });
+  //     this.$router.push("/eventConfirm");
+  //   }
 
   eventInfo(): void {
+    console.log("テスト１");
     this.$store.commit("eventInfo", {
       evetId: this.eventIdIndex,
       eventName: this.eventName,
@@ -490,41 +491,40 @@ export default class XXXComponent extends Vue {
       password: this.password,
       answerChoice: this.answerChoice,
     });
-
-    // 正規表示を定義
-    let existError = false;
-    // イベント名のエラー
-    if (this.eventName === "") {
-      this.eventNameError = "イベント名が空白です";
-      existError = true;
-    } else {
-      this.eventNameError = "";
-    }
-    // メールアドレスのエラー
-    if (this.email === "") {
-      this.emailError = "メールアドレスが入力されていません";
-      existError = true;
-    } else if (this.email.indexOf("@") === -1) {
-      this.emailError = "メールアドレスの形式が不正です";
-      existError = true;
-    } else {
-      this.emailError = "";
-    }
-    // 候補にちじのエラー
-    if (this.date === "yyyy-MM-dd") {
-      this.dateError = "開催日時をご記入ください";
-      existError = true;
-    } else {
-      this.dateError = "";
-    }
-    // 1つでもエラーがある場合は処理を終了する
-    if (existError === true) {
-      return; //処理終了のreturn
-    }
-
     this.$router.push("/eventConfirm");
     console.log("mutation成功");
   }
+
+  //  // 正規表示を定義
+  //     let existError = false;
+  //     // イベント名のエラー
+  //     if (this.eventName === "") {
+  //       this.eventNameError = "イベント名が空白です";
+  //       existError = true;
+  //     } else {
+  //       this.eventNameError = "";
+  //     }
+  //     // メールアドレスのエラー
+  //     if (this.email === "") {
+  //       this.emailError = "メールアドレスが入力されていません";
+  //       existError = true;
+  //     } else if (this.email.indexOf("@") === -1) {
+  //       this.emailError = "メールアドレスの形式が不正です";
+  //       existError = true;
+  //     } else {
+  //       this.emailError = "";
+  //     }
+  //     // 候補にちじのエラー
+  //     if (this.date === "yyyy-MM-dd") {
+  //       this.dateError = "開催日時をご記入ください";
+  //       existError = true;
+  //     } else {
+  //       this.dateError = "";
+  //     }
+  //     // 1つでもエラーがある場合は処理を終了する
+  //     if (existError === true) {
+  //       return; //処理終了のreturn
+  //     }
 }
 </script>
 
