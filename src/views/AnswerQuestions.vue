@@ -81,6 +81,10 @@ export default class AnswerFinished extends Vue {
   private answerArray = new Array<string>();
   // 日付の配列
   private dateArray = new Array<EventDate>();
+  // 現在表示されているイベント
+  private currentEvent = new Event(0, "", "", [], "", "", "");
+  // 現在回答済のユーザー
+  private currentUserList = new Array<RegisterUser>();
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;

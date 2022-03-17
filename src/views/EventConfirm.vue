@@ -16,6 +16,9 @@
                 内容を確認して、「作成する」ボタンを押してください。
                 <tbody id="confirm">
                   <tr>
+                    <!-- v-for="eventInfo of this.eventConfirm"
+                    v-bind:key="eventInfo.eventId" -->
+
                     <th class="must">イベント名</th>
                     <td>飲み会</td>
                   </tr>
@@ -61,8 +64,29 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { Event } from "@/types/event";
+import { Date } from "@/types/date";
+
 @Component
 export default class XXXComponent extends Vue {
+  private eventConfirm = new Event(0, "", "", new Array<Date>(), "", "", "");
+  private evntInfo = new Array<Event>();
+
+  created(): void {
+    this.eventConfirm = this.$store.getters.getEventInfo;
+
+    // for (const eventMatch of this.eventConfirm) {
+    //   this.evntInfo.push(
+    //     new Event(
+    //       eventMatch.eventName,
+    //    eventMatch.description,
+    //    eventMatch.date,
+    //    eventMatch.email,
+    //    eventMatch.password,
+    //    eventMatch.answerChoice,
+    //    eventMatch.eventId,))
+  }
+
   finishMakeEvent() {
     this.$router.push("/finishMaking");
   }

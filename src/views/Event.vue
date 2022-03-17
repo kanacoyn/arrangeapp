@@ -7,9 +7,12 @@
             <div class="calenderTitle">
               カレンダーの日付を選択すると、<br />「候補日程」に日付が入力されます
             </div>
-            <input type="date" id="date" name="開催候補日を選択" />
-            <!-- v-on:change="dateOption"
-              v-model="selectedDateOption" -->
+            <input
+              type="date"
+              id="date"
+              name="開催候補日を選択"
+              v-model="selectedDateOption"
+            />
 
             <table
               cellspacing="0"
@@ -329,10 +332,13 @@
                         7/28(土) 19:00～<br />
                         (←左に表示されているカレンダーから日程を選択することもできます。)<br />
 
-                        <textarea name="schedule" id="schedule" rows="10">
-選択されたやつがここに表示
+                        <textarea
+                          name="schedule"
+                          id="schedule"
+                          rows="10"
+                          v-model="selectedDateOption"
+                        >
                         </textarea>
-                        <!-- v-model="clickedDate" -->
 
                         <div class="error">{{ dateError }}</div>
                       </td>
@@ -439,6 +445,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+
 @Component
 export default class XXXComponent extends Vue {
   // イベント名
@@ -459,21 +466,25 @@ export default class XXXComponent extends Vue {
   private dateError = "";
   // メールアドレス
   private emailError = "";
-  private message = "練習";
 
-  createEvent() {
-    // v-modelで回答を表示させる式
-    // v-on:clickの値をstateに送り一つづつとってくる式
-  }
+  private selectedDateOption = "";
 
-  // dateをidをもとにgettersから１つ取得する
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  getEventDateById() {
-    return this.$store.getters.getEventDateById(Date);
-  }
+  //   createEvent() {
+  //     // v-modelで回答を表示させる式
+  //   }
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   registerEvent() {
+    this.$store.commit("InputOptionDate", {
+      eventName: this.eventName,
+      description: this.description,
+      date: this.selectedDateOption,
+      email: this.email,
+      password: this.password,
+      answerChoice: this.answerChoice,
+    });
+    console.log("テスト1");
+
     // 正規表示を定義
     let existError = false;
     // イベント名のエラー
@@ -494,7 +505,7 @@ export default class XXXComponent extends Vue {
       this.emailError = "";
     }
     // 候補にちじのエラー
-    if (this.date === "") {
+    if (this.date === "yyyy-MM-dd") {
       this.dateError = "開催日時をご記入ください";
       existError = true;
     } else {
@@ -504,20 +515,23 @@ export default class XXXComponent extends Vue {
     if (existError === true) {
       return; //処理終了のreturn
     }
-    this.$router.push("/eventConfrim");
+    console.log("テスト2");
+    this.$router.push("/eventConfirm");
   }
 
-  InputOptionDate(): void {
-    this.$store.commit("InputOptionDate", {
-      eventName: this.eventName,
-      description: this.description,
-      date: this.date,
-      email: this.email,
-      password: this.password,
-      answerChoice: this.answerChoice,
-    });
-    this.$router.push("/eventConfrim");
-  }
+  // registerEventに入れるstoreにイベント情報をpushする式
+  //   InputOptionDate(): void {
+  //     this.$store.commit("InputOptionDate", {
+  //       eventName: this.eventName,
+  //       description: this.description,
+  //       date: this.selectedDateOption,
+  //       email: this.email,
+  //       password: this.password,
+  //       answerChoice: this.answerChoice,
+  //     });
+  //     // this.$router.push("/eventConfrim");
+  //     console.log("テスト");
+  //   }
 }
 </script>
 
