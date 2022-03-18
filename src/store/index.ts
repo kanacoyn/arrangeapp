@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import { Event } from "@/types/event";
-import { RegisterUser } from "@/types/RegisterUser";
 import { EventDate } from "@/types/date";
+import { UserList } from "@/types/UserList";
 
 Vue.use(Vuex);
 
@@ -14,16 +14,15 @@ export default new Vuex.Store({
       "飲み会",
       "池袋駅周辺で行います",
       [
-        new EventDate(1, "2022/3/16", 0),
-        new EventDate(2, "2022/3/20", 0),
-        new EventDate(3, "2022/3/22", 0),
+        new EventDate(1, "2022/3/16"),
+        new EventDate(2, "2022/3/20"),
+        new EventDate(3, "2022/3/22"),
       ],
       "abc@gmail.com",
       "12345",
       ""
     ),
-    registerUser: new RegisterUser(0, "", [], [], ""),
-    userList: new Array<RegisterUser>(),
+    userList: new UserList(-1, [], []),
   },
   mutations: {
     /**
@@ -32,10 +31,7 @@ export default new Vuex.Store({
      * @param payload 回答者情報
      */
     registerAnswer(state, payload) {
-      state.userList.push(payload.registerUser);
-    },
-    selectAnswer(state, payload) {
-      state.eventInfo.date.push(payload.date);
+      state.userList.userList.push(payload.registerUser);
     },
     // InputOptionDate(state, payload) {
     //   const selectedDateOptionId = state.eventInfo.eventId;
@@ -45,10 +41,6 @@ export default new Vuex.Store({
     //   );
     //   state.eventInfo.date.push(selectedOptionDate);
     //   console.log(payload.Date);
-    // },
-
-    // registerAnswer(state, payload) {
-    //   state.userList.push(payload);
     // },
   },
   getters: {
@@ -78,6 +70,10 @@ export default new Vuex.Store({
     getUserList(state) {
       return state.userList;
     },
+
+    // getAnswerCount(state){
+    //   return state.
+    // }
   },
   modules: {},
 });

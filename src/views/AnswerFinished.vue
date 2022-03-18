@@ -9,9 +9,9 @@
       </tr>
       <tr class="total">
         <td>合計</td>
-        <!-- <td v-for="date of eventInfo.date" v-bind:key="date.dateId">
-          {{ count }}
-        </td> -->
+        <td v-for="date of eventInfo.date" v-bind:key="date.dateId">
+          {{ date.answerCount }}
+        </td>
       </tr>
       <tr v-for="user of userList" v-bind:key="user.userId">
         <td>{{ user.name }}</td>
@@ -20,6 +20,9 @@
         </td>
       </tr>
     </table>
+    <div>
+      <div>コメント</div>
+    </div>
   </div>
 </template>
 

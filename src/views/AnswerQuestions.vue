@@ -13,6 +13,9 @@
           <td>-</td>
           <td>-</td>
           <td>-</td>
+          <!-- <td v-for="date of eventInfo.date" v-bind:key="date.dateId">
+            {{ date.answerCount }}
+          </td> -->
         </tr>
       </table>
     </div>
@@ -85,6 +88,8 @@ export default class AnswerFinished extends Vue {
   private currentEvent = new Event(0, "", "", [], "", "", "");
   // 現在回答済のユーザー
   private currentUserList = new Array<RegisterUser>();
+  // 現在の〇のカウント数
+  private currentAnswerCount = new Array<number>();
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
@@ -126,6 +131,15 @@ export default class AnswerFinished extends Vue {
       console.log(userList);
       newId = Number(userList[0].userId) + 1;
     }
+
+    // 〇の数を数える
+    let count = 0;
+    for (let answer of this.answerArray) {
+      if (answer === "〇") {
+        count += 1;
+      }
+    }
+
     // 回答内容を登録する
     this.$store.commit("registerAnswer", {
       registerUser: new RegisterUser(
@@ -165,6 +179,7 @@ td {
 
 table {
   border-collapse: collapse;
+  margin-bottom: 30px;
 }
 
 .total {

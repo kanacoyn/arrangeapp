@@ -9,9 +9,7 @@ export class EventDate {
     // id
     private _dateId: number,
     // 候補日程
-    private _date: string,
-    // 〇のカウント数
-    private _answerCount: number
+    private _date: string
   ) {}
 
   // get formatDate(): string {
@@ -33,13 +31,5 @@ export class EventDate {
 
   public set date(date: string) {
     this._date = date;
-  }
-
-  public get answerCount(): number {
-    return this._answerCount;
-  }
-
-  public set answerCount(answerCount: number) {
-    this._answerCount = answerCount;
   }
 }
