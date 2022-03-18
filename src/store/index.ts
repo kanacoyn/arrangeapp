@@ -22,7 +22,7 @@ export default new Vuex.Store({
       "12345",
       ""
     ),
-    userList: new UserList(-1, [], []),
+    userList: new UserList([], []),
   },
   mutations: {
     /**
@@ -42,6 +42,9 @@ export default new Vuex.Store({
     //   state.eventInfo.date.push(selectedOptionDate);
     //   console.log(payload.Date);
     // },
+    registerCount(state, payload) {
+      state.userList.answerCount.push(payload.answerCount);
+    },
   },
   getters: {
     /**
@@ -71,9 +74,14 @@ export default new Vuex.Store({
       return state.userList;
     },
 
-    // getAnswerCount(state){
-    //   return state.
-    // }
+    /**
+     * 〇のカウント数を取得する.
+     * @param state - ステート
+     * @returns 〇のカウント数
+     */
+    getAnswerCount(state) {
+      return state.userList.answerCount;
+    },
   },
   modules: {},
 });
