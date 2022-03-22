@@ -7,10 +7,10 @@
         v-model="selectAnswer"
         v-on:change="preclick"
       >
-        <option value="">選択してください</option>
-        <option value="1">〇</option>
-        <option value="2">△</option>
-        <option value="3">✕</option>
+        <option value="0">選択してください</option>
+        <option value="〇">〇</option>
+        <option value="△">△</option>
+        <option value="✕">✕</option>
       </select>
     </div>
   </div>
@@ -24,7 +24,7 @@ export default class XXXComponent extends Vue {
   @Prop()
   private dateId!: number;
   // 日程回答
-  private selectAnswer = "";
+  private selectAnswer = "0";
 
   @Emit()
   selectItem(answer: string): void {

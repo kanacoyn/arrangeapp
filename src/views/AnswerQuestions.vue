@@ -1,18 +1,18 @@
 <template>
-  <div>
+  <div class="container">
     <div class="result">
-      <table border="1">
+      <table align="center">
         <tr>
           <th></th>
-          <th>〇</th>
-          <th>△</th>
-          <th>✕</th>
+          <th v-for="date of eventInfo.date" v-bind:key="date.dateId">
+            {{ date.date }}
+          </th>
         </tr>
-        <tr v-for="date of eventInfo.date" v-bind:key="date.dateId">
-          <td>{{ date.date }}</td>
-          <td>-</td>
-          <td>-</td>
-          <td>-</td>
+        <tr class="total">
+          <td>合計</td>
+          <td v-for="count of currentAnswerCount" v-bind:key="count.id">
+            {{ count }}
+          </td>
         </tr>
       </table>
     </div>
@@ -57,6 +57,7 @@ import { Event } from "@/types/event";
 import { Component, Vue } from "vue-property-decorator";
 import CompSelectBox from "@/components/CompSelectBox.vue";
 import { EventDate } from "@/types/date";
+import { UserList } from "@/types/UserList";
 @Component({
   components: {
     CompSelectBox,
@@ -85,11 +86,21 @@ export default class AnswerFinished extends Vue {
   private currentEvent = new Event(0, "", "", [], "", "", "");
   // 現在回答済のユーザー
   private currentUserList = new Array<RegisterUser>();
+  // 現在の〇のカウント数
+  private currentAnswerCount = new Array<number>();
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
     // 候補日程をgettersで取得する
     this.dateArray = this.$store.getters.getDateList;
+    // 候補日程の数だけ回答の配列に0（選択してください）を入れる
+    for (let i = 1; i <= this.$store.getters.getDateList.length ?? 0; i++) {
+      this.answerArray.push("0");
+    }
+    // 候補日程の数だけ〇のカウント数の配列に0を入れる
+    for (let i = 1; i <= this.$store.getters.getDateList.length ?? 0; i++) {
+      this.currentAnswerCount.push(0);
+    }
   }
 
   /**
@@ -97,7 +108,10 @@ export default class AnswerFinished extends Vue {
    * @param answer - セレクトボックスのvalue
    */
   onSelectItem(answer: string): void {
+    // セレクトボックスが選択される度に予めpushしていた0を削除かつ削除した箇所にanswerを追加する
     this.answerArray.push(answer);
+    this.answerArray.splice(0, 1);
+    // this.answerArray.splice(i, 1, answer);
   }
 
   /**
@@ -110,9 +124,11 @@ export default class AnswerFinished extends Vue {
       this.errorChecker = false;
     }
 
-    if (this.answerArray.length !== this.dateArray.length) {
-      this.errorDate = "回答が選択されていません";
-      this.errorChecker = false;
+    for (let answer of this.answerArray) {
+      if (answer === "0") {
+        this.errorDate = "回答が選択されていません";
+        this.errorChecker = false;
+      }
     }
 
     if (this.errorChecker === false) {
@@ -126,6 +142,20 @@ export default class AnswerFinished extends Vue {
       console.log(userList);
       newId = Number(userList[0].userId) + 1;
     }
+
+    // 〇の数を数える
+    for (let i = 0; i < this.answerArray.length; i++) {
+      if (this.answerArray[i] === "〇") {
+        let answer = this.currentAnswerCount[i] + 1;
+        this.currentAnswerCount.splice(i, 1, answer);
+      }
+    }
+
+    // 各日付の〇の合計を登録する
+    this.$store.commit("registerCount", {
+      answerCount: new UserList([], this.currentAnswerCount),
+    });
+
     // 回答内容を登録する
     this.$store.commit("registerAnswer", {
       registerUser: new RegisterUser(
@@ -137,7 +167,7 @@ export default class AnswerFinished extends Vue {
       ),
     });
     // 登録が成功したら完了画面に遷移する
-    this.$router.push("/answerFinished");
+    // this.$router.push("/answerFinished");
   }
 }
 </script>
@@ -156,5 +186,19 @@ export default class AnswerFinished extends Vue {
 .error {
   font-size: 13px;
   color: red;
+}
+th,
+td {
+  border: solid 1px;
+  padding: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.total {
+  background-color: lavenderblush;
 }
 </style>

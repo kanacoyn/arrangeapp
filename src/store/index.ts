@@ -1,29 +1,28 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import { Event } from "@/types/event";
-import { RegisterUser } from "@/types/RegisterUser";
 import { EventDate } from "@/types/date";
+import { UserList } from "@/types/UserList";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     // eventInfo: new Event(0, "", "", [], "", "", ""),
-    // 1,
-    // "飲み会",
-    // "池袋駅周辺で行います",
-    // [
-    //   new EventDate(1, "2022/3/16"),
-    //   new EventDate(2, "2022/3/20"),
-    //   new EventDate(3, "2022/3/22"),
-    // ],
-    // "abc@gmail.com",
-    // "12345",
-    // ""
-    eventInfo: new Event(0, "", "", [], "", "", ""),
-    registerUser: new RegisterUser(0, "", [], [], ""),
-
-    userList: new Array<RegisterUser>(),
+    eventInfo: new Event(
+      1,
+      "飲み会",
+      "池袋駅周辺で行います",
+      [
+        new EventDate(1, "2022/3/16"),
+        new EventDate(2, "2022/3/20"),
+        new EventDate(3, "2022/3/22"),
+      ],
+      "abc@gmail.com",
+      "12345",
+      ""
+    ),
+    userList: new UserList([], []),
   },
   mutations: {
     /**
@@ -32,7 +31,7 @@ export default new Vuex.Store({
      * @param payload 回答者情報
      */
     registerAnswer(state, payload) {
-      state.userList.push(payload.registerUser);
+      state.userList.userList.push(payload.registerUser);
     },
     selectAnswer(state, payload) {
       state.eventInfo.date.push(payload.date);
@@ -48,15 +47,10 @@ export default new Vuex.Store({
       console.log("push成功");
       state.eventInfo.date.push(selectedOptionDate);
     },
-
-    // InputOptionDate(state, payload) {
-    //   const selectedOptionDate = new EventDate(payload.dateId, payload.Date);
-    //   state.eventInfo.date.push(selectedOptionDate);
     // },
-
-    // registerAnswer(state, payload) {
-    //   state.userList.push(payload);
-    // },
+    registerCount(state, payload) {
+      state.userList.answerCount.push(payload.answerCount);
+    },
   },
   getters: {
     /**
@@ -84,6 +78,15 @@ export default new Vuex.Store({
      */
     getUserList(state) {
       return state.userList;
+    },
+
+    /**
+     * 〇のカウント数を取得する.
+     * @param state - ステート
+     * @returns 〇のカウント数
+     */
+    getAnswerCount(state) {
+      return state.userList.answerCount;
     },
   },
   modules: {},
