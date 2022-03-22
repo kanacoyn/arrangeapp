@@ -111,6 +111,7 @@ export default class AnswerFinished extends Vue {
     // セレクトボックスが選択される度に予めpushしていた0を削除かつ削除した箇所にanswerを追加する
     this.answerArray.push(answer);
     this.answerArray.splice(0, 1);
+    // this.answerArray.splice(i, 1, answer);
   }
 
   /**
