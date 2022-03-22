@@ -521,14 +521,6 @@ export default class XXXComponent extends Vue {
 
   private arrayDateOption = new Array<EventDate>();
 
-  //   InputOptionDate(): void {
-  //     console.log("テスト1");
-  //     this.$store.commit("InputOptionDate", {
-  //       date: this.selectedDateOption,
-  //     });
-  //     this.$router.push("/eventConfirm");
-  //   }
-
   eventInfo(): void {
     console.log("mutationに送る");
 
