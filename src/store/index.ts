@@ -20,7 +20,19 @@ export default new Vuex.Store({
     // "abc@gmail.com",
     // "12345",
     // ""
-    eventInfo: new Event(0, "", "", [], "", "", ""),
+    eventInfo: new Event(
+      1,
+      "飲み会",
+      "池袋駅周辺で行います",
+      [
+        new EventDate(1, "2022/3/16"),
+        new EventDate(2, "2022/3/20"),
+        new EventDate(3, "2022/3/22"),
+      ],
+      "abc@gmail.com",
+      "12345",
+      ""
+    ),
     registerUser: new RegisterUser(0, "", [], [], ""),
 
     userList: new Array<RegisterUser>(),
@@ -39,14 +51,14 @@ export default new Vuex.Store({
     },
 
     eventInfo(state, payload) {
-      console.log("mutationをpush挑戦");
+      console.log("mutation動作１");
       state.eventInfo = payload.eventInfo;
-      const selectedOptionDate = new EventDate(
-        payload.dateId + 1,
-        payload.date
-      );
-      console.log("push成功");
-      state.eventInfo.date.push(selectedOptionDate);
+      // const selectedOptionDate = new EventDate(
+      //   payload.dateId + 1,
+      //   payload.date
+      // );
+      // state.eventInfo.date.push(selectedOptionDate);
+      console.log("mutation動作２");
     },
 
     // InputOptionDate(state, payload) {
