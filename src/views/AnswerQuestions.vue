@@ -154,10 +154,7 @@ export default class AnswerFinished extends Vue {
 
     // 各日付の〇の合計を登録する
     this.$store.commit("registerCount", {
-      answerCount: new UserList(
-        [],
-        new AnswerCount(-1, this.currentAnswerCount)
-      ),
+      answerCount: new UserList([], []),
     });
 
     // 回答内容を登録する
