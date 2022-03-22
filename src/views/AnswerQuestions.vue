@@ -15,7 +15,11 @@
           </td>
         </tr>
         <tr v-for="user of userList" v-bind:key="user.userId">
-          <td>{{ user.name }}</td>
+          <td>
+            <router-link v-bind:to="'/userAnswer/' + user.userId">{{
+              user.name
+            }}</router-link>
+          </td>
           <td v-for="answer of user.registerAnswer" v-bind:key="answer.id">
             {{ answer }}
           </td>

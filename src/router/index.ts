@@ -30,6 +30,10 @@ const routes: Array<RouteConfig> = [
     path: "/finishMaking",
     component: () => import("../views/FinishMaking.vue"),
   },
+  {
+    path: "/userAnswer/:id",
+    component: () => import("../views/UserAnswer.vue"),
+  },
 ];
 
 const router = new VueRouter({
