@@ -49,6 +49,10 @@ export default class XXXComponent extends Vue {
   private commentShow = false;
 
   created(): void {
+    // 候補日程の数だけ〇のカウント数の配列に0を入れる
+    for (let i = 1; i <= this.$store.getters.getDateList.length ?? 0; i++) {
+      this.currentAnswerCount.push(0);
+    }
     this.eventInfo = this.$store.getters.getEvent;
     this.userList = this.$store.getters.getUserArray;
     this.currentAnswerCount = this.$store.getters.getAnswerCount;

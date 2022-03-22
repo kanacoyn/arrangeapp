@@ -14,9 +14,23 @@
             {{ count }}
           </td>
         </tr>
+        <tr v-for="user of userList" v-bind:key="user.userId">
+          <td>{{ user.name }}</td>
+          <td v-for="answer of user.registerAnswer" v-bind:key="answer.id">
+            {{ answer }}
+          </td>
+        </tr>
       </table>
     </div>
-    <div>
+    <div v-show="commentShow">
+      <div>コメント</div>
+      <div v-for="user of userList" v-bind:key="user.userId">
+        <div>{{ user.name }}</div>
+        <div>{{ user.comment }}</div>
+        <hr />
+      </div>
+    </div>
+    <div v-show="showForm">
       <div class="item">
         <div>名前</div>
         <div class="input"><input type="text" v-model="name" /></div>
@@ -57,8 +71,6 @@ import { Event } from "@/types/event";
 import { Component, Vue } from "vue-property-decorator";
 import CompSelectBox from "@/components/CompSelectBox.vue";
 import { EventDate } from "@/types/date";
-import { UserList } from "@/types/UserList";
-import { AnswerCount } from "@/types/AnswerCount";
 @Component({
   components: {
     CompSelectBox,
@@ -89,9 +101,18 @@ export default class AnswerFinished extends Vue {
   private currentUserList = new Array<RegisterUser>();
   // 現在の〇のカウント数
   private currentAnswerCount = new Array<number>();
+  // コメントの配列
+  private commentArray = new Array<string>();
+  // コメントの表示・非表示
+  private commentShow = false;
+  // 現在回答済のユーザー
+  private userList = new Array<RegisterUser>();
+  // フォームの表示・非表示
+  private showForm = true;
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
+    this.userList = this.$store.getters.getUserArray;
     // 候補日程をgettersで取得する
     this.dateArray = this.$store.getters.getDateList;
     // 候補日程の数だけ回答の配列に0（選択してください）を入れる
@@ -154,7 +175,7 @@ export default class AnswerFinished extends Vue {
 
     // 各日付の〇の合計を登録する
     this.$store.commit("registerCount", {
-      answerCount: new UserList([], []),
+      answerCount: this.currentAnswerCount,
     });
 
     // 回答内容を登録する
@@ -167,8 +188,17 @@ export default class AnswerFinished extends Vue {
         this.comment
       ),
     });
-    // 登録が成功したら完了画面に遷移する
-    this.$router.push("/answerFinished");
+
+    // コメントを表示・非表示させる処理
+    for (let user of this.userList) {
+      if (user.comment !== "") {
+        this.commentArray.push(user.comment);
+      }
+    }
+    if (this.commentArray.length > 0) {
+      this.commentShow = true;
+    }
+    this.showForm = false;
   }
 }
 </script>

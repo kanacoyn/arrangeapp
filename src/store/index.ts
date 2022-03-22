@@ -47,8 +47,14 @@ export default new Vuex.Store({
       state.eventInfo.date.push(selectedOptionDate);
     },
     // },
+    /**
+     * カウント数を格納する.
+     * @param state - ステート
+     * @param payload カウント数
+     */
     registerCount(state, payload) {
       state.userList.answerCount.push(payload.answerCount);
+      console.log(state.userList.answerCount);
     },
   },
   getters: {
@@ -94,6 +100,7 @@ export default new Vuex.Store({
      * @returns 〇のカウント数
      */
     getAnswerCount(state) {
+      console.log(state.userList.answerCount);
       return state.userList.answerCount;
     },
   },
