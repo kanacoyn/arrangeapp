@@ -9,7 +9,7 @@
             </div>
 
             第一候補：<input
-              type="datetime-local"
+              type="date"
               step="1800"
               id="dateFirstChoice"
               name="スケジュール"
@@ -18,7 +18,7 @@
             /><br />
 
             第二候補：<input
-              type="datetime-local"
+              type="date"
               step="1800"
               id="dateSecondChoice"
               name="スケジュール"
@@ -27,7 +27,7 @@
             /><br />
 
             第三候補：<input
-              type="datetime-local"
+              type="date"
               step="1800"
               id="dateThirdChoice"
               name="スケジュール"
