@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="result">
+    <div>
       <table align="center">
         <tr>
           <th></th>
@@ -8,12 +8,12 @@
             {{ date.date }}
           </th>
         </tr>
-        <tr class="total">
-          <td>合計</td>
-          <td v-for="count of currentAnswerCount" v-bind:key="count.id">
-            {{ count }}
-          </td>
-        </tr>
+         <tr class="total">
+        <td>合計</td>
+        <td v-for="count of currentAnswerCount" v-bind:key="count.id">
+          {{ count }}
+        </td>
+      </tr>
       </table>
     </div>
     <div>
@@ -167,7 +167,7 @@ export default class AnswerFinished extends Vue {
       ),
     });
     // 登録が成功したら完了画面に遷移する
-    // this.$router.push("/answerFinished");
+    this.$router.push("/answerFinished");
   }
 }
 </script>

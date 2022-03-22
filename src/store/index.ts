@@ -81,6 +81,15 @@ export default new Vuex.Store({
     },
 
     /**
+     * ユーザーの配列を取得する.
+     * @param state - ステート
+     * @returns ユーザーの配列
+     */
+    getUserArray(state) {
+      return state.userList.userList;
+    },
+
+    /**
      * 〇のカウント数を取得する.
      * @param state - ステート
      * @returns 〇のカウント数

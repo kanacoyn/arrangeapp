@@ -13,15 +13,20 @@
           {{ count }}
         </td>
       </tr>
-      <tr v-for="user of userList.userList" v-bind:key="user.userId">
+      <tr v-for="user of userList" v-bind:key="user.userId">
         <td>{{ user.name }}</td>
         <td v-for="answer of user.registerAnswer" v-bind:key="answer.id">
           {{ answer }}
         </td>
       </tr>
     </table>
-    <div>
+    <div v-show="commentShow">
       <div>コメント</div>
+      <div v-for="user of userList" v-bind:key="user.userId">
+        <div>{{ user.name }}</div>
+        <div>{{ user.comment }}</div>
+        <hr />
+      </div>
     </div>
   </div>
 </template>
@@ -38,11 +43,25 @@ export default class XXXComponent extends Vue {
   private userList = new Array<RegisterUser>();
   // 現在の〇のカウント数
   private currentAnswerCount = new Array<number>();
+  // コメントの配列
+  private commentArray = new Array<string>();
+  // コメントの表示・非表示
+  private commentShow = false;
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
-    this.userList = this.$store.getters.getUserList;
+    this.userList = this.$store.getters.getUserArray;
     this.currentAnswerCount = this.$store.getters.getAnswerCount;
+
+    // コメントを表示・非表示させる処理
+    for (let user of this.userList) {
+      if (user.comment !== "") {
+        this.commentArray.push(user.comment);
+      }
+    }
+    if (this.commentArray.length > 0) {
+      this.commentShow = true;
+    }
   }
 }
 </script>
@@ -56,6 +75,7 @@ td {
 
 table {
   border-collapse: collapse;
+  margin-bottom: 30px;
 }
 
 .total {
