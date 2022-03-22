@@ -1,14 +1,16 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import { Event } from "@/types/event";
-import { RegisterUser } from "@/types/RegisterUser";
 import { EventDate } from "@/types/date";
+import { UserList } from "@/types/UserList";
+import { RegisterUser } from "@/types/RegisterUser";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     // eventInfo: new Event(0, "", "", [], "", "", ""),
+
     // 1,
     // "飲み会",
     // "池袋駅周辺で行います",
@@ -20,6 +22,7 @@ export default new Vuex.Store({
     // "abc@gmail.com",
     // "12345",
     // ""
+
     eventInfo: new Event(
       1,
       "飲み会",
@@ -33,9 +36,10 @@ export default new Vuex.Store({
       "12345",
       ""
     ),
+
     registerUser: new RegisterUser(0, "", [], [], ""),
 
-    userList: new Array<RegisterUser>(),
+    userList: new UserList([], []),
   },
   mutations: {
     /**
@@ -44,7 +48,7 @@ export default new Vuex.Store({
      * @param payload 回答者情報
      */
     registerAnswer(state, payload) {
-      state.userList.push(payload.registerUser);
+      state.userList.userList.push(payload.registerUser);
     },
     selectAnswer(state, payload) {
       state.eventInfo.date.push(payload.date);
@@ -60,15 +64,10 @@ export default new Vuex.Store({
       // state.eventInfo.date.push(selectedOptionDate);
       console.log("mutation動作２");
     },
-
-    // InputOptionDate(state, payload) {
-    //   const selectedOptionDate = new EventDate(payload.dateId, payload.Date);
-    //   state.eventInfo.date.push(selectedOptionDate);
     // },
-
-    // registerAnswer(state, payload) {
-    //   state.userList.push(payload);
-    // },
+    registerCount(state, payload) {
+      state.userList.answerCount.push(payload.answerCount);
+    },
   },
   getters: {
     /**
@@ -96,6 +95,15 @@ export default new Vuex.Store({
      */
     getUserList(state) {
       return state.userList;
+    },
+
+    /**
+     * 〇のカウント数を取得する.
+     * @param state - ステート
+     * @returns 〇のカウント数
+     */
+    getAnswerCount(state) {
+      return state.userList.answerCount;
     },
   },
   modules: {},

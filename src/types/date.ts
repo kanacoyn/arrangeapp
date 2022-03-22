@@ -5,8 +5,12 @@ export class EventDate {
     throw new Error("Method not implemented.");
   }
   toDateString: any;
-
-  constructor(private _dateId: number, private _date: string) {}
+  constructor(
+    // id
+    private _dateId: number,
+    // 候補日程
+    private _date: string
+  ) {}
 
   // get formatDate(): string {
   //   const formatDateList = format(this.date.toDateString(), "yyyy/MM/dd HH:mm");
