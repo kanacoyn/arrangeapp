@@ -8,12 +8,12 @@
             {{ date.date }}
           </th>
         </tr>
-         <tr class="total">
-        <td>合計</td>
-        <td v-for="count of currentAnswerCount" v-bind:key="count.id">
-          {{ count }}
-        </td>
-      </tr>
+        <tr class="total">
+          <td>合計</td>
+          <td v-for="count of currentAnswerCount" v-bind:key="count.id">
+            {{ count }}
+          </td>
+        </tr>
       </table>
     </div>
     <div>
@@ -58,6 +58,7 @@ import { Component, Vue } from "vue-property-decorator";
 import CompSelectBox from "@/components/CompSelectBox.vue";
 import { EventDate } from "@/types/date";
 import { UserList } from "@/types/UserList";
+import { AnswerCount } from "@/types/AnswerCount";
 @Component({
   components: {
     CompSelectBox,
@@ -153,7 +154,10 @@ export default class AnswerFinished extends Vue {
 
     // 各日付の〇の合計を登録する
     this.$store.commit("registerCount", {
-      answerCount: new UserList([], this.currentAnswerCount),
+      answerCount: new UserList(
+        [],
+        new AnswerCount(-1, this.currentAnswerCount)
+      ),
     });
 
     // 回答内容を登録する

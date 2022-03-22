@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import { Event } from "@/types/event";
 import { EventDate } from "@/types/date";
 import { UserList } from "@/types/UserList";
+import { AnswerCount } from "@/types/AnswerCount";
 
 Vue.use(Vuex);
 
@@ -22,7 +23,7 @@ export default new Vuex.Store({
       "12345",
       ""
     ),
-    userList: new UserList([], []),
+    userList: new UserList([], new AnswerCount(-1, [])),
   },
   mutations: {
     /**
@@ -49,7 +50,7 @@ export default new Vuex.Store({
     },
     // },
     registerCount(state, payload) {
-      state.userList.answerCount.push(payload.answerCount);
+      state.userList.answerCount.answerCount.push(payload.answerCount);
     },
   },
   getters: {
