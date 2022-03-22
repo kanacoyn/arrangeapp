@@ -33,14 +33,20 @@ export default new Vuex.Store({
     registerAnswer(state, payload) {
       state.userList.userList.push(payload.registerUser);
     },
-    // InputOptionDate(state, payload) {
-    //   const selectedDateOptionId = state.eventInfo.eventId;
-    //   const selectedOptionDate = new EventDate(
-    //     selectedDateOptionId,
-    //     payload.Date
-    //   );
-    //   state.eventInfo.date.push(selectedOptionDate);
-    //   console.log(payload.Date);
+    selectAnswer(state, payload) {
+      state.eventInfo.date.push(payload.date);
+    },
+
+    eventInfo(state, payload) {
+      console.log("mutationをpush挑戦");
+      state.eventInfo = payload.eventInfo;
+      const selectedOptionDate = new EventDate(
+        payload.dateId + 1,
+        payload.date
+      );
+      console.log("push成功");
+      state.eventInfo.date.push(selectedOptionDate);
+    },
     // },
     registerCount(state, payload) {
       state.userList.answerCount.push(payload.answerCount);

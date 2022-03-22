@@ -16,36 +16,35 @@
                 内容を確認して、「作成する」ボタンを押してください。
                 <tbody id="confirm">
                   <tr>
-                    <!-- v-for="eventInfo of this.eventConfirm"
-                    v-bind:key="eventInfo.eventId" -->
-
                     <th class="must">イベント名</th>
-                    <td>飲み会</td>
+                    <td>
+                      {{ this.eventConfirm.eventName }}
+                    </td>
                   </tr>
 
                   <tr>
                     <th class="must">候補日程</th>
-                    <td>3/23(水)<br />3/17(木)<br /></td>
+                    <td>{{ this.eventConfirm.date }}<br /></td>
                   </tr>
 
                   <tr>
                     <th>イベント説明文</th>
-                    <td>送別会です</td>
+                    <td>{{ this.eventConfirm.description }}</td>
                   </tr>
 
                   <tr>
                     <th>メールアドレス</th>
-                    <td>taro@taro</td>
+                    <td>{{ this.eventConfirm.email }}</td>
                   </tr>
 
                   <tr>
                     <th>パスワード設定</th>
-                    <td>設定しない</td>
+                    <td>{{ this.eventConfirm.password }}</td>
                   </tr>
 
                   <tr>
                     <th>回答の選択肢</th>
-                    <td>「○△×」から選択</td>
+                    <td>{{ this.eventConfirm.answerChoice }}</td>
                   </tr>
                 </tbody>
                 <br />
@@ -71,20 +70,8 @@ import { EventDate } from "@/types/date";
 export default class XXXComponent extends Vue {
   private eventConfirm = new Event(0, "", "", new Array<EventDate>(), "", "", "");
   private evntInfo = new Array<Event>();
-
   created(): void {
-    this.eventConfirm = this.$store.getters.getEventInfo;
-
-    // for (const eventMatch of this.eventConfirm) {
-    //   this.evntInfo.push(
-    //     new Event(
-    //       eventMatch.eventName,
-    //    eventMatch.description,
-    //    eventMatch.date,
-    //    eventMatch.email,
-    //    eventMatch.password,
-    //    eventMatch.answerChoice,
-    //    eventMatch.eventId,))
+    this.eventConfirm = this.$store.getters.getEvent;
   }
 
   finishMakeEvent() {
