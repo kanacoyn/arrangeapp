@@ -531,13 +531,15 @@ export default class XXXComponent extends Vue {
     );
 
     this.$store.commit("eventInfo", {
-      evetId: this.eventIdIndex,
-      eventName: this.eventName,
-      description: this.description,
-      date: this.arrayDateOption,
-      email: this.email,
-      password: this.password,
-      answerChoice: this.answerChoice,
+      event: new Event(
+        this.eventIdIndex,
+        this.eventName,
+        this.description,
+        this.arrayDateOption,
+        this.email,
+        this.password,
+        this.answerChoice
+      ),
     });
     console.log("mutation成功");
 

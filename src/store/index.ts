@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import { Event } from "@/types/event";
-import { EventDate } from "@/types/date";
 import { UserList } from "@/types/UserList";
 import { RegisterUser } from "@/types/RegisterUser";
 
@@ -43,14 +42,12 @@ export default new Vuex.Store({
     },
 
     eventInfo(state, payload) {
-      console.log("mutation動作１");
-      state.eventInfo = payload.eventInfo;
+      state.eventInfo = payload.event;
       // const selectedOptionDate = new EventDate(
       //   payload.dateId + 1,
       //   payload.date
       // );
       // state.eventInfo.push(payload.eventInfo);
-      console.log("mutation動作２");
     },
     // },
     registerCount(state, payload) {
