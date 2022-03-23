@@ -23,7 +23,6 @@ export default new Vuex.Store({
       "abc@gmail.com",
       "12345",
       "",
-      ["ニューヨーク"]
     ),
 
     registerUser: new RegisterUser(0, "", [], [], ""),

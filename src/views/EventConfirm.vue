@@ -76,7 +76,6 @@ export default class XXXComponent extends Vue {
     "",
     "",
     "",
-    []
   );
   private evntInfo = new Array<Event>();
   created(): void {

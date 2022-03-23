@@ -8,8 +8,7 @@ export class Event {
     private _date: Array<EventDate>,
     private _email: string,
     private _password: string,
-    private _answerChoice: string,
-    private _countries: Array<string>
+    private _answerChoice: string
   ) {}
   public get eventId(): number {
     return this.eventId;
@@ -64,13 +63,5 @@ export class Event {
 
   public set answerChoice(answerChoice: string) {
     this._answerChoice = answerChoice;
-  }
-
-  public get countries(): Array<string> {
-    return this._countries;
-  }
-
-  public set countries(countries: Array<string>) {
-    this._countries = countries;
   }
 }

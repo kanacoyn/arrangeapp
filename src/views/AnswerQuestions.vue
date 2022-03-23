@@ -89,7 +89,7 @@ export default class AnswerFinished extends Vue {
   // コメント
   private comment = "";
   // 現在表示されているイベント内容
-  private eventInfo = new Event(0, "", "", [], "", "", "", []);
+  private eventInfo = new Event(0, "", "", [], "", "", "");
   // 名前のエラー
   private errorName = "";
   // 候補日のエラー
