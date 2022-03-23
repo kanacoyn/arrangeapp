@@ -4,9 +4,9 @@
       <table align="center">
         <tr>
           <th></th>
-          <th v-for="date of eventInfo.date" v-bind:key="date.dateId">
-            {{ date.date }}
-          </th>
+          <th>第1候補</th>
+          <th>第2候補</th>
+          <th>第3候補</th>
         </tr>
         <tr class="total">
           <td>合計</td>

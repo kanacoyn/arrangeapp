@@ -30,6 +30,10 @@ const routes: Array<RouteConfig> = [
     path: "/userAnswer/:id",
     component: () => import("../views/UserAnswer.vue"),
   },
+  {
+    path: "/addition",
+    component: () => import("../views/Addition.vue"),
+  },
 ];
 
 const router = new VueRouter({

@@ -3,38 +3,27 @@ import Vuex from "vuex";
 import { Event } from "@/types/event";
 import { UserList } from "@/types/UserList";
 import { RegisterUser } from "@/types/RegisterUser";
+import { EventDate } from "@/types/date";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    eventInfo: new Event(0, "", "", [], "", "", ""),
+    // eventInfo: new Event(0, "", "", [], "", "", ""),
 
-    // 1,
-    // "飲み会",
-    // "池袋駅周辺で行います",
-    // [
-    //   new EventDate(1, "2022/3/16"),
-    //   new EventDate(2, "2022/3/20"),
-    //   new EventDate(3, "2022/3/22"),
-    // ],
-    // "abc@gmail.com",
-    // "12345",
-    // ""
-
-    // eventInfo: new Event(
-    //   1,
-    //   "飲み会",
-    //   "池袋駅周辺で行います",
-    //   [
-    //     new EventDate(1, "2022/3/16"),
-    //     new EventDate(2, "2022/3/20"),
-    //     new EventDate(3, "2022/3/22"),
-    //   ],
-    //   "abc@gmail.com",
-    //   "12345",
-    //   ""
-    // ),
+    eventInfo: new Event(
+      1,
+      "飲み会",
+      "池袋駅周辺で行います",
+      [
+        new EventDate(1, "2022/3/16"),
+        new EventDate(2, "2022/3/20"),
+        new EventDate(3, "2022/3/22"),
+      ],
+      "abc@gmail.com",
+      "12345",
+      ""
+    ),
 
     registerUser: new RegisterUser(0, "", [], [], ""),
 
