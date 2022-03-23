@@ -22,7 +22,8 @@ export default new Vuex.Store({
       ],
       "abc@gmail.com",
       "12345",
-      ""
+      "",
+      ["ニューヨーク"]
     ),
 
     registerUser: new RegisterUser(0, "", [], [], ""),
@@ -107,16 +108,18 @@ export default new Vuex.Store({
       console.log(state.userList.answerCount);
       return state.userList.answerCount;
     },
-     /**
+    /**
      * idから詳細ページを取得する
      * @param state - ステート
      * @returns 作品情報
      */
-      getSearchUser(state) {
-        return (userId: number) => {
-          return state.userList.userList.filter((user) => user.userId === userId)[0];
-        };
-      },
+    getSearchUser(state) {
+      return (userId: number) => {
+        return state.userList.userList.filter(
+          (user) => user.userId === userId
+        )[0];
+      };
+    },
   },
   modules: {},
 });
