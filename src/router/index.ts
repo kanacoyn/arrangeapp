@@ -15,16 +15,16 @@ const routes: Array<RouteConfig> = [
     component: () => import("../views/AnswerQuestions.vue"),
   },
   {
+    path: "/eventPractice",
+    component: () => import("../views/EventPractice.vue"),
+  },
+  {
     path: "/event",
     component: () => import("../views/Event.vue"),
   },
   {
     path: "/eventConfirm",
     component: () => import("../views/EventConfirm.vue"),
-  },
-  {
-    path: "/finishMaking",
-    component: () => import("../views/FinishMaking.vue"),
   },
   {
     path: "/userAnswer/:id",

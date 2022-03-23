@@ -455,7 +455,7 @@
                           type="radio"
                           name="eventchoice"
                           id="eventchoice1"
-                          value="1"
+                          value="○△×"
                           checked=""
                           v-model="answerChoice"
                         />
@@ -465,7 +465,7 @@
                           type="radio"
                           name="eventchoice"
                           id="eventchoice2"
-                          value="2"
+                          value="○×"
                           v-model="answerChoice"
                         />
                         <label for="eventchoice2">「○×」から選択</label>
@@ -533,9 +533,9 @@ export default class XXXComponent extends Vue {
     console.log("mutationに送る");
 
     this.arrayDateOption.push(
-      new EventDate(1, this.selectedDateOption1),
-      new EventDate(1, this.selectedDateOption2),
-      new EventDate(1, this.selectedDateOption3)
+      new EventDate(1, this.selectedDateOption1, "", ""),
+      new EventDate(1, this.selectedDateOption2, "", ""),
+      new EventDate(1, this.selectedDateOption3, "", "")
     );
 
     this.$store.commit("eventInfo", {
