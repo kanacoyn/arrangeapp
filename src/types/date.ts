@@ -9,7 +9,9 @@ export class EventDate {
     // id
     private _dateId: number,
     // 候補日程
-    private _date: string
+    private _date: string,
+    // 時間
+    private _dateTime: string
   ) {}
 
   // get formatDate(): string {
@@ -31,5 +33,13 @@ export class EventDate {
 
   public set date(date: string) {
     this._date = date;
+  }
+
+  public get dateTime(): string {
+    return this._dateTime;
+  }
+
+  public set dateTime(dateTime: string) {
+    this._dateTime = dateTime;
   }
 }

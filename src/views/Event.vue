@@ -9,25 +9,33 @@
             </div>
 
             第一候補：<input
-              type="datetime-local"
+              type="date"
               step="1800"
               id="dateFirstChoice"
               name="スケジュール"
               value="dateFirstChoice"
               v-model="selectedDateOption1"
             /><br />
+            <!-- <input
+              type="time"
+              id="dateFirstChoice"
+              name="スケジュール"
+              value="dateFirstChoice"
+              v-model="selectedTimeOption1"
+            />
+            <br /><br /> -->
 
             第二候補：<input
-              type="datetime-local"
+              type="date"
               step="1800"
               id="dateSecondChoice"
               name="スケジュール"
               value="dateSecondChoice"
               v-model="selectedDateOption2"
-            /><br />
+            /><br /><br /><br />
 
             第三候補：<input
-              type="datetime-local"
+              type="date"
               step="1800"
               id="dateThirdChoice"
               name="スケジュール"
@@ -447,7 +455,7 @@
                           type="radio"
                           name="eventchoice"
                           id="eventchoice1"
-                          value="1"
+                          value="○△×"
                           checked=""
                           v-model="answerChoice"
                         />
@@ -457,7 +465,7 @@
                           type="radio"
                           name="eventchoice"
                           id="eventchoice2"
-                          value="2"
+                          value="○×"
                           v-model="answerChoice"
                         />
                         <label for="eventchoice2">「○×」から選択</label>
@@ -521,21 +529,13 @@ export default class XXXComponent extends Vue {
 
   private arrayDateOption = new Array<EventDate>();
 
-  //   InputOptionDate(): void {
-  //     console.log("テスト1");
-  //     this.$store.commit("InputOptionDate", {
-  //       date: this.selectedDateOption,
-  //     });
-  //     this.$router.push("/eventConfirm");
-  //   }
-
   eventInfo(): void {
     console.log("mutationに送る");
 
     this.arrayDateOption.push(
-      new EventDate(1, this.selectedDateOption1),
-      new EventDate(1, this.selectedDateOption2),
-      new EventDate(1, this.selectedDateOption3)
+      new EventDate(1, this.selectedDateOption1, "", ""),
+      new EventDate(1, this.selectedDateOption2, "", ""),
+      new EventDate(1, this.selectedDateOption3, "", "")
     );
 
     this.$store.commit("eventInfo", {
