@@ -34,6 +34,9 @@
         <hr />
       </div>
     </div>
+    <div v-show="buttonShow">
+      <button type="button" v-on:click="onClick">続けて入力する</button>
+    </div>
     <div v-show="showForm">
       <div class="item">
         <div>名前</div>
@@ -113,6 +116,8 @@ export default class AnswerFinished extends Vue {
   private userList = new Array<RegisterUser>();
   // フォームの表示・非表示
   private showForm = true;
+  // ボタンの表示・非表示
+  private buttonShow = false;
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
@@ -203,6 +208,14 @@ export default class AnswerFinished extends Vue {
       this.commentShow = true;
     }
     this.showForm = false;
+    this.buttonShow = true;
+  }
+
+  onClick(): void {
+    this.buttonShow = false;
+    this.showForm = true;
+    this.name = "";
+    this.comment = "";
   }
 }
 </script>

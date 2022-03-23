@@ -103,6 +103,16 @@ export default new Vuex.Store({
       console.log(state.userList.answerCount);
       return state.userList.answerCount;
     },
+     /**
+     * idから詳細ページを取得する
+     * @param state - ステート
+     * @returns 作品情報
+     */
+      getSearchUser(state) {
+        return (userId: number) => {
+          return state.userList.userList.filter((user) => user.userId === userId)[0];
+        };
+      },
   },
   modules: {},
 });
