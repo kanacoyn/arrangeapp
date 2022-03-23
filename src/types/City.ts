@@ -1,3 +1,5 @@
+import { EventDate } from "./date";
+
 /**
  * 都市の部品クラスです.
  */
@@ -7,8 +9,8 @@ export class City {
     private _id: number,
     // 都市の名前
     private _name: string,
-    // 都市の時間
-    private _time: string
+    // 候補日程
+    private _dateArray: Array<EventDate>
   ) {}
 
   public get id(): number {
@@ -27,11 +29,11 @@ export class City {
     this._name = name;
   }
 
-  public get time(): string {
-    return this._time;
+  public get dateArray(): Array<EventDate> {
+    return this._dateArray;
   }
 
-  public set time(time: string) {
-    this._time = time;
+  public set dateArray(dateArray: Array<EventDate>) {
+    this._dateArray = dateArray;
   }
 }
