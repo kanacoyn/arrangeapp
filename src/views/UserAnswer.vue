@@ -1,42 +1,5 @@
 <template>
-  <div class="container">
-    <div>
-      <table align="center">
-        <tr>
-          <th></th>
-          <th v-for="date of eventInfo.date" v-bind:key="date.dateId">
-            {{ date.date }}
-          </th>
-        </tr>
-        <tr class="total">
-          <td>合計</td>
-          <td v-for="count of currentAnswerCount" v-bind:key="count.id">
-            {{ count }}
-          </td>
-        </tr>
-        <tr v-for="user of userList" v-bind:key="user.userId">
-          <td>
-            <router-link v-bind:to="'/userAnswer/' + user.userId">{{
-              user.name
-            }}</router-link>
-          </td>
-          <td v-for="answer of user.registerAnswer" v-bind:key="answer.id">
-            {{ answer }}
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div v-show="commentShow">
-      <div>コメント</div>
-      <div v-for="user of userList" v-bind:key="user.userId">
-        <div>{{ user.name }}</div>
-        <div>{{ user.comment }}</div>
-        <hr />
-      </div>
-    </div>
-    <div v-show="buttonShow">
-      <button type="button" v-on:click="onClick">続けて入力する</button>
-    </div>
+  <div>
     <div v-show="showForm">
       <div class="item">
         <div>名前</div>
@@ -83,7 +46,7 @@ import { EventDate } from "@/types/date";
     CompSelectBox,
   },
 })
-export default class AnswerFinished extends Vue {
+export default class XXXComponent extends Vue {
   // 名前
   private name = "";
   // コメント
@@ -118,20 +81,26 @@ export default class AnswerFinished extends Vue {
   private showForm = true;
   // ボタンの表示・非表示
   private buttonShow = false;
+  // 現在表示されている編集画面
+  private currentUser = new RegisterUser(0, "", [], [], "");
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
     this.userList = this.$store.getters.getUserArray;
+
     // 候補日程をgettersで取得する
     this.dateArray = this.$store.getters.getDateList;
+
     // 候補日程の数だけ回答の配列に0（選択してください）を入れる
     for (let i = 1; i <= this.$store.getters.getDateList.length ?? 0; i++) {
       this.answerArray.push("0");
     }
-    // 候補日程の数だけ〇のカウント数の配列に0を入れる
-    for (let i = 1; i <= this.$store.getters.getDateList.length ?? 0; i++) {
-      this.currentAnswerCount.push(0);
-    }
+
+    // idから詳細ページを表示させる
+    const userId = Number(this.$route.params.id);
+    this.currentUser = this.$store.getters.getSearchUser(userId);
+    this.name = this.currentUser.name;
+    this.comment = this.currentUser.comment;
   }
 
   /**
@@ -142,7 +111,6 @@ export default class AnswerFinished extends Vue {
     // セレクトボックスが選択される度に予めpushしていた0を削除かつ削除した箇所にanswerを追加する
     this.answerArray.push(answer);
     this.answerArray.splice(0, 1);
-    // this.answerArray.splice(i, 1, answer);
   }
 
   /**
@@ -226,7 +194,6 @@ export default class AnswerFinished extends Vue {
   display: flex;
   margin-bottom: 10px;
 }
-
 .item {
   margin-bottom: 20px;
 }
@@ -234,19 +201,5 @@ export default class AnswerFinished extends Vue {
 .error {
   font-size: 13px;
   color: red;
-}
-th,
-td {
-  border: solid 1px;
-  padding: 10px;
-}
-
-table {
-  border-collapse: collapse;
-  margin-bottom: 30px;
-}
-
-.total {
-  background-color: lavenderblush;
 }
 </style>

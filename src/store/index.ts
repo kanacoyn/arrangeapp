@@ -62,8 +62,14 @@ export default new Vuex.Store({
       // state.eventInfo.push(payload.eventInfo);
     },
     // },
+    /**
+     * カウント数を格納する.
+     * @param state - ステート
+     * @param payload カウント数
+     */
     registerCount(state, payload) {
       state.userList.answerCount.push(payload.answerCount);
+      console.log(state.userList.answerCount);
     },
   },
   getters: {
@@ -95,13 +101,33 @@ export default new Vuex.Store({
     },
 
     /**
+     * ユーザーの配列を取得する.
+     * @param state - ステート
+     * @returns ユーザーの配列
+     */
+    getUserArray(state) {
+      return state.userList.userList;
+    },
+
+    /**
      * 〇のカウント数を取得する.
      * @param state - ステート
      * @returns 〇のカウント数
      */
     getAnswerCount(state) {
+      console.log(state.userList.answerCount);
       return state.userList.answerCount;
     },
+     /**
+     * idから詳細ページを取得する
+     * @param state - ステート
+     * @returns 作品情報
+     */
+      getSearchUser(state) {
+        return (userId: number) => {
+          return state.userList.userList.filter((user) => user.userId === userId)[0];
+        };
+      },
   },
   modules: {},
 });
