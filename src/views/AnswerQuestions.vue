@@ -4,9 +4,9 @@
       <table align="center">
         <tr>
           <th></th>
-          <th v-for="date of eventInfo.date" v-bind:key="date.dateId">
-            {{ date.date }}
-          </th>
+          <th>第1候補</th>
+          <th>第2候補</th>
+          <th>第3候補</th>
         </tr>
         <tr class="total">
           <td>合計</td>
@@ -89,7 +89,7 @@ export default class AnswerFinished extends Vue {
   // コメント
   private comment = "";
   // 現在表示されているイベント内容
-  private eventInfo = new Event(0, "", "", [], "", "", "");
+  private eventInfo = new Event(0, "", "", [], "", "", "",[]);
   // 名前のエラー
   private errorName = "";
   // 候補日のエラー
@@ -102,8 +102,6 @@ export default class AnswerFinished extends Vue {
   private answerArray = new Array<string>();
   // 日付の配列
   private dateArray = new Array<EventDate>();
-  // 現在表示されているイベント
-  private currentEvent = new Event(0, "", "", [], "", "", "");
   // 現在回答済のユーザー
   private currentUserList = new Array<RegisterUser>();
   // 現在の〇のカウント数

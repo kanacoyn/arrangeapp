@@ -3,26 +3,39 @@ import Vuex from "vuex";
 import { Event } from "@/types/event";
 import { UserList } from "@/types/UserList";
 import { RegisterUser } from "@/types/RegisterUser";
+import { EventDate } from "@/types/date";
+import { City } from "@/types/City";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    eventInfo: new Event(0, "", "", [], "", "", ""),
-
-    // eventInfo: new Event(
-    //   1,
-    //   "飲み会",
-    //   "池袋駅周辺で行います",
-    //   [
-    //     new EventDate(1, "2022/3/16"),
-    //     new EventDate(2, "2022/3/20"),
-    //     new EventDate(3, "2022/3/22"),
-    //   ],
-    //   "abc@gmail.com",
-    //   "12345",
-    //   ""
-    // ),
+    // eventInfo: new Event(0, "", "", [], "", "", ""),
+    eventInfo: new Event(
+      1,
+      "飲み会",
+      "池袋駅周辺で行います",
+      [
+        new EventDate(1, "2022/3/16", "19:00"),
+        new EventDate(2, "2022/3/20", "20:00"),
+        new EventDate(3, "2022/3/22", "18:00"),
+      ],
+      "abc@gmail.com",
+      "12345",
+      "",
+      [
+        new City(1, "ニューヨーク", [
+          new EventDate(4, "2022/3/15", "14:00"),
+          new EventDate(5, "2022/3/14", "15:00"),
+          new EventDate(6, "2022/3/13", "16:00"),
+        ]),
+        new City(2, "ロンドン", [
+          new EventDate(7, "2022/3/15", "14:00"),
+          new EventDate(8, "2022/3/14", "15:00"),
+          new EventDate(9, "2022/3/13", "16:00"),
+        ]),
+      ]
+    ),
 
     registerUser: new RegisterUser(0, "", [], [], ""),
 
@@ -106,16 +119,18 @@ export default new Vuex.Store({
       console.log(state.userList.answerCount);
       return state.userList.answerCount;
     },
-     /**
+    /**
      * idから詳細ページを取得する
      * @param state - ステート
      * @returns 作品情報
      */
-      getSearchUser(state) {
-        return (userId: number) => {
-          return state.userList.userList.filter((user) => user.userId === userId)[0];
-        };
-      },
+    getSearchUser(state) {
+      return (userId: number) => {
+        return state.userList.userList.filter(
+          (user) => user.userId === userId
+        )[0];
+      };
+    },
   },
   modules: {},
 });

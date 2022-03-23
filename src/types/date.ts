@@ -10,9 +10,8 @@ export class EventDate {
     private _dateId: number,
     // 候補日程
     private _date: string,
-
-    private _cityName: string,
-    private _cityTime: string
+    // 時間
+    private _dateTime: string
   ) {}
 
   // get formatDate(): string {
@@ -35,19 +34,12 @@ export class EventDate {
   public set date(date: string) {
     this._date = date;
   }
-  public get cityName(): string {
-    return this._cityName;
+
+  public get dateTime(): string {
+    return this._dateTime;
   }
 
-  public set cityName(cityName: string) {
-    this._cityName = cityName;
-  }
-
-  public get cityTime(): string {
-    return this._cityTime;
-  }
-
-  public set cityTime(cityTime: string) {
-    this._cityTime = cityTime;
+  public set dateTime(dateTime: string) {
+    this._dateTime = dateTime;
   }
 }

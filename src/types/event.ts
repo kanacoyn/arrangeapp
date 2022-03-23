@@ -1,15 +1,28 @@
+/**
+ * イベントの部品クラスです.
+ */
+import { City } from "./City";
 import { EventDate } from "./date";
-
 export class Event {
   constructor(
+    // id
     private _eventId: number,
+    // イベント名
     private _eventName: string,
+    // イベントの説明
     private _description: string,
+    // 日本の日時
     private _date: Array<EventDate>,
+    // メールアドレス
     private _email: string,
+    // パスワード
     private _password: string,
-    private _answerChoice: string
+    // 回答時の選択
+    private _answerChoice: string,
+    // チェックされた都市
+    private _cityArray: Array<City>
   ) {}
+
   public get eventId(): number {
     return this.eventId;
   }
@@ -63,5 +76,13 @@ export class Event {
 
   public set answerChoice(answerChoice: string) {
     this._answerChoice = answerChoice;
+  }
+
+  public get cityArray(): Array<City> {
+    return this._cityArray;
+  }
+
+  public set cityArray(cityArray: Array<City>) {
+    this._cityArray = cityArray;
   }
 }
