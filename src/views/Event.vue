@@ -16,6 +16,14 @@
               value="dateFirstChoice"
               v-model="selectedDateOption1"
             /><br />
+            <!-- <input
+              type="time"
+              id="dateFirstChoice"
+              name="スケジュール"
+              value="dateFirstChoice"
+              v-model="selectedTimeOption1"
+            />
+            <br /><br /> -->
 
             第二候補：<input
               type="date"
@@ -24,7 +32,7 @@
               name="スケジュール"
               value="dateSecondChoice"
               v-model="selectedDateOption2"
-            /><br />
+            /><br /><br /><br />
 
             第三候補：<input
               type="date"
