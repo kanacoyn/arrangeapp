@@ -4,7 +4,7 @@ export class UserList {
   constructor(
     // ユーザー情報
     private _userList: Array<RegisterUser>,
-    // 〇のカウント数
+    // answerCountオブジェクト
     private _answerCount: Array<number>
   ) {}
 
