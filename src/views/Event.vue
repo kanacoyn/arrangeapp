@@ -7,14 +7,35 @@
             <div class="calenderTitle">
               カレンダーの日付を選択すると、<br />「候補日程」に日付が入力されます
             </div>
-            <input
-              type="date"
-              id="date"
-              name="開催候補日を選択"
-              v-model="selectedDateOption"
+
+            第一候補：<input
+              type="datetime-local"
+              step="1800"
+              id="dateFirstChoice"
+              name="スケジュール"
+              value="dateFirstChoice"
+              v-model="selectedDateOption1"
+            /><br />
+
+            第二候補：<input
+              type="datetime-local"
+              step="1800"
+              id="dateSecondChoice"
+              name="スケジュール"
+              value="dateSecondChoice"
+              v-model="selectedDateOption2"
+            /><br />
+
+            第三候補：<input
+              type="datetime-local"
+              step="1800"
+              id="dateThirdChoice"
+              name="スケジュール"
+              value="dateThirdChoice"
+              v-model="selectedDateOption3"
             />
 
-            <table
+            <!-- <table
               cellspacing="0"
               class="yui-calendar y2022"
               id="cal1Container"
@@ -297,7 +318,7 @@
                   </td>
                 </tr>
               </tbody>
-            </table>
+            </table> -->
           </td>
 
           <td id="mainColumn">
@@ -332,13 +353,34 @@
                         7/28(土) 19:00～<br />
                         (←左に表示されているカレンダーから日程を選択することもできます。)<br />
 
-                        <textarea
+                        第一候補:<textarea
                           name="schedule"
                           id="schedule"
-                          rows="10"
-                          v-model="selectedDateOption"
+                          rows="2"
+                          v-model="selectedDateOption1"
+                          multiple
                         >
-                        </textarea>
+                        </textarea
+                        ><br />
+
+                        第二候補:<textarea
+                          name="schedule"
+                          id="schedule"
+                          rows="2"
+                          v-model="selectedDateOption2"
+                          multiple
+                        >
+                        </textarea
+                        ><br />
+                        第三候補:<textarea
+                          name="schedule"
+                          id="schedule"
+                          rows="2"
+                          v-model="selectedDateOption3"
+                          multiple
+                        >
+                        </textarea
+                        ><br />
 
                         <div class="error">{{ dateError }}</div>
                       </td>
@@ -446,7 +488,9 @@
 </template>
 
 <script lang="ts">
+import { EventDate } from "@/types/date";
 import { Component, Vue } from "vue-property-decorator";
+import { Event } from "@/types/event";
 
 @Component
 export default class XXXComponent extends Vue {
@@ -470,7 +514,12 @@ export default class XXXComponent extends Vue {
   private emailError = "";
 
   private selectedDateOption = "";
+  private selectedDateOption1 = "";
+  private selectedDateOption2 = "";
+  private selectedDateOption3 = "";
   private eventIdIndex = 1;
+
+  private arrayDateOption = new Array<EventDate>();
 
   //   InputOptionDate(): void {
   //     console.log("テスト1");
@@ -481,50 +530,60 @@ export default class XXXComponent extends Vue {
   //   }
 
   eventInfo(): void {
-    console.log("テスト１");
-    this.$store.commit("eventInfo", {
-      evetId: this.eventIdIndex,
-      eventName: this.eventName,
-      description: this.description,
-      date: this.selectedDateOption,
-      email: this.email,
-      password: this.password,
-      answerChoice: this.answerChoice,
-    });
-    this.$router.push("/eventConfirm");
-    console.log("mutation成功");
-  }
+    console.log("mutationに送る");
 
-  //  // 正規表示を定義
-  //     let existError = false;
-  //     // イベント名のエラー
-  //     if (this.eventName === "") {
-  //       this.eventNameError = "イベント名が空白です";
-  //       existError = true;
-  //     } else {
-  //       this.eventNameError = "";
-  //     }
-  //     // メールアドレスのエラー
-  //     if (this.email === "") {
-  //       this.emailError = "メールアドレスが入力されていません";
-  //       existError = true;
-  //     } else if (this.email.indexOf("@") === -1) {
-  //       this.emailError = "メールアドレスの形式が不正です";
-  //       existError = true;
-  //     } else {
-  //       this.emailError = "";
-  //     }
-  //     // 候補にちじのエラー
-  //     if (this.date === "yyyy-MM-dd") {
-  //       this.dateError = "開催日時をご記入ください";
-  //       existError = true;
-  //     } else {
-  //       this.dateError = "";
-  //     }
-  //     // 1つでもエラーがある場合は処理を終了する
-  //     if (existError === true) {
-  //       return; //処理終了のreturn
-  //     }
+    this.arrayDateOption.push(
+      new EventDate(1, this.selectedDateOption1),
+      new EventDate(1, this.selectedDateOption2),
+      new EventDate(1, this.selectedDateOption3)
+    );
+
+    this.$store.commit("eventInfo", {
+      event: new Event(
+        this.eventIdIndex,
+        this.eventName,
+        this.description,
+        this.arrayDateOption,
+        this.email,
+        this.password,
+        this.answerChoice
+      ),
+    });
+    console.log("mutation成功");
+
+    // 正規表示を定義
+    let existError = false;
+    // イベント名のエラー
+    if (this.eventName === "") {
+      this.eventNameError = "イベント名が空白です";
+      existError = true;
+    } else {
+      this.eventNameError = "";
+    }
+    // メールアドレスのエラー
+    if (this.email === "") {
+      this.emailError = "メールアドレスが入力されていません";
+      existError = true;
+    } else if (this.email.indexOf("@") === -1) {
+      this.emailError = "メールアドレスの形式が不正です";
+      existError = true;
+    } else {
+      this.emailError = "";
+    }
+    // // 候補にちじのエラー
+    // if (this.date === "yyyy-MM-dd") {
+    //   this.dateError = "開催日時をご記入ください";
+    //   existError = true;
+    // } else {
+    //   this.dateError = "";
+    // }
+    // 1つでもエラーがある場合は処理を終了する
+    if (existError === true) {
+      return; //処理終了のreturn
+    }
+
+    this.$router.push("/eventConfirm");
+  }
 }
 </script>
 

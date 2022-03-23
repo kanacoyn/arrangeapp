@@ -68,10 +68,20 @@ import { EventDate } from "@/types/date";
 
 @Component
 export default class XXXComponent extends Vue {
-  private eventConfirm = new Event(0, "", "", new Array<EventDate>(), "", "", "");
+  private eventConfirm = new Event(
+    0,
+    "",
+    "",
+    new Array<EventDate>(),
+    "",
+    "",
+    ""
+  );
   private evntInfo = new Array<Event>();
   created(): void {
     this.eventConfirm = this.$store.getters.getEvent;
+    console.log("テスト", this.$store.getters.getEvent);
+    console.log("テスト2", this.eventConfirm);
   }
 
   finishMakeEvent() {
