@@ -24,7 +24,7 @@
 
                   <tr>
                     <th class="must">候補日程</th>
-                    <td>{{ this.eventConfirm.date }}<br /></td>
+                    <td>{{ this.eventConfirm.date.date }}<br /></td>
                   </tr>
 
                   <tr>
@@ -65,6 +65,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { Event } from "@/types/event";
 import { EventDate } from "@/types/date";
+import { City } from "@/types/City";
 
 @Component
 export default class XXXComponent extends Vue {
@@ -72,11 +73,11 @@ export default class XXXComponent extends Vue {
     0,
     "",
     "",
-    new Array<EventDate>(),
+    new EventDate(0, [], []),
     "",
     "",
     "",
-    []
+    new City(0, [], [])
   );
   private evntInfo = new Array<Event>();
   created(): void {

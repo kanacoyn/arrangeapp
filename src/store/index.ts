@@ -5,36 +5,54 @@ import { UserList } from "@/types/UserList";
 import { RegisterUser } from "@/types/RegisterUser";
 import { EventDate } from "@/types/date";
 import { City } from "@/types/City";
+import { Date2 } from "@/types/Date2";
+import { Time } from "@/types/Time";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // eventInfo: new Event(0, "", "", [], "", "", ""),
+    // eventInfo: new Event(0, "", "", [], "", "", ""), ←ここ修正する必要あり
     eventInfo: new Event(
       1,
       "飲み会",
       "池袋駅周辺で行います",
-      [
-        new EventDate(1, "2022/3/16", "19:00"),
-        new EventDate(2, "2022/3/20", "20:00"),
-        new EventDate(3, "2022/3/22", "18:00"),
-      ],
+      new EventDate(
+        1,
+        [
+          new Date2(1, "2022/3/16"),
+          new Date2(2, "2022/3/20"),
+          new Date2(3, "2022/3/22"),
+        ],
+        [new Time(1, "18:00"), new Time(2, "19:00"), new Time(3, "20:00")]
+      ),
       "abc@gmail.com",
       "12345",
       "",
-      [
-        new City(1, "ニューヨーク", [
-          new EventDate(4, "2022/3/15", "14:00"),
-          new EventDate(5, "2022/3/14", "15:00"),
-          new EventDate(6, "2022/3/13", "16:00"),
-        ]),
-        new City(2, "ロンドン", [
-          new EventDate(7, "2022/3/15", "14:00"),
-          new EventDate(8, "2022/3/14", "15:00"),
-          new EventDate(9, "2022/3/13", "16:00"),
-        ]),
-      ]
+      new City(
+        1,
+        ["ニューヨーク", "ロンドン"],
+        [
+          new EventDate(
+            1,
+            [
+              new Date2(4, "2022/3/15"),
+              new Date2(5, "2022/3/19"),
+              new Date2(6, "2022/3/20"),
+            ],
+            [new Time(3, "14:00"), new Time(4, "15:00"), new Time(5, "16:00")]
+          ),
+          new EventDate(
+            2,
+            [
+              new Date2(4, "2022/3/15"),
+              new Date2(5, "2022/3/19"),
+              new Date2(6, "2022/3/20"),
+            ],
+            [new Time(3, "14:00"), new Time(4, "15:00"), new Time(5, "16:00")]
+          ),
+        ]
+      )
     ),
 
     registerUser: new RegisterUser(0, "", [], [], ""),
@@ -50,9 +68,7 @@ export default new Vuex.Store({
     registerAnswer(state, payload) {
       state.userList.userList.push(payload.registerUser);
     },
-    selectAnswer(state, payload) {
-      state.eventInfo.date.push(payload.date);
-    },
+  
 
     eventInfo(state, payload) {
       state.eventInfo = payload.event;
@@ -80,7 +96,7 @@ export default new Vuex.Store({
      * @returns 候補日程
      */
     getDateList(state) {
-      return state.eventInfo.date;
+      return state.eventInfo.date.date;
     },
 
     /**

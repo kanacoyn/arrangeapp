@@ -1,4 +1,4 @@
-import { EventDate } from "./date";
+import { Date2 } from "./Date2";
 /**
  * 回答内容の部品クラスです.
  */
@@ -9,7 +9,7 @@ export class RegisterUser {
     // 名前
     private _name: string,
     // 登録された候補日程
-    private _registerDateList: Array<EventDate>,
+    private _registerDateList: Array<Date2>,
     // 日程に対する回答
     private _registerAnswer: Array<string>,
     // コメント
@@ -32,11 +32,11 @@ export class RegisterUser {
     this._name = name;
   }
 
-  public get registerDateList(): Array<EventDate> {
+  public get registerDateList(): Array<Date2> {
     return this._registerDateList;
   }
 
-  public set registerDateList(registerDateList: Array<EventDate>) {
+  public set registerDateList(registerDateList: Array<Date2>) {
     this._registerDateList = registerDateList;
   }
 

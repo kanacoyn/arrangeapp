@@ -8,9 +8,9 @@ export class City {
     // ID
     private _id: number,
     // 都市の名前
-    private _name: string,
-    // 候補日程
-    private _dateArray: Array<EventDate>
+    private _name: Array<string>,
+    // 日時の配列
+    private _date: Array<EventDate>
   ) {}
 
   public get id(): number {
@@ -21,19 +21,19 @@ export class City {
     this._id = id;
   }
 
-  public get name(): string {
+  public get name(): Array<string> {
     return this._name;
   }
 
-  public set name(name: string) {
+  public set name(name: Array<string>) {
     this._name = name;
   }
 
-  public get dateArray(): Array<EventDate> {
-    return this._dateArray;
+  public get date(): Array<EventDate> {
+    return this._date;
   }
 
-  public set dateArray(dateArray: Array<EventDate>) {
-    this._dateArray = dateArray;
+  public set date(date: Array<EventDate>) {
+    this._date = date;
   }
 }
