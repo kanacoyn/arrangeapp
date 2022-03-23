@@ -5,6 +5,7 @@
         <tr>
           <td id="leftside">
             <div class="calenderTitle">
+              <th id="title">日時調整</th>
               カレンダーの日付を選択すると、<br />「候補日程」に日付が入力されます
             </div>
 
@@ -13,24 +14,24 @@
               step="1800"
               id="dateFirstChoice"
               name="スケジュール"
-              value="dateFirstChoice"
+          
               v-model="selectedDateOption1"
             /><br /><br />
-            <!-- <input
+            <input
               type="time"
               id="dateFirstChoice"
               name="スケジュール"
-              value="dateFirstChoice"
+
               v-model="selectedTimeOption1"
             />
-            <br /><br /> -->
+            <br /><br />
 
             第二候補：<input
               type="date"
               step="1800"
               id="dateSecondChoice"
               name="スケジュール"
-              value="dateSecondChoice"
+            
               v-model="selectedDateOption2"
             /><br /><br />
 
@@ -39,27 +40,61 @@
               step="1800"
               id="dateThirdChoice"
               name="スケジュール"
-              value="dateThirdChoice"
+        
               v-model="selectedDateOption3"
             />
-<br />
-<br />
-                       <th id="title">海外との日時調整</th>
-                 <div id="timeZone">
-  <input type="checkbox" id="shanghai" value="shanghai" v-model="timeZone">
-  <label for="shanghai">上海(Shang-Hai / China)</label><br />
-  <input type="checkbox" id="newyork" value="newyork" v-model="timeZone">
-  <label for="newyork">ニューヨーク(New York / USA)</label><br />
-  <input type="checkbox" id="london" value="london" v-model="timeZone">
-  <label for="london">ロンドン(London / England)</label><br />
-  <input type="checkbox" id="stokholm" value="stokholm" v-model="timeZone">
-  <label for="stokholm">ストックホルム( Stokholm / Sweden)</label><br />
-  <input type="checkbox" id="Johannesburg" value="Johannesburg" v-model="timeZone">
-  <label for="Johannesburg">ヨハネスブルグ(Johannesburg / South Africa)</label><br />
-  <div>チェックされた値: {{ timeZone }}</div><br />
+            <br />
+            <br />
+            <div class="timeZoneTitle">
+              <th id="title">海外との日時調整</th>
+              <div id="timeZone">
+                <input
+                  type="checkbox"
+                  id="shanghai"
+                  value="shanghai"
+                  v-model="timeZone"
+                  v-on:change="selectCity"
+                />
+                <label for="shanghai">上海(Shang-Hai / China)</label><br />
+                <input
+                  type="checkbox"
+                  id="newyork"
+                  value="newyork"
+                  v-model="timeZone"
+                />
+                <label for="newyork">ニューヨーク(New York / USA)</label><br />
+                <input
+                  type="checkbox"
+                  id="london"
+                  value="london"
+                  v-model="timeZone"
+                />
+                <label for="london">ロンドン(London / England)</label><br />
+                <input
+                  type="checkbox"
+                  id="stokholm"
+                  value="stokholm"
+                  v-model="timeZone"
+                />
+                <label for="stokholm">ストックホルム( Stokholm / Sweden)</label
+                ><br />
+                <input
+                  type="checkbox"
+                  id="Johannesburg"
+                  value="Johannesburg"
+                  v-model="timeZone"
+                />
+                <label for="Johannesburg"
+                  >ヨハネスブルグ(Johannesburg / South Africa)</label
+                ><br />
+                <div>チェックされた値: {{ timeZone }}</div>
+                <br />
 
-  <button v-on:click="resetCity">チェックした項目を取り消す</button>
-</div>
+                <button v-on:click="resetCity">
+                  チェックした項目を取り消す
+                </button>
+              </div>
+            </div>
           </td>
 
           <td id="mainColumn">
@@ -124,17 +159,7 @@
                         ><br />
 
                         <div class="error">{{ dateError }}</div>
-
-
-                         
-               
-                          
-                    
                       </td>
-
-
-
-
                     </tr>
 
                     <tr>
@@ -232,6 +257,42 @@
               </form>
             </div>
           </td>
+
+          <td id="rightside">
+                  <th id="title">海外の時差換算日時</th>
+             
+            都市名
+            {{timeZone}}
+             <br />
+
+            第一候補:<textarea
+              name="schedule"
+              id="schedule"
+              rows="2"
+              v-model="selectedDateOption1"
+              multiple
+            >
+            </textarea
+            ><br />
+            第二候補:<textarea
+              name="schedule"
+              id="schedule"
+              rows="2"
+              v-model="selectedDateOption2"
+              multiple
+            >
+            </textarea
+            ><br />
+            第三候補:<textarea
+              name="schedule"
+              id="schedule"
+              rows="2"
+              v-model="selectedDateOption3"
+              multiple
+            >
+            </textarea
+            ><br />
+          </td>
         </tr>
       </tbody>
     </table>
@@ -269,7 +330,8 @@ export default class XXXComponent extends Vue {
   private selectedDateOption2 = "";
   private selectedDateOption3 = "";
   private eventIdIndex = 1;
-  private timeZone=[];
+  private timeZone = [];
+
 
   private arrayDateOption = new Array<EventDate>();
 
@@ -277,9 +339,9 @@ export default class XXXComponent extends Vue {
     console.log("mutationに送る");
 
     this.arrayDateOption.push(
-      new EventDate(1, this.selectedDateOption1),
-      new EventDate(1, this.selectedDateOption2),
-      new EventDate(1, this.selectedDateOption3)
+      new EventDate(1, this.selectedDateOption1, "", ""),
+      new EventDate(1, this.selectedDateOption2, "", ""),
+      new EventDate(1, this.selectedDateOption3, "", "")
     );
 
     this.$store.commit("eventInfo", {
@@ -329,10 +391,14 @@ export default class XXXComponent extends Vue {
     this.$router.push("/eventConfirm");
   }
 
-resetCity():void{
-    this.timeZone=[];
-}
+  resetCity(): void {
+    this.timeZone = [];
+  }
 
+selectCity():void{
+console.log("都市名をv-on:changeで時差に表示させる");
+ this.timeZone = [];
+}
 
 }
 </script>
