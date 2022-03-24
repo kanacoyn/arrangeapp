@@ -34,6 +34,49 @@
         <hr />
       </div>
     </div>
+    <div class="select-datelist" v-show="countriesShow">
+      <div class="answer">
+        <div>第1候補</div>
+        <div>第2候補</div>
+        <div>第3候補</div>
+      </div>
+      <div class="country-list">
+        <div class="country">東京</div>
+        <div class="flex">
+          <div class="date">
+            <div v-for="date of eventInfo.date.date" v-bind:key="date.id">
+              {{ date.date }}
+            </div>
+          </div>
+          <div class="date">
+            <div v-for="time of eventInfo.date.dateTime" v-bind:key="time.id">
+              {{ time.dateTime }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="global-city">
+        <div
+          class="country-list"
+          v-for="city of eventInfo.cityArray"
+          v-bind:key="city.id"
+        >
+          <div class="country">{{ city.name }}</div>
+          <div class="flex">
+            <div class="date">
+              <div v-for="date of city.date.date" v-bind:key="date.id">
+                {{ date.date }}
+              </div>
+            </div>
+            <div class="date">
+              <div v-for="time of city.date.dateTime" v-bind:key="time.id">
+                {{ time.dateTime }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div v-show="buttonShow">
       <button type="button" v-on:click="onClick">続けて入力する</button>
     </div>
@@ -128,6 +171,8 @@ export default class AnswerFinished extends Vue {
   private showForm = true;
   // ボタンの表示・非表示
   private buttonShow = false;
+  // 都市の注釈表示・非表示
+  private countriesShow = true;
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
@@ -219,11 +264,13 @@ export default class AnswerFinished extends Vue {
     }
     this.showForm = false;
     this.buttonShow = true;
+    this.countriesShow = false;
   }
 
   onClick(): void {
     this.buttonShow = false;
     this.showForm = true;
+    this.countriesShow = true;
     this.name = "";
     this.comment = "";
   }
@@ -263,5 +310,37 @@ table {
 .date-answer {
   display: flex;
   justify-content: center;
+}
+.flex {
+  display: flex;
+}
+
+.date {
+  margin-left: 15px;
+}
+
+.country {
+  margin-bottom: 10px;
+}
+
+.country-list {
+  margin-right: 30px;
+}
+
+.global-city {
+  display: flex;
+}
+
+.select-datelist {
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.answer {
+  font-size: 14px;
+  margin-top: 31px;
+  margin-right: 10px;
 }
 </style>
