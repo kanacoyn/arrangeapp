@@ -89,17 +89,30 @@
       <div class="item date-answer">
         <div class="flex">
           <div class="country-list">
-            <div>日程候補(東京)</div>
-            <div
-              class="datelist"
-              v-for="date of eventInfo.date.date"
-              v-bind:key="date.id"
-            >
-              <div>{{ date.date }}</div>
-              <comp-select-box
-                v-bind:date-id="date.id"
-                v-on:select-item="onSelectItem"
-              ></comp-select-box>
+            <div class="country">日程候補 (東京)</div>
+            <div class="flex">
+              <div>
+                <div
+                  class="datelist"
+                  v-for="date of eventInfo.date.date"
+                  v-bind:key="date.id"
+                >
+                  <div>{{ date.date }}</div>
+                </div>
+              </div>
+              <div>
+                <div
+                  class="datelist date"
+                  v-for="time of eventInfo.date.dateTime"
+                  v-bind:key="time.id"
+                >
+                  <div>{{ time.dateTime }}</div>
+                  <comp-select-box
+                    v-bind:date-id="time.id"
+                    v-on:select-item="onSelectItem"
+                  ></comp-select-box>
+                </div>
+              </div>
             </div>
           </div>
           <div class="flex">
@@ -108,17 +121,30 @@
               v-for="city of eventInfo.cityArray"
               v-bind:key="city.id"
             >
-              <div>日程候補({{ city.name }})</div>
-              <div
-                class="datelist"
-                v-for="date of city.date.date"
-                v-bind:key="date.id"
-              >
-                <div>{{ date.date }}</div>
-                <comp-select-box
-                  v-bind:date-id="date.id"
-                  v-on:select-item="onSelectItem"
-                ></comp-select-box>
+              <div class="country">日程候補 ({{ city.name }})</div>
+              <div class="flex">
+                <div>
+                  <div
+                    class="datelist"
+                    v-for="date of city.date.date"
+                    v-bind:key="date.id"
+                  >
+                    <div>{{ date.date }}</div>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="datelist date"
+                    v-for="time of city.date.dateTime"
+                    v-bind:key="time.id"
+                  >
+                    <div>{{ time.dateTime }}</div>
+                    <comp-select-box
+                      v-bind:date-id="time.id"
+                      v-on:select-item="onSelectItem"
+                    ></comp-select-box>
+                  </div>
+                </div>
               </div>
               <div class="error">{{ errorDate }}</div>
             </div>
@@ -352,7 +378,6 @@ table {
 }
 
 .select-datelist {
-  max-width: 1000px;
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
@@ -362,5 +387,9 @@ table {
   font-size: 14px;
   margin-top: 31px;
   margin-right: 10px;
+}
+
+.date {
+  margin-left: 5px;
 }
 </style>
