@@ -44,19 +44,36 @@
         <div class="error">{{ errorName }}</div>
       </div>
       <div class="item">
-        <div>日程候補</div>
-        <div
-          class="datelist"
-          v-for="date of eventInfo.date"
-          v-bind:key="date.dateId"
-        >
-          <div>{{ date.date }}</div>
-          <comp-select-box
-            v-bind:date-id="date.dateId"
-            v-on:select-item="onSelectItem"
-          ></comp-select-box>
+        <div>
+          <div>日程候補(日本)</div>
+          <div
+            class="datelist"
+            v-for="date of eventInfo.date.date"
+            v-bind:key="date.id"
+          >
+            <div>{{ date.date }}</div>
+            <comp-select-box
+              v-bind:date-id="date.id"
+              v-on:select-item="onSelectItem"
+            ></comp-select-box>
+          </div>
+          <div class="error">{{ errorDate }}</div>
         </div>
-        <div class="error">{{ errorDate }}</div>
+        <div>
+          <div>日程候補</div>
+          <div
+            class="datelist"
+            v-for="date of eventInfo.date.date"
+            v-bind:key="date.id"
+          >
+            <div>{{ date.date }}</div>
+            <comp-select-box
+              v-bind:date-id="date.id"
+              v-on:select-item="onSelectItem"
+            ></comp-select-box>
+          </div>
+          <div class="error">{{ errorDate }}</div>
+        </div>
       </div>
       <div class="item">
         <div>コメント</div>
@@ -78,6 +95,7 @@ import { Event } from "@/types/event";
 import { Component, Vue } from "vue-property-decorator";
 import CompSelectBox from "@/components/CompSelectBox.vue";
 import { EventDate } from "@/types/date";
+import { Date2 } from "@/types/Date2";
 @Component({
   components: {
     CompSelectBox,
@@ -89,7 +107,16 @@ export default class AnswerFinished extends Vue {
   // コメント
   private comment = "";
   // 現在表示されているイベント内容
-  private eventInfo = new Event(0, "", "", [], "", "", "",[]);
+  private eventInfo = new Event(
+    0,
+    "",
+    "",
+    new EventDate(0, [], []),
+    "",
+    "",
+    "",
+    []
+  );
   // 名前のエラー
   private errorName = "";
   // 候補日のエラー
@@ -101,7 +128,7 @@ export default class AnswerFinished extends Vue {
   // 回答の配列
   private answerArray = new Array<string>();
   // 日付の配列
-  private dateArray = new Array<EventDate>();
+  private dateArray = new Array<Date2>();
   // 現在回答済のユーザー
   private currentUserList = new Array<RegisterUser>();
   // 現在の〇のカウント数

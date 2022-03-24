@@ -1,5 +1,8 @@
 // import { format } from "date-fns";
 
+import { Date2 } from "./Date2";
+import { Time } from "./Time";
+
 export class EventDate {
   static toDateString(): Date {
     throw new Error("Method not implemented.");
@@ -9,9 +12,9 @@ export class EventDate {
     // id
     private _dateId: number,
     // 候補日程
-    private _date: string,
+    private _date: Array<Date2>,
     // 時間
-    private _dateTime: string
+    private _dateTime: Array<Time>
   ) {}
 
   // get formatDate(): string {
@@ -27,19 +30,19 @@ export class EventDate {
     this._dateId = dateId;
   }
 
-  public get date(): string {
+  public get date(): Array<Date2> {
     return this._date;
   }
 
-  public set date(date: string) {
+  public set date(date: Array<Date2>) {
     this._date = date;
   }
 
-  public get dateTime(): string {
+  public get dateTime(): Array<Time> {
     return this._dateTime;
   }
 
-  public set dateTime(dateTime: string) {
+  public set dateTime(dateTime: Array<Time>) {
     this._dateTime = dateTime;
   }
 }

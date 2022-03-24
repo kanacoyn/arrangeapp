@@ -214,6 +214,9 @@
 import { EventDate } from "@/types/date";
 import { Component, Vue } from "vue-property-decorator";
 import { Event } from "@/types/event";
+import { Date2 } from "@/types/Date2";
+import { Time } from "@/types/Time";
+import { City } from "@/types/City";
 
 @Component
 export default class XXXComponent extends Vue {
@@ -242,15 +245,20 @@ export default class XXXComponent extends Vue {
   private selectedDateOption3 = "";
   private eventIdIndex = 1;
 
-  private arrayDateOption = new Array<EventDate>();
+// 249～278行目はクラスを修正した関係で一部書き換えています（エラーが出ないようにダミーを入れているところもあります）
+  private arrayDateOption = new Array<Date2>();
+  private arrayTimeOption = new Array<Time>();
 
   eventInfo(): void {
     console.log("mutationに送る");
 
     this.arrayDateOption.push(
-      new EventDate(1, this.selectedDateOption1, "", ""),
-      new EventDate(1, this.selectedDateOption2, "", ""),
-      new EventDate(1, this.selectedDateOption3, "", "")
+      new Date2(1, this.selectedDateOption1),
+      new Date2(1, this.selectedDateOption2),
+      new Date2(1, this.selectedDateOption3)
+      // new EventDate(1, this.selectedDateOption1, "", ""),
+      // new EventDate(1, this.selectedDateOption2, "", ""),
+      // new EventDate(1, this.selectedDateOption3, "", "")
     );
 
     this.$store.commit("eventInfo", {
@@ -258,10 +266,14 @@ export default class XXXComponent extends Vue {
         this.eventIdIndex,
         this.eventName,
         this.description,
-        this.arrayDateOption,
+        new EventDate(
+          -1, this.arrayDateOption,this.arrayTimeOption
+        )
+       ,
         this.email,
         this.password,
-        this.answerChoice
+        this.answerChoice,
+        []
       ),
     });
     console.log("mutation成功");
