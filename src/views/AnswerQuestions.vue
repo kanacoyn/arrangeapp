@@ -87,18 +87,41 @@
         <div class="error">{{ errorName }}</div>
       </div>
       <div class="item date-answer">
-        <div class="date">
-          <div>日程候補(日本)</div>
-          <div
-            class="datelist"
-            v-for="date of eventInfo.date.date"
-            v-bind:key="date.id"
-          >
-            <div>{{ date.date }}</div>
-            <comp-select-box
-              v-bind:date-id="date.id"
-              v-on:select-item="onSelectItem"
-            ></comp-select-box>
+        <div class="flex">
+          <div class="country-list">
+            <div>日程候補(東京)</div>
+            <div
+              class="datelist"
+              v-for="date of eventInfo.date.date"
+              v-bind:key="date.id"
+            >
+              <div>{{ date.date }}</div>
+              <comp-select-box
+                v-bind:date-id="date.id"
+                v-on:select-item="onSelectItem"
+              ></comp-select-box>
+            </div>
+          </div>
+          <div class="flex">
+            <div
+              class="country-list"
+              v-for="city of eventInfo.cityArray"
+              v-bind:key="city.id"
+            >
+              <div>日程候補({{ city.name }})</div>
+              <div
+                class="datelist"
+                v-for="date of city.date.date"
+                v-bind:key="date.id"
+              >
+                <div>{{ date.date }}</div>
+                <comp-select-box
+                  v-bind:date-id="date.id"
+                  v-on:select-item="onSelectItem"
+                ></comp-select-box>
+              </div>
+              <div class="error">{{ errorDate }}</div>
+            </div>
           </div>
           <div class="error">{{ errorDate }}</div>
         </div>
@@ -311,12 +334,9 @@ table {
   display: flex;
   justify-content: center;
 }
+
 .flex {
   display: flex;
-}
-
-.date {
-  margin-left: 15px;
 }
 
 .country {
