@@ -19,10 +19,13 @@
         </td>
       </tr>
       <tr v-for="city of eventInfo.cityArray" v-bind:key="city.id">
-        <td>{{ city.name }}</td>
+        <td rowspan="2">{{ city.name }}</td>
         <td v-for="date of city.date.date" v-bind:key="date.id">
           {{ date.date }}
         </td>
+        <!-- <td v-for="time of city.date.dateTime" v-bind:key="time.id">
+          {{ time.dateTime }}
+        </td> -->
       </tr>
       <tr v-for="city of eventInfo.cityArray" v-bind:key="city.id">
         <td v-for="time of city.date.dateTime" v-bind:key="time.id">

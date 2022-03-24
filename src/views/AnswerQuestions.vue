@@ -44,19 +44,36 @@
         <div class="error">{{ errorName }}</div>
       </div>
       <div class="item">
-        <div>日程候補</div>
-        <div
-          class="datelist"
-          v-for="date of eventInfo.date.date"
-          v-bind:key="date.id"
-        >
-          <div>{{ date.date }}</div>
-          <comp-select-box
-            v-bind:date-id="date.id"
-            v-on:select-item="onSelectItem"
-          ></comp-select-box>
+        <div>
+          <div>日程候補(日本)</div>
+          <div
+            class="datelist"
+            v-for="date of eventInfo.date.date"
+            v-bind:key="date.id"
+          >
+            <div>{{ date.date }}</div>
+            <comp-select-box
+              v-bind:date-id="date.id"
+              v-on:select-item="onSelectItem"
+            ></comp-select-box>
+          </div>
+          <div class="error">{{ errorDate }}</div>
         </div>
-        <div class="error">{{ errorDate }}</div>
+        <div>
+          <div>日程候補</div>
+          <div
+            class="datelist"
+            v-for="date of eventInfo.date.date"
+            v-bind:key="date.id"
+          >
+            <div>{{ date.date }}</div>
+            <comp-select-box
+              v-bind:date-id="date.id"
+              v-on:select-item="onSelectItem"
+            ></comp-select-box>
+          </div>
+          <div class="error">{{ errorDate }}</div>
+        </div>
       </div>
       <div class="item">
         <div>コメント</div>
