@@ -22,9 +22,11 @@ import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 export default class XXXComponent extends Vue {
   // 親コンポーネントから受け取る日付ID
   @Prop()
-  private dateId!: number;
+  private timeId!: number;
   // 日程回答
   private selectAnswer = "0";
+
+  private initFlag?:boolean;
 
   @Emit()
   selectItem(answer: string): void {
