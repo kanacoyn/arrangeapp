@@ -20,7 +20,7 @@ export class Event {
     // 回答時の選択
     private _answerChoice: string,
     // 都市クラス
-    private _city: City
+    private _cityArray: Array<City>
   ) {}
 
   public get eventId(): number {
@@ -78,11 +78,11 @@ export class Event {
     this._answerChoice = answerChoice;
   }
 
-  public get city(): City {
-    return this._city;
+  public get cityArray(): Array<City> {
+    return this._cityArray;
   }
 
-  public set city(city: City) {
-    this._city = city;
+  public set cityArray(cityArray: Array<City>) {
+    this._cityArray = cityArray;
   }
 }

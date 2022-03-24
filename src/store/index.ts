@@ -29,10 +29,10 @@ export default new Vuex.Store({
       "abc@gmail.com",
       "12345",
       "",
-      new City(
-        1,
-        ["ニューヨーク", "ロンドン"],
-        [
+      [
+        new City(
+          1,
+          "ニューヨーク",
           new EventDate(
             1,
             [
@@ -41,18 +41,22 @@ export default new Vuex.Store({
               new Date2(6, "2022/3/20"),
             ],
             [new Time(3, "14:00"), new Time(4, "15:00"), new Time(5, "16:00")]
-          ),
+          )
+        ),
+        new City(
+          1,
+          "ロンドン",
           new EventDate(
             2,
             [
-              new Date2(4, "2022/3/15"),
-              new Date2(5, "2022/3/19"),
-              new Date2(6, "2022/3/20"),
+              new Date2(4, "2022/3/14"),
+              new Date2(5, "2022/3/17"),
+              new Date2(6, "2022/3/19"),
             ],
-            [new Time(3, "14:00"), new Time(4, "15:00"), new Time(5, "16:00")]
-          ),
-        ]
-      )
+            [new Time(3, "10:00"), new Time(4, "9:00"), new Time(5, "8:00")]
+          )
+        ),
+      ]
     ),
 
     registerUser: new RegisterUser(0, "", [], [], ""),
@@ -68,7 +72,6 @@ export default new Vuex.Store({
     registerAnswer(state, payload) {
       state.userList.userList.push(payload.registerUser);
     },
-  
 
     eventInfo(state, payload) {
       state.eventInfo = payload.event;

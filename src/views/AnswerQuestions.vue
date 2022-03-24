@@ -78,7 +78,6 @@ import { Event } from "@/types/event";
 import { Component, Vue } from "vue-property-decorator";
 import CompSelectBox from "@/components/CompSelectBox.vue";
 import { EventDate } from "@/types/date";
-import { City } from "@/types/City";
 import { Date2 } from "@/types/Date2";
 @Component({
   components: {
@@ -99,7 +98,7 @@ export default class AnswerFinished extends Vue {
     "",
     "",
     "",
-    new City(0, [], [])
+    []
   );
   // 名前のエラー
   private errorName = "";

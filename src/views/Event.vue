@@ -273,7 +273,7 @@ export default class XXXComponent extends Vue {
         this.email,
         this.password,
         this.answerChoice,
-        new City(-1,[],[])
+        []
       ),
     });
     console.log("mutation成功");

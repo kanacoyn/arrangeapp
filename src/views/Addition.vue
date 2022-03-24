@@ -8,17 +8,25 @@
         <th>第3候補</th>
       </tr>
       <tr>
-        <td>日本</td>
-        <td v-for="date of eventInfo.date" v-bind:key="date.id">
-          <div>{{ date.date }}</div>
-          <div>{{ date.dateTime }}</div>
+        <td rowspan="2">日本</td>
+        <td v-for="date of eventInfo.date.date" v-bind:key="date.id">
+          {{ date.date }}
+        </td>
+      </tr>
+      <tr>
+        <td v-for="time of eventInfo.date.dateTime" v-bind:key="time.id">
+          {{ time.dateTime }}
         </td>
       </tr>
       <tr v-for="city of eventInfo.cityArray" v-bind:key="city.id">
         <td>{{ city.name }}</td>
-        <td v-for="date of city.dateArray" v-bind:key="date.id">
-          <div>{{ date.date }}</div>
-          <div>{{ date.dateTime }}</div>
+        <td v-for="date of city.date.date" v-bind:key="date.id">
+          {{ date.date }}
+        </td>
+      </tr>
+      <tr v-for="city of eventInfo.cityArray" v-bind:key="city.id">
+        <td v-for="time of city.date.dateTime" v-bind:key="time.id">
+          {{ time.dateTime }}
         </td>
       </tr>
     </table>
@@ -26,7 +34,6 @@
 </template>
 
 <script lang="ts">
-import { City } from "@/types/City";
 import { EventDate } from "@/types/date";
 import { Event } from "@/types/event";
 import { Component, Vue } from "vue-property-decorator";
@@ -41,7 +48,7 @@ export default class XXXComponent extends Vue {
     "",
     "",
     "",
-    new City(0, [], [])
+    []
   );
 
   created(): void {
