@@ -43,24 +43,9 @@
         <div class="input"><input type="text" v-model="name" /></div>
         <div class="error">{{ errorName }}</div>
       </div>
-      <div class="item">
-        <div>
+      <div class="item date-answer">
+        <div class="date">
           <div>日程候補(日本)</div>
-          <div
-            class="datelist"
-            v-for="date of eventInfo.date.date"
-            v-bind:key="date.id"
-          >
-            <div>{{ date.date }}</div>
-            <comp-select-box
-              v-bind:date-id="date.id"
-              v-on:select-item="onSelectItem"
-            ></comp-select-box>
-          </div>
-          <div class="error">{{ errorDate }}</div>
-        </div>
-        <div>
-          <div>日程候補</div>
           <div
             class="datelist"
             v-for="date of eventInfo.date.date"
@@ -273,5 +258,10 @@ table {
 
 .total {
   background-color: lavenderblush;
+}
+
+.date-answer {
+  display: flex;
+  justify-content: center;
 }
 </style>
