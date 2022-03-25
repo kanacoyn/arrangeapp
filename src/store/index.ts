@@ -5,41 +5,66 @@ import { UserList } from "@/types/UserList";
 import { RegisterUser } from "@/types/RegisterUser";
 import { EventDate } from "@/types/date";
 import { City } from "@/types/City";
-
+import { Date2 } from "@/types/Date2";
+import { Time } from "@/types/Time";
+import { AnswerCount } from "@/types/AnswerCount";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // eventInfo: new Event(0, "", "", [], "", "", ""),
+    // eventInfo: new Event(0, "", "", [], "", "", ""), ←ここ修正する必要あり
     eventInfo: new Event(
       1,
-      "飲み会",
-      "池袋駅周辺で行います",
-      [
-        new EventDate(1, "2022/3/16", "19:00"),
-        new EventDate(2, "2022/3/20", "20:00"),
-        new EventDate(3, "2022/3/22", "18:00"),
-      ],
+      "定例MTG",
+      "1～1時間半くらいを予定しています",
+      new EventDate(
+        1,
+        [
+          new Date2(1, "2022/3/15"),
+          new Date2(2, "2022/3/20"),
+          new Date2(3, "2022/3/27"),
+        ],
+        [new Time(1, "9:00"), new Time(2, "13:00"), new Time(3, "22:00")]
+      ),
       "abc@gmail.com",
       "12345",
       "",
       [
-        new City(1, "ニューヨーク", [
-          new EventDate(4, "2022/3/15", "14:00"),
-          new EventDate(5, "2022/3/14", "15:00"),
-          new EventDate(6, "2022/3/13", "16:00"),
-        ]),
-        new City(2, "ロンドン", [
-          new EventDate(7, "2022/3/15", "14:00"),
-          new EventDate(8, "2022/3/14", "15:00"),
-          new EventDate(9, "2022/3/13", "16:00"),
-        ]),
+        new City(
+          1,
+          "ニューヨーク",
+          new EventDate(
+            1,
+            [
+              new Date2(4, "2022/3/14"),
+              new Date2(5, "2022/3/19"),
+              new Date2(6, "2022/3/20"),
+            ],
+            [new Time(3, "19:00"), new Time(4, "23:00"), new Time(5, "8:00")]
+          )
+        ),
+        new City(
+          1,
+          "ロンドン",
+          new EventDate(
+            2,
+            [
+              new Date2(4, "2022/3/15"),
+              new Date2(5, "2022/3/20"),
+              new Date2(6, "2022/3/27"),
+            ],
+            [new Time(3, "0:00"), new Time(4, "4:00"), new Time(5, "13:00")]
+          )
+        ),
       ]
     ),
 
     registerUser: new RegisterUser(0, "", [], [], ""),
 
-    userList: new UserList([], []),
+    userList: new UserList(
+      [],
+      [new AnswerCount(0, 0), new AnswerCount(0, 0), new AnswerCount(0, 0)]
+    ),
   },
   mutations: {
     /**
@@ -49,9 +74,6 @@ export default new Vuex.Store({
      */
     registerAnswer(state, payload) {
       state.userList.userList.push(payload.registerUser);
-    },
-    selectAnswer(state, payload) {
-      state.eventInfo.date.push(payload.date);
     },
 
     eventInfo(state, payload) {
@@ -69,8 +91,9 @@ export default new Vuex.Store({
      * @param payload カウント数
      */
     registerCount(state, payload) {
-      state.userList.answerCount.push(payload.answerCount);
-      console.log(state.userList.answerCount);
+      for (let i = 0; i < payload.answerCount.length; i++) {
+        state.userList.answerCount[i].answerCount = payload.answerCount[i];
+      }
     },
   },
   getters: {
@@ -80,7 +103,7 @@ export default new Vuex.Store({
      * @returns 候補日程
      */
     getDateList(state) {
-      return state.eventInfo.date;
+      return state.eventInfo.date.date;
     },
 
     /**
@@ -116,7 +139,6 @@ export default new Vuex.Store({
      * @returns 〇のカウント数
      */
     getAnswerCount(state) {
-      console.log(state.userList.answerCount);
       return state.userList.answerCount;
     },
     /**
@@ -130,6 +152,22 @@ export default new Vuex.Store({
           (user) => user.userId === userId
         )[0];
       };
+    },
+    /**
+     * 日本の候補時間を取得する.
+     * @param state - ステート
+     * @returns 時間の配列
+     */
+    getTimeTokyo(state) {
+      return state.eventInfo.date.dateTime;
+    },
+    /**
+     * 世界の都市の配列を取得する.
+     * @param state - ステート
+     * @returns 都市の配列
+     */
+    getCityArray(state) {
+      return state.eventInfo.cityArray;
     },
   },
   modules: {},

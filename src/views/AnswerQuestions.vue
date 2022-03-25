@@ -1,63 +1,138 @@
 <template>
   <div class="container">
-    <div>
-      <table align="center">
-        <tr>
-          <th></th>
-          <th>第1候補</th>
-          <th>第2候補</th>
-          <th>第3候補</th>
-        </tr>
-        <tr class="total">
-          <td>合計</td>
-          <td v-for="count of currentAnswerCount" v-bind:key="count.id">
-            {{ count }}
-          </td>
-        </tr>
-        <tr v-for="user of userList" v-bind:key="user.userId">
-          <td>
-            <router-link v-bind:to="'/userAnswer/' + user.userId">{{
-              user.name
-            }}</router-link>
-          </td>
-          <td v-for="answer of user.registerAnswer" v-bind:key="answer.id">
-            {{ answer }}
-          </td>
-        </tr>
-      </table>
+    <div class="item">
+      <div class="title">{{ eventInfo.eventName }}</div>
+      <div class="description">{{ eventInfo.description }}</div>
     </div>
-    <div v-show="commentShow">
-      <div>コメント</div>
-      <div v-for="user of userList" v-bind:key="user.userId">
-        <div>{{ user.name }}</div>
-        <div>{{ user.comment }}</div>
-        <hr />
+    <div class="select-datelist">
+      <div class="answer">
+        <div>第1候補</div>
+        <div>第2候補</div>
+        <div>第3候補</div>
+      </div>
+      <div class="country-list">
+        <div class="country">東京</div>
+        <div class="flex">
+          <div class="date">
+            <div v-for="date of eventInfo.date.date" v-bind:key="date.id">
+              {{ date.date }}
+            </div>
+          </div>
+          <div class="date">
+            <div v-for="time of eventInfo.date.dateTime" v-bind:key="time.id">
+              {{ time.dateTime }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="global-city">
+        <div
+          class="country-list"
+          v-for="city of eventInfo.cityArray"
+          v-bind:key="city.id"
+        >
+          <div class="country">{{ city.name }}</div>
+          <div class="flex">
+            <div class="date">
+              <div v-for="date of city.date.date" v-bind:key="date.id">
+                {{ date.date }}
+              </div>
+            </div>
+            <div class="date">
+              <div v-for="time of city.date.dateTime" v-bind:key="time.id">
+                {{ time.dateTime }}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div v-show="buttonShow">
-      <button type="button" v-on:click="onClick">続けて入力する</button>
+    <div class="message" v-show="showMessage">
+      <div>第3候補の日時がおすすめです</div>
+      <div>第1候補・第2候補は日時が適切ではない可能性があります</div>
     </div>
-    <div v-show="showForm">
+    <div>
       <div class="item">
         <div>名前</div>
         <div class="input"><input type="text" v-model="name" /></div>
         <div class="error">{{ errorName }}</div>
       </div>
-      <div class="item">
-        <div>日程候補</div>
-        <div
-          class="datelist"
-          v-for="date of eventInfo.date"
-          v-bind:key="date.dateId"
-        >
-          <div>{{ date.date }}</div>
-          <comp-select-box
-            v-bind:date-id="date.dateId"
-            v-on:select-item="onSelectItem"
-          ></comp-select-box>
+      <div>
+        <div class="country">該当する都市を選択してください</div>
+        <div class="item">
+          <button class="btn" type="button" v-on:click="onClickTokyo">
+            東京
+          </button>
+          <button class="btn" type="button" v-on:click="onClickCity">
+            海外都市
+          </button>
         </div>
-        <div class="error">{{ errorDate }}</div>
       </div>
+      <div class="item date-answer">
+        <div class="flex">
+          <div class="country-list" v-show="showTokyo">
+            <div class="country">日程候補 (東京)</div>
+            <div class="flex">
+              <div>
+                <div
+                  class="datelist"
+                  v-for="date of eventInfo.date.date"
+                  v-bind:key="date.id"
+                >
+                  <div>{{ date.date }}</div>
+                </div>
+              </div>
+              <div>
+                <div
+                  class="datelist date"
+                  v-for="time of eventInfo.date.dateTime"
+                  v-bind:key="time.id"
+                >
+                  <div>{{ time.dateTime }}</div>
+                  <comp-select-box
+                    v-bind:date-id="time.id"
+                    v-on:select-item="onSelectItem"
+                  ></comp-select-box>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex" v-show="showCity">
+            <div
+              class="country-list"
+              v-for="city of eventInfo.cityArray"
+              v-bind:key="city.id"
+            >
+              <div class="country">日程候補 ({{ city.name }})</div>
+              <div class="flex">
+                <div>
+                  <div
+                    class="datelist"
+                    v-for="date of city.date.date"
+                    v-bind:key="date.id"
+                  >
+                    <div>{{ date.date }}</div>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="datelist date"
+                    v-for="time of city.date.dateTime"
+                    v-bind:key="time.id"
+                  >
+                    <div>{{ time.dateTime }}</div>
+                    <comp-select-box
+                      v-bind:date-id="time.id"
+                      v-on:select-item="onSelectItem"
+                    ></comp-select-box>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="error">{{ errorDate }}</div>
       <div class="item">
         <div>コメント</div>
         <div class="input">
@@ -68,6 +143,7 @@
       <div>
         <button type="button" v-on:click="registerAnswer">登録する</button>
       </div>
+      <button type="button">イベントを編集する</button>
     </div>
   </div>
 </template>
@@ -78,6 +154,10 @@ import { Event } from "@/types/event";
 import { Component, Vue } from "vue-property-decorator";
 import CompSelectBox from "@/components/CompSelectBox.vue";
 import { EventDate } from "@/types/date";
+import { Date2 } from "@/types/Date2";
+import { AnswerCount } from "@/types/AnswerCount";
+import { Time } from "@/types/Time";
+import { City } from "@/types/City";
 @Component({
   components: {
     CompSelectBox,
@@ -89,7 +169,16 @@ export default class AnswerFinished extends Vue {
   // コメント
   private comment = "";
   // 現在表示されているイベント内容
-  private eventInfo = new Event(0, "", "", [], "", "", "",[]);
+  private eventInfo = new Event(
+    0,
+    "",
+    "",
+    new EventDate(0, [], []),
+    "",
+    "",
+    "",
+    []
+  );
   // 名前のエラー
   private errorName = "";
   // 候補日のエラー
@@ -101,39 +190,48 @@ export default class AnswerFinished extends Vue {
   // 回答の配列
   private answerArray = new Array<string>();
   // 日付の配列
-  private dateArray = new Array<EventDate>();
+  private dateArray = new Array<Date2>();
   // 現在回答済のユーザー
   private currentUserList = new Array<RegisterUser>();
   // 現在の〇のカウント数
   private currentAnswerCount = new Array<number>();
-  // コメントの配列
-  private commentArray = new Array<string>();
-  // コメントの表示・非表示
-  private commentShow = false;
   // 現在回答済のユーザー
   private userList = new Array<RegisterUser>();
-  // フォームの表示・非表示
-  private showForm = true;
-  // ボタンの表示・非表示
-  private buttonShow = false;
+  // AnswerCountオブジェクト
+  private answerCount = new Array<AnswerCount>();
+  // 日本時間の回答フォーム表示・非表示
+  private showTokyo = false;
+  // 海外時間の回答フォーム表示・非表示
+  private showCity = false;
+  // 忠告メッセージの表示・非表示
+  private showMessage = true;
+  // 日本の候補時間
+  private tokyoTimeArray = Array<Time>();
+  // 世界の都市の配列
+  private currentCityArray = Array<City>();
+  // 都市の時間の配列
+  private cityTimeArray = Array<Time>();
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
     this.userList = this.$store.getters.getUserArray;
     // 候補日程をgettersで取得する
     this.dateArray = this.$store.getters.getDateList;
+    // 現在の〇のカウント数を配列に入れる
+    this.answerCount = this.$store.getters.getAnswerCount;
+    for (let i = 0; i < this.answerCount.length; i++) {
+      this.currentAnswerCount.push(this.answerCount[i].answerCount);
+    }
     // 候補日程の数だけ回答の配列に0（選択してください）を入れる
-    for (let i = 1; i <= this.$store.getters.getDateList.length ?? 0; i++) {
+    for (let i = 1; i <= this.dateArray.length ?? 0; i++) {
       this.answerArray.push("0");
     }
-    // 候補日程の数だけ〇のカウント数の配列に0を入れる
-    for (let i = 1; i <= this.$store.getters.getDateList.length ?? 0; i++) {
-      this.currentAnswerCount.push(0);
-    }
+    this.tokyoTimeArray = this.$store.getters.getTimeTokyo;
+    this.currentCityArray = this.$store.getters.getCityArray;
   }
 
   /**
-   * 回答を配列に格納する.
+   * 日時の回答を配列に格納する.
    * @param answer - セレクトボックスのvalue
    */
   onSelectItem(answer: string): void {
@@ -141,6 +239,22 @@ export default class AnswerFinished extends Vue {
     this.answerArray.push(answer);
     this.answerArray.splice(0, 1);
     // this.answerArray.splice(i, 1, answer);
+  }
+
+  /**
+   * 東京の日時フォームを表示させる.
+   */
+  onClickTokyo(): void {
+    this.showTokyo = true;
+    this.showCity = false;
+  }
+
+  /**
+   * 海外都市の日時フォームを表示させる.
+   */
+  onClickCity(): void {
+    this.showTokyo = false;
+    this.showCity = true;
   }
 
   /**
@@ -196,24 +310,8 @@ export default class AnswerFinished extends Vue {
       ),
     });
 
-    // コメントを表示・非表示させる処理
-    for (let user of this.userList) {
-      if (user.comment !== "") {
-        this.commentArray.push(user.comment);
-      }
-    }
-    if (this.commentArray.length > 0) {
-      this.commentShow = true;
-    }
-    this.showForm = false;
-    this.buttonShow = true;
-  }
-
-  onClick(): void {
-    this.buttonShow = false;
-    this.showForm = true;
-    this.name = "";
-    this.comment = "";
+    // 回答完了ページに遷移する
+    this.$router.push("/answerFinished");
   }
 }
 </script>
@@ -246,5 +344,66 @@ table {
 
 .total {
   background-color: lavenderblush;
+}
+
+.date-answer {
+  display: flex;
+  justify-content: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.country {
+  margin-bottom: 10px;
+}
+
+.country-list {
+  margin-right: 30px;
+}
+
+.global-city {
+  display: flex;
+}
+
+.select-datelist {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.answer {
+  font-size: 14px;
+  margin-top: 31px;
+  margin-right: 10px;
+}
+
+.date {
+  margin-left: 5px;
+}
+
+.btn {
+  margin-left: 10px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.description {
+  font-size: 15px;
+  color: rgb(173, 173, 173);
+}
+
+.message {
+  border: solid 1px;
+  padding: 10px;
+  width: 500px;
+  font-size: 15px;
+  color: rgb(255, 199, 94);
+  margin: auto;
+  margin-bottom: 20px;
 }
 </style>

@@ -31,8 +31,8 @@ const routes: Array<RouteConfig> = [
     component: () => import("../views/UserAnswer.vue"),
   },
   {
-    path: "/addition",
-    component: () => import("../views/Addition.vue"),
+    path: "/answerFinished",
+    component: () => import("../views/AnswerFinished.vue"),
   },
 ];
 

@@ -9,8 +9,8 @@ export class City {
     private _id: number,
     // 都市の名前
     private _name: string,
-    // 候補日程
-    private _dateArray: Array<EventDate>
+    // 日時の配列
+    private _date: EventDate
   ) {}
 
   public get id(): number {
@@ -29,11 +29,11 @@ export class City {
     this._name = name;
   }
 
-  public get dateArray(): Array<EventDate> {
-    return this._dateArray;
+  public get date(): EventDate {
+    return this._date;
   }
 
-  public set dateArray(dateArray: Array<EventDate>) {
-    this._dateArray = dateArray;
+  public set date(date: EventDate) {
+    this._date = date;
   }
 }

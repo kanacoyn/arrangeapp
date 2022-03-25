@@ -1,3 +1,4 @@
+import { AnswerCount } from "./AnswerCount";
 import { RegisterUser } from "./RegisterUser";
 
 export class UserList {
@@ -5,7 +6,7 @@ export class UserList {
     // ユーザー情報
     private _userList: Array<RegisterUser>,
     // answerCountオブジェクト
-    private _answerCount: Array<number>
+    private _answerCount: Array<AnswerCount>
   ) {}
 
   public get userList(): Array<RegisterUser> {
@@ -16,11 +17,11 @@ export class UserList {
     this._userList = userList;
   }
 
-  public get answerCount(): Array<number> {
+  public get answerCount(): Array<AnswerCount> {
     return this._answerCount;
   }
 
-  public set answerCount(answerCount: Array<number>) {
+  public set answerCount(answerCount: Array<AnswerCount>) {
     this._answerCount = answerCount;
   }
 }

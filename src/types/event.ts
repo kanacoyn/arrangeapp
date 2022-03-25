@@ -12,14 +12,14 @@ export class Event {
     // イベントの説明
     private _description: string,
     // 日本の日時
-    private _date: Array<EventDate>,
+    private _date: EventDate,
     // メールアドレス
     private _email: string,
     // パスワード
     private _password: string,
     // 回答時の選択
     private _answerChoice: string,
-    // チェックされた都市
+    // 都市クラス
     private _cityArray: Array<City>
   ) {}
 
@@ -46,11 +46,11 @@ export class Event {
     this._description = description;
   }
 
-  public get date(): Array<EventDate> {
+  public get date(): EventDate {
     return this._date;
   }
 
-  public set date(date: Array<EventDate>) {
+  public set date(date: EventDate) {
     this._date = date;
   }
 
