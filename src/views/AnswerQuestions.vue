@@ -309,18 +309,21 @@ export default class AnswerFinished extends Vue {
       ),
     });
 
+    // 回答完了ページに遷移する
+    this.$router.push("/answerFinished");
+
     // コメントを表示・非表示させる処理
-    for (let user of this.userList) {
-      if (user.comment !== "") {
-        this.commentArray.push(user.comment);
-      }
-    }
-    if (this.commentArray.length > 0) {
-      this.commentShow = true;
-    }
-    this.showForm = false;
-    this.buttonShow = true;
-    this.countriesShow = false;
+    // for (let user of this.userList) {
+    //   if (user.comment !== "") {
+    //     this.commentArray.push(user.comment);
+    //   }
+    // }
+    // if (this.commentArray.length > 0) {
+    //   this.commentShow = true;
+    // }
+    // this.showForm = false;
+    // this.buttonShow = true;
+    // this.countriesShow = false;
   }
 
   onClick(): void {

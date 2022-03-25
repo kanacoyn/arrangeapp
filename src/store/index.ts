@@ -7,6 +7,7 @@ import { EventDate } from "@/types/date";
 import { City } from "@/types/City";
 import { Date2 } from "@/types/Date2";
 import { Time } from "@/types/Time";
+import { AnswerCount } from "@/types/AnswerCount";
 
 Vue.use(Vuex);
 
@@ -61,7 +62,7 @@ export default new Vuex.Store({
 
     registerUser: new RegisterUser(0, "", [], [], ""),
 
-    userList: new UserList([], []),
+    userList: new UserList([], new AnswerCount(0, [])),
   },
   mutations: {
     /**
@@ -88,8 +89,7 @@ export default new Vuex.Store({
      * @param payload カウント数
      */
     registerCount(state, payload) {
-      state.userList.answerCount.push(payload.answerCount);
-      console.log(state.userList.answerCount);
+      state.userList.answerCount.answerCount.push(payload.answerCount);
     },
   },
   getters: {
@@ -135,7 +135,6 @@ export default new Vuex.Store({
      * @returns 〇のカウント数
      */
     getAnswerCount(state) {
-      console.log(state.userList.answerCount);
       return state.userList.answerCount;
     },
     /**

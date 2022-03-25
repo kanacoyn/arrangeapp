@@ -9,7 +9,7 @@
       </tr>
       <tr class="total">
         <td>合計</td>
-        <td v-for="count of currentAnswerCount" v-bind:key="count.id">
+        <td v-for="(count,index) of currentAnswerCount" v-bind:key="index">
           {{ count }}
         </td>
       </tr>
@@ -28,9 +28,22 @@
 </template>
 
 <script lang="ts">
+import { RegisterUser } from "@/types/RegisterUser";
 import { Component, Vue } from "vue-property-decorator";
 @Component
-export default class XXXComponent extends Vue {}
+export default class XXXComponent extends Vue {
+  // 現在の〇のカウント数
+  private currentAnswerCount = new Array<number>();
+  // 現在回答済のユーザー
+  private userList = new Array<RegisterUser>();
+
+  created(): void {
+    // 回答済みのユーザー情報を取得する
+    this.userList = this.$store.getters.getUserArray;
+    // 〇のカウント数を取得する
+    this.currentAnswerCount = this.$store.getters.getAnswerCount;
+  }
+}
 </script>
 
 <style scoped>
