@@ -94,7 +94,6 @@ export default new Vuex.Store({
       for (let i = 0; i < payload.answerCount.length; i++) {
         state.userList.answerCount[i].answerCount = payload.answerCount[i];
       }
-      console.log(state.userList.answerCount);
     },
   },
   getters: {

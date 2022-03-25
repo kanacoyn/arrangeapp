@@ -52,11 +52,12 @@
       <div>
         <div>該当する都市を選択してください</div>
         <div class="item">
-          <button type="button" v-on:click="onClickTokyo">東京</button>
-          <button type="button" v-on:click="onClickCity">海外都市</button>
-          <!-- <button v-for="city of eventInfo.cityArray" v-bind:key="city.id">
-            {{ city.name }}
-          </button> -->
+          <button class="btn" type="button" v-on:click="onClickTokyo">
+            東京
+          </button>
+          <button class="btn" type="button" v-on:click="onClickCity">
+            海外都市
+          </button>
         </div>
       </div>
       <div class="item date-answer">
@@ -219,11 +220,17 @@ export default class AnswerFinished extends Vue {
     // this.answerArray.splice(i, 1, answer);
   }
 
+  /**
+   * 東京の日時フォームを表示させる.
+   */
   onClickTokyo(): void {
     this.showTokyo = true;
     this.showCity = false;
   }
 
+  /**
+   * 海外都市の日時フォームを表示させる.
+   */
   onClickCity(): void {
     this.showTokyo = false;
     this.showCity = true;
@@ -353,5 +360,9 @@ table {
 
 .date {
   margin-left: 5px;
+}
+
+.btn {
+  margin-left: 10px;
 }
 </style>
