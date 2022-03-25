@@ -26,8 +26,6 @@ export default class XXXComponent extends Vue {
   // 日程回答
   private selectAnswer = "0";
 
-  private initFlag?:boolean;
-
   @Emit()
   selectItem(answer: string): void {
     console.log(answer);

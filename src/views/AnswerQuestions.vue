@@ -49,16 +49,19 @@
         <div class="input"><input type="text" v-model="name" /></div>
         <div class="error">{{ errorName }}</div>
       </div>
-      <!-- <div>
+      <div>
         <div>該当する都市を選択してください</div>
-        <button>東京</button>
-        <button v-for="city of eventInfo.cityArray" v-bind:key="city.id">
-          {{ city.name }}
-        </button>
-      </div> -->
+        <div class="item">
+          <button type="button" v-on:click="onClickTokyo">東京</button>
+          <button type="button" v-on:click="onClickCity">海外都市</button>
+          <!-- <button v-for="city of eventInfo.cityArray" v-bind:key="city.id">
+            {{ city.name }}
+          </button> -->
+        </div>
+      </div>
       <div class="item date-answer">
         <div class="flex">
-          <div class="country-list">
+          <div class="country-list" v-show="showTokyo">
             <div class="country">日程候補 (東京)</div>
             <div class="flex">
               <div>
@@ -85,7 +88,7 @@
               </div>
             </div>
           </div>
-          <div class="flex">
+          <div class="flex" v-show="showCity">
             <div
               class="country-list"
               v-for="city of eventInfo.cityArray"
@@ -116,12 +119,11 @@
                   </div>
                 </div>
               </div>
-              <div class="error">{{ errorDate }}</div>
             </div>
           </div>
-          <div class="error">{{ errorDate }}</div>
         </div>
       </div>
+      <div class="error">{{ errorDate }}</div>
       <div class="item">
         <div>コメント</div>
         <div class="input">
@@ -183,10 +185,12 @@ export default class AnswerFinished extends Vue {
   private currentAnswerCount = new Array<number>();
   // 現在回答済のユーザー
   private userList = new Array<RegisterUser>();
-  // 都市の注釈表示・非表示
-  private countriesShow = true;
   // AnswerCountオブジェクト
   private answerCount = new Array<AnswerCount>();
+  // 日本時間の回答フォーム表示・非表示
+  private showTokyo = false;
+  // 海外時間の回答フォーム表示・非表示
+  private showCity = false;
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
@@ -205,7 +209,7 @@ export default class AnswerFinished extends Vue {
   }
 
   /**
-   * 回答を配列に格納する.
+   * 日時の回答を配列に格納する.
    * @param answer - セレクトボックスのvalue
    */
   onSelectItem(answer: string): void {
@@ -213,6 +217,16 @@ export default class AnswerFinished extends Vue {
     this.answerArray.push(answer);
     this.answerArray.splice(0, 1);
     // this.answerArray.splice(i, 1, answer);
+  }
+
+  onClickTokyo(): void {
+    this.showTokyo = true;
+    this.showCity = false;
+  }
+
+  onClickCity(): void {
+    this.showTokyo = false;
+    this.showCity = true;
   }
 
   /**
@@ -270,12 +284,6 @@ export default class AnswerFinished extends Vue {
 
     // 回答完了ページに遷移する
     this.$router.push("/answerFinished");
-  }
-
-  onClick(): void {
-    this.countriesShow = true;
-    this.name = "";
-    this.comment = "";
   }
 }
 </script>

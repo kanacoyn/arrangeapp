@@ -32,7 +32,7 @@
         <hr />
       </div>
     </div>
-    <button type="button" v-on:click="onClick">続けて入力する</button>
+    <button type="button" v-on:click="onClick">回答フォームに戻る</button>
   </div>
 </template>
 
@@ -67,6 +67,10 @@ export default class XXXComponent extends Vue {
     if (this.commentArray.length > 0) {
       this.commentShow = true;
     }
+  }
+
+  onClick(): void {
+    this.$router.push("/answerQuestions");
   }
 }
 </script>
