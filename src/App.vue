@@ -6,6 +6,7 @@
       <router-link to="/eventConfirm">イベントを作成しますか</router-link> |
 
       <router-link to="/answerQuestions">回答者遷移ページ</router-link> |
+      <router-link to="/answerFinished">回答完了</router-link> |
       <router-link to="/addition">注釈</router-link> |
       <router-link to="/eventPractice">時差練習</router-link> |
     </div>
