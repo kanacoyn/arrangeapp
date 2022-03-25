@@ -248,9 +248,9 @@ export default class XXXComponent extends Vue {
     console.log("mutationに送る");
 
     this.arrayDateOption.push(
-      new EventDate(1, this.selectedDateOption1, "", ""),
-      new EventDate(1, this.selectedDateOption2, "", ""),
-      new EventDate(1, this.selectedDateOption3, "", "")
+      new EventDate(1, this.selectedDateOption1, ""),
+      new EventDate(1, this.selectedDateOption2, ""),
+      new EventDate(1, this.selectedDateOption3, "")
     );
 
     this.$store.commit("eventInfo", {
@@ -261,7 +261,8 @@ export default class XXXComponent extends Vue {
         this.arrayDateOption,
         this.email,
         this.password,
-        this.answerChoice
+        this.answerChoice,
+        []
       ),
     });
     console.log("mutation成功");

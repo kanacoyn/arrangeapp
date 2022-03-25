@@ -331,6 +331,7 @@ export default class XXXComponent extends Vue {
   private selectedDateOption3 = "";
   private eventIdIndex = 1;
   private timeZone = [];
+  private city = [];
 
 
   private arrayDateOption = new Array<EventDate>();
@@ -352,7 +353,7 @@ export default class XXXComponent extends Vue {
         this.arrayDateOption,
         this.email,
         this.password,
-        this.answerChoice
+        this.answerChoice,this.city
       ),
     });
     console.log("mutation成功");
