@@ -1,9 +1,10 @@
 export class AnswerCount {
   constructor(
     // id
-    private _id: number, 
+    private _id: number,
     // 〇のカウント数
-    private _answerCount: Array<number>) {}
+    private _answerCount: number
+  ) {}
 
   public get id(): number {
     return this._id;
@@ -13,11 +14,11 @@ export class AnswerCount {
     this._id = id;
   }
 
-  public get answerCount(): Array<number> {
+  public get answerCount(): number {
     return this._answerCount;
   }
 
-  public set answerCount(answerCount: Array<number>) {
+  public set answerCount(answerCount: number) {
     this._answerCount = answerCount;
   }
 }

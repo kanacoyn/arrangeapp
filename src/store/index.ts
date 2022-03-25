@@ -135,7 +135,7 @@ export default new Vuex.Store({
      * @returns 〇のカウント数
      */
     getAnswerCount(state) {
-      return state.userList.answerCount;
+      return state.userList.answerCount.answerCount;
     },
     /**
      * idから詳細ページを取得する
