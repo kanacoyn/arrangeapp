@@ -26,7 +26,7 @@
     </table>
     <div v-show="commentShow">
       <div>コメント</div>
-      <div v-for="user of userList" v-bind:key="user.userId">
+      <div v-for="user of commentUserArray" v-bind:key="user.userId">
         <div>{{ user.name }}</div>
         <div>{{ user.comment }}</div>
         <hr />
@@ -50,6 +50,9 @@ export default class XXXComponent extends Vue {
   private commentArray = new Array<string>();
   // コメントの表示・非表示
   private commentShow = false;
+  private userCommentShow = false;
+  // コメント回答者の配列
+  private commentUserArray = new Array<RegisterUser>();
 
   created(): void {
     // 回答済みのユーザー情報を取得する
@@ -61,10 +64,10 @@ export default class XXXComponent extends Vue {
     // コメントを表示・非表示させる処理
     for (let user of this.userList) {
       if (user.comment !== "") {
-        this.commentArray.push(user.comment);
+        this.commentUserArray.push(user);
       }
     }
-    if (this.commentArray.length > 0) {
+    if (this.commentUserArray.length > 0) {
       this.commentShow = true;
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="select-datelist" v-show="countriesShow">
+    <div class="select-datelist">
       <div class="answer">
         <div>第1候補</div>
         <div>第2候補</div>
