@@ -11,37 +11,45 @@
 
             第一候補：<input
               type="date"
+              id="dateFirstChoice"
+              name="スケジュール"
+              v-model="selectedDateOption1"
+            /> 
+            <input
+              type="time"
               step="1800"
               id="dateFirstChoice"
               name="スケジュール"
-          
-              v-model="selectedDateOption1"
-            /><br /><br />
-            <input
-              type="time"
-              id="dateFirstChoice"
-              name="スケジュール"
-
               v-model="selectedTimeOption1"
             />
             <br /><br />
 
             第二候補：<input
               type="date"
-              step="1800"
+             
               id="dateSecondChoice"
               name="スケジュール"
             
               v-model="selectedDateOption2"
+            />  <input
+              type="time"
+              step="1800"
+              id="dateSecondChoice"
+              name="スケジュール"
+              v-model="selectedTimeOption2"
             /><br /><br />
 
             第三候補：<input
               type="date"
+              id="dateThirdChoice"
+              name="スケジュール"
+              v-model="selectedDateOption3"
+            />  <input
+              type="time"
               step="1800"
               id="dateThirdChoice"
               name="スケジュール"
-        
-              v-model="selectedDateOption3"
+              v-model="selectedTimeOption3"
             />
             <br />
             <br />
@@ -53,7 +61,7 @@
                   id="shanghai"
                   value="shanghai"
                   v-model="timeZone"
-                  v-on:change="selectCity"
+               v-on:change="selectCity"
                 />
                 <label for="shanghai">上海(Shang-Hai / China)</label><br />
                 <input
@@ -123,23 +131,26 @@
                     <tr>
                       <th id="title">候補日程</th>
                       <td>
-                        ※1行に1つずつ候補日程を入力します。候補日程の書き方は自由です。<br />
+                        ※1行に1つずつ候補日程を入力します。<br />
                         例 <br />
-                        7/27(金) 20:00～<br />
-                        7/28(土) 19:00～<br />
-                        (←左に表示されているカレンダーから日程を選択することもできます。)<br />
+                        2022-03-24 / 17:00<br />
+                       
+                        左に表示されているカレンダーから日程を選択してください<br />
 
-                        第一候補:<textarea
+                        第一候補:
+                        {{this.selectedDateOption1}} / 
+                         {{this.selectedTimeOption1}}
+                        <!-- <textarea
                           name="schedule"
                           id="schedule"
                           rows="2"
                           v-model="selectedDateOption1"
                           multiple
-                        >
-                        </textarea
-                        ><br />
-
-                        第二候補:<textarea
+                        ></textarea> -->
+                        <br />
+第二候補:{{this.selectedDateOption2}} / 
+                         {{this.selectedTimeOption2}}
+                        <!-- <textarea
                           name="schedule"
                           id="schedule"
                           rows="2"
@@ -147,8 +158,12 @@
                           multiple
                         >
                         </textarea
-                        ><br />
-                        第三候補:<textarea
+                        ><br /> -->
+<br />
+                        第三候補:{{this.selectedDateOption3}} / 
+                         {{this.selectedTimeOption3}}
+                        
+                        <!-- <textarea
                           name="schedule"
                           id="schedule"
                           rows="2"
@@ -156,7 +171,7 @@
                           multiple
                         >
                         </textarea
-                        ><br />
+                        ><br /> -->
 
                         <div class="error">{{ dateError }}</div>
                       </td>
@@ -265,16 +280,22 @@
             {{timeZone}}
              <br />
 
-            第一候補:<textarea
+            第一候補:
+            {{this.selectedDateOption1}} / 
+                         {{this.selectedTimeOption1}}
+            <!-- <textarea
               name="schedule"
               id="schedule"
               rows="2"
               v-model="selectedDateOption1"
+              selectedTimeOption1
               multiple
             >
-            </textarea
-            ><br />
-            第二候補:<textarea
+            </textarea> -->
+            <br />
+            第二候補:{{this.selectedDateOption2}} / 
+                         {{this.selectedTimeOption2}}
+            <!-- <textarea
               name="schedule"
               id="schedule"
               rows="2"
@@ -282,8 +303,12 @@
               multiple
             >
             </textarea
-            ><br />
-            第三候補:<textarea
+            > -->
+            <br />
+            第三候補:
+            {{this.selectedDateOption3}} / 
+                         {{this.selectedTimeOption3}}
+            <!-- <textarea
               name="schedule"
               id="schedule"
               rows="2"
@@ -291,7 +316,7 @@
               multiple
             >
             </textarea
-            ><br />
+            > -->
           </td>
         </tr>
       </tbody>
@@ -326,11 +351,14 @@ export default class XXXComponent extends Vue {
   private emailError = "";
 
   private selectedDateOption = "";
-  private selectedDateOption1 = "";
-  private selectedDateOption2 = "";
-  private selectedDateOption3 = "";
+  private selectedDateOption1 = [];
+  private selectedDateOption2 = [];
+  private selectedDateOption3 = [];
+  private selectedTimeOption1 ="";
+  private selectedTimeOption2 ="";
+  private selectedTimeOption3 ="";
   private eventIdIndex = 1;
-  private timeZone = [];
+  private timeZone = "";
   private city = [];
 
 
@@ -340,9 +368,9 @@ export default class XXXComponent extends Vue {
     console.log("mutationに送る");
 
     this.arrayDateOption.push(
-      new EventDate(1, this.selectedDateOption1, "", ""),
-      new EventDate(1, this.selectedDateOption2, "", ""),
-      new EventDate(1, this.selectedDateOption3, "", "")
+      new EventDate(1, this.selectedDateOption1, []),
+      new EventDate(1, this.selectedDateOption2, []),
+      new EventDate(1, this.selectedDateOption3, [])
     );
 
     this.$store.commit("eventInfo", {
@@ -393,12 +421,14 @@ export default class XXXComponent extends Vue {
   }
 
   resetCity(): void {
-    this.timeZone = [];
+    this.timeZone = "";
   }
 
 selectCity():void{
 console.log("都市名をv-on:changeで時差に表示させる");
- this.timeZone = [];
+ if(this.timeZone==="shanghai"){
+
+ }
 }
 
 }
@@ -418,3 +448,4 @@ console.log("都市名をv-on:changeで時差に表示させる");
   width: 150px;
 }
 </style>
+
