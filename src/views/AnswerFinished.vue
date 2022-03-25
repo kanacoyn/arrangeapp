@@ -25,14 +25,16 @@
       </tr>
     </table>
     <div v-show="commentShow">
-      <div>コメント</div>
+      <div class="title">コメント</div>
       <div v-for="user of commentUserArray" v-bind:key="user.userId">
-        <div>{{ user.name }}</div>
-        <div>{{ user.comment }}</div>
+        <div>
+          {{ user.name }}: <span>{{ user.comment }}</span>
+        </div>
         <hr />
       </div>
     </div>
     <button type="button" v-on:click="onClick">回答フォームに戻る</button>
+    <button type="button">ZoomのURLを発行する</button>
   </div>
 </template>
 
@@ -92,5 +94,9 @@ table {
 
 .total {
   background-color: lavenderblush;
+}
+
+.title {
+  margin-bottom: 10px;
 }
 </style>

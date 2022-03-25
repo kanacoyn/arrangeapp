@@ -1,5 +1,9 @@
 <template>
   <div class="container">
+    <div class="item">
+      <div class="title">{{ eventInfo.eventName }}</div>
+      <div class="description">{{ eventInfo.description }}</div>
+    </div>
     <div class="select-datelist">
       <div class="answer">
         <div>第1候補</div>
@@ -50,7 +54,7 @@
         <div class="error">{{ errorName }}</div>
       </div>
       <div>
-        <div>該当する都市を選択してください</div>
+        <div class="country">該当する都市を選択してください</div>
         <div class="item">
           <button class="btn" type="button" v-on:click="onClickTokyo">
             東京
@@ -135,6 +139,7 @@
       <div>
         <button type="button" v-on:click="registerAnswer">登録する</button>
       </div>
+      <button type="button">イベントを編集する</button>
     </div>
   </div>
 </template>
@@ -364,5 +369,15 @@ table {
 
 .btn {
   margin-left: 10px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.description {
+  font-size: 15px;
+  color: rgb(173, 173, 173);
 }
 </style>
