@@ -86,6 +86,13 @@
         <div class="input"><input type="text" v-model="name" /></div>
         <div class="error">{{ errorName }}</div>
       </div>
+      <!-- <div>
+        <div>該当する都市を選択してください</div>
+        <button>東京</button>
+        <button v-for="city of eventInfo.cityArray" v-bind:key="city.id">
+          {{ city.name }}
+        </button>
+      </div> -->
       <div class="item date-answer">
         <div class="flex">
           <div class="country-list">
