@@ -1,39 +1,5 @@
 <template>
   <div class="container">
-    <div>
-      <table align="center">
-        <tr>
-          <th></th>
-          <th>第1候補</th>
-          <th>第2候補</th>
-          <th>第3候補</th>
-        </tr>
-        <tr class="total">
-          <td>合計</td>
-          <td v-for="count of currentAnswerCount" v-bind:key="count.id">
-            {{ count }}
-          </td>
-        </tr>
-        <tr v-for="user of userList" v-bind:key="user.userId">
-          <td>
-            <router-link v-bind:to="'/userAnswer/' + user.userId">{{
-              user.name
-            }}</router-link>
-          </td>
-          <td v-for="answer of user.registerAnswer" v-bind:key="answer.id">
-            {{ answer }}
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div v-show="commentShow">
-      <div>コメント</div>
-      <div v-for="user of userList" v-bind:key="user.userId">
-        <div>{{ user.name }}</div>
-        <div>{{ user.comment }}</div>
-        <hr />
-      </div>
-    </div>
     <div class="select-datelist" v-show="countriesShow">
       <div class="answer">
         <div>第1候補</div>
@@ -77,10 +43,7 @@
         </div>
       </div>
     </div>
-    <div v-show="buttonShow">
-      <button type="button" v-on:click="onClick">続けて入力する</button>
-    </div>
-    <div v-show="showForm">
+    <div>
       <div class="item">
         <div>名前</div>
         <div class="input"><input type="text" v-model="name" /></div>
@@ -180,6 +143,7 @@ import { Component, Vue } from "vue-property-decorator";
 import CompSelectBox from "@/components/CompSelectBox.vue";
 import { EventDate } from "@/types/date";
 import { Date2 } from "@/types/Date2";
+import { AnswerCount } from "@/types/AnswerCount";
 @Component({
   components: {
     CompSelectBox,
@@ -217,31 +181,26 @@ export default class AnswerFinished extends Vue {
   private currentUserList = new Array<RegisterUser>();
   // 現在の〇のカウント数
   private currentAnswerCount = new Array<number>();
-  // コメントの配列
-  private commentArray = new Array<string>();
-  // コメントの表示・非表示
-  private commentShow = false;
   // 現在回答済のユーザー
   private userList = new Array<RegisterUser>();
-  // フォームの表示・非表示
-  private showForm = true;
-  // ボタンの表示・非表示
-  private buttonShow = false;
   // 都市の注釈表示・非表示
   private countriesShow = true;
+  // AnswerCountオブジェクト
+  private answerCount = new Array<AnswerCount>();
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
     this.userList = this.$store.getters.getUserArray;
     // 候補日程をgettersで取得する
     this.dateArray = this.$store.getters.getDateList;
-    // 候補日程の数だけ回答の配列に0（選択してください）を入れる
-    for (let i = 1; i <= this.$store.getters.getDateList.length ?? 0; i++) {
-      this.answerArray.push("0");
+    // 現在の〇のカウント数を配列に入れる
+    this.answerCount = this.$store.getters.getAnswerCount;
+    for (let i = 0; i < this.answerCount.length; i++) {
+      this.currentAnswerCount.push(this.answerCount[i].answerCount);
     }
-    // 候補日程の数だけ〇のカウント数の配列に0を入れる
-    for (let i = 1; i <= this.$store.getters.getDateList.length ?? 0; i++) {
-      this.currentAnswerCount.push(0);
+    // 候補日程の数だけ回答の配列に0（選択してください）を入れる
+    for (let i = 1; i <= this.dateArray.length ?? 0; i++) {
+      this.answerArray.push("0");
     }
   }
 
@@ -311,24 +270,9 @@ export default class AnswerFinished extends Vue {
 
     // 回答完了ページに遷移する
     this.$router.push("/answerFinished");
-
-    // コメントを表示・非表示させる処理
-    // for (let user of this.userList) {
-    //   if (user.comment !== "") {
-    //     this.commentArray.push(user.comment);
-    //   }
-    // }
-    // if (this.commentArray.length > 0) {
-    //   this.commentShow = true;
-    // }
-    // this.showForm = false;
-    // this.buttonShow = true;
-    // this.countriesShow = false;
   }
 
   onClick(): void {
-    this.buttonShow = false;
-    this.showForm = true;
     this.countriesShow = true;
     this.name = "";
     this.comment = "";

@@ -216,7 +216,6 @@ import { Component, Vue } from "vue-property-decorator";
 import { Event } from "@/types/event";
 import { Date2 } from "@/types/Date2";
 import { Time } from "@/types/Time";
-import { City } from "@/types/City";
 
 @Component
 export default class XXXComponent extends Vue {

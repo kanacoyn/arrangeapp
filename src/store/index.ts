@@ -8,7 +8,6 @@ import { City } from "@/types/City";
 import { Date2 } from "@/types/Date2";
 import { Time } from "@/types/Time";
 import { AnswerCount } from "@/types/AnswerCount";
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -62,7 +61,10 @@ export default new Vuex.Store({
 
     registerUser: new RegisterUser(0, "", [], [], ""),
 
-    userList: new UserList([], new AnswerCount(0, [])),
+    userList: new UserList(
+      [],
+      [new AnswerCount(0, 0), new AnswerCount(0, 0), new AnswerCount(0, 0)]
+    ),
   },
   mutations: {
     /**
@@ -89,7 +91,10 @@ export default new Vuex.Store({
      * @param payload カウント数
      */
     registerCount(state, payload) {
-      state.userList.answerCount.answerCount.push(payload.answerCount);
+      for (let i = 0; i < payload.answerCount.length; i++) {
+        state.userList.answerCount[i].answerCount = payload.answerCount[i];
+      }
+      console.log(state.userList.answerCount);
     },
   },
   getters: {
@@ -135,7 +140,7 @@ export default new Vuex.Store({
      * @returns 〇のカウント数
      */
     getAnswerCount(state) {
-      return state.userList.answerCount.answerCount;
+      return state.userList.answerCount;
     },
     /**
      * idから詳細ページを取得する
