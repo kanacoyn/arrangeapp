@@ -47,6 +47,10 @@
         </div>
       </div>
     </div>
+    <div class="message" v-show="showMessage">
+      <div>第3候補の日時がおすすめです</div>
+      <div>第1候補・第2候補は日時が適切ではない可能性があります</div>
+    </div>
     <div>
       <div class="item">
         <div>名前</div>
@@ -152,6 +156,8 @@ import CompSelectBox from "@/components/CompSelectBox.vue";
 import { EventDate } from "@/types/date";
 import { Date2 } from "@/types/Date2";
 import { AnswerCount } from "@/types/AnswerCount";
+import { Time } from "@/types/Time";
+import { City } from "@/types/City";
 @Component({
   components: {
     CompSelectBox,
@@ -197,6 +203,14 @@ export default class AnswerFinished extends Vue {
   private showTokyo = false;
   // 海外時間の回答フォーム表示・非表示
   private showCity = false;
+  // 忠告メッセージの表示・非表示
+  private showMessage = true;
+  // 日本の候補時間
+  private tokyoTimeArray = Array<Time>();
+  // 世界の都市の配列
+  private currentCityArray = Array<City>();
+  // 都市の時間の配列
+  private cityTimeArray = Array<Time>();
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
@@ -212,6 +226,8 @@ export default class AnswerFinished extends Vue {
     for (let i = 1; i <= this.dateArray.length ?? 0; i++) {
       this.answerArray.push("0");
     }
+    this.tokyoTimeArray = this.$store.getters.getTimeTokyo;
+    this.currentCityArray = this.$store.getters.getCityArray;
   }
 
   /**
@@ -354,7 +370,7 @@ table {
 .select-datelist {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .answer {
@@ -379,5 +395,15 @@ table {
 .description {
   font-size: 15px;
   color: rgb(173, 173, 173);
+}
+
+.message {
+  border: solid 1px;
+  padding: 10px;
+  width: 500px;
+  font-size: 15px;
+  color: rgb(255, 199, 94);
+  margin: auto;
+  margin-bottom: 20px;
 }
 </style>
