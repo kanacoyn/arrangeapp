@@ -34,10 +34,6 @@ const routes: Array<RouteConfig> = [
     path: "/answerFinished",
     component: () => import("../views/AnswerFinished.vue"),
   },
-  {
-    path: "/timezone",
-    component: () => import("../views/Timezone.vue"),
-  },
 ];
 
 const router = new VueRouter({
