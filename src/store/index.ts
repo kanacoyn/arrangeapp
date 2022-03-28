@@ -8,6 +8,7 @@ import { City } from "@/types/City";
 import { Date2 } from "@/types/Date2";
 import { Time } from "@/types/Time";
 import { AnswerCount } from "@/types/AnswerCount";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -66,6 +67,8 @@ export default new Vuex.Store({
       [new AnswerCount(0, 0), new AnswerCount(0, 0), new AnswerCount(0, 0)]
     ),
   },
+  actions: {},
+
   mutations: {
     /**
      * 回答者情報をステートに格納する.
@@ -78,11 +81,6 @@ export default new Vuex.Store({
 
     eventInfo(state, payload) {
       state.eventInfo = payload.event;
-      // const selectedOptionDate = new EventDate(
-      //   payload.dateId + 1,
-      //   payload.date
-      // );
-      // state.eventInfo.push(payload.eventInfo);
     },
     // },
     /**
