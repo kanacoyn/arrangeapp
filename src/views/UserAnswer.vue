@@ -75,7 +75,6 @@ export default class XXXComponent extends Vue {
   private answerArray = new Array<string>();
   // 日付の配列
   private dateArray = new Array<Date2>();
-  // 現在表示されているイベント
   // 現在回答済のユーザー
   private currentUserList = new Array<RegisterUser>();
   // 現在の〇のカウント数

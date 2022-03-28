@@ -244,7 +244,7 @@ export default class XXXComponent extends Vue {
   private selectedDateOption3 = "";
   private eventIdIndex = 1;
 
-// 249～278行目はクラスを修正した関係で一部書き換えています（エラーが出ないようにダミーを入れているところもあります）
+  // 249～278行目はクラスを修正した関係で一部書き換えています（エラーが出ないようにダミーを入れているところもあります）
   private arrayDateOption = new Array<Date2>();
   private arrayTimeOption = new Array<Time>();
 
@@ -265,10 +265,7 @@ export default class XXXComponent extends Vue {
         this.eventIdIndex,
         this.eventName,
         this.description,
-        new EventDate(
-          -1, this.arrayDateOption,this.arrayTimeOption
-        )
-       ,
+        new EventDate(-1, this.arrayDateOption, this.arrayTimeOption),
         this.email,
         this.password,
         this.answerChoice,
