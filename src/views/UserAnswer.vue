@@ -41,6 +41,7 @@ import { Event } from "@/types/event";
 import { Component, Vue } from "vue-property-decorator";
 import CompSelectBox from "@/components/CompSelectBox.vue";
 import { EventDate } from "@/types/date";
+import { Date2 } from "@/types/Date2";
 @Component({
   components: {
     CompSelectBox,
@@ -73,18 +74,7 @@ export default class XXXComponent extends Vue {
   // 回答の配列
   private answerArray = new Array<string>();
   // 日付の配列
-  private dateArray = new Array<EventDate>();
-  // 現在表示されているイベント
-  private currentEvent = new Event(
-    0,
-    "",
-    "",
-    new EventDate(0, [], []),
-    "",
-    "",
-    "",
-    []
-  );
+  private dateArray = new Array<Date2>();
   // 現在回答済のユーザー
   private currentUserList = new Array<RegisterUser>();
   // 現在の〇のカウント数
@@ -156,7 +146,6 @@ export default class XXXComponent extends Vue {
     let userList = this.$store.getters.getUserList;
     let newId = 0;
     if (userList.length > 0) {
-      console.log(userList);
       newId = Number(userList[0].userId) + 1;
     }
 
