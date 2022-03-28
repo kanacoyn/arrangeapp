@@ -337,11 +337,11 @@ export default class XXXComponent extends Vue {
   eventInfo(): void {
     console.log("mutationに送る");
 
-    this.arrayDateOption.push(
-      new EventDate(1, this.selectedDateOption1, []),
-      new EventDate(1, this.selectedDateOption2, []),
-      new EventDate(1, this.selectedDateOption3, [])
-    );
+    // this.arrayDateOption.push(
+    //   new EventDate(1, this.selectedDateOption1, []),
+    //   new EventDate(1, this.selectedDateOption2, []),
+    //   new EventDate(1, this.selectedDateOption3, [])
+    // );
 
     this.$store.commit("eventInfo", {
       event: new Event(
