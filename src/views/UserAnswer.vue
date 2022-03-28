@@ -52,7 +52,16 @@ export default class XXXComponent extends Vue {
   // コメント
   private comment = "";
   // 現在表示されているイベント内容
-  private eventInfo = new Event(0, "", "", [], "", "", "");
+  private eventInfo = new Event(
+    0,
+    "",
+    "",
+    new EventDate(0, [], []),
+    "",
+    "",
+    "",
+    []
+  );
   // 名前のエラー
   private errorName = "";
   // 候補日のエラー
@@ -66,7 +75,16 @@ export default class XXXComponent extends Vue {
   // 日付の配列
   private dateArray = new Array<EventDate>();
   // 現在表示されているイベント
-  private currentEvent = new Event(0, "", "", [], "", "", "");
+  private currentEvent = new Event(
+    0,
+    "",
+    "",
+    new EventDate(0, [], []),
+    "",
+    "",
+    "",
+    []
+  );
   // 現在回答済のユーザー
   private currentUserList = new Array<RegisterUser>();
   // 現在の〇のカウント数
