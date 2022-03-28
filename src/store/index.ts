@@ -8,10 +8,16 @@ import { City } from "@/types/City";
 import { Date2 } from "@/types/Date2";
 import { Time } from "@/types/Time";
 import { AnswerCount } from "@/types/AnswerCount";
+import axios from "axios";
+import { TimezoneParams } from "./node_modules/ip-geolocation-api-sdk-typescript/TimezoneParams";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    // APIから戻ってくる時差
+    convertedTime: "",
+
     // eventInfo: new Event(0, "", "", [], "", "", ""), ←ここ修正する必要あり
     eventInfo: new Event(
       1,
@@ -66,7 +72,28 @@ export default new Vuex.Store({
       [new AnswerCount(0, 0), new AnswerCount(0, 0), new AnswerCount(0, 0)]
     ),
   },
+  actions: {
+    async getCityTimezone(context) {
+      const response = await axios.get(
+        "http://5ecab1066fb54826b358aea50036a743:8080/arrangeapp/event/"
+      );
+      console.dir("response", JSON.stringify(response));
+      const payload = response.data;
+      context.commit("getCityTimeZone", payload);
+    },
+  },
+
   mutations: {
+    /**
+     * 時差を取得してstateにセットするメソッド.
+     * @param state - ステイト
+     * @param payload - 時差のペイロード
+     */
+    getCityTimeZone(state, payload) {
+      state.eventInfo.cityArray = new Array<City>();
+      state.eventInfo.push(new City(this.id, this.name, this.date));
+    },
+
     /**
      * 回答者情報をステートに格納する.
      * @param state - ステート
@@ -78,11 +105,6 @@ export default new Vuex.Store({
 
     eventInfo(state, payload) {
       state.eventInfo = payload.event;
-      // const selectedOptionDate = new EventDate(
-      //   payload.dateId + 1,
-      //   payload.date
-      // );
-      // state.eventInfo.push(payload.eventInfo);
     },
     // },
     /**
