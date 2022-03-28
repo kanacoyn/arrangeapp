@@ -1,14 +1,16 @@
 <template>
   <div class="container">
+       <h2 class="heading04"><span>イベント新規作成</span></h2>
     <table class="layoutTable" border="1">
       <tbody >
         <tr>
           <td id="leftside">
             <div class="calenderTitle">
-              <th id="title">日時調整</th>
+              <th id="title" class="heading01">日時調整</th>
+              <br />
               カレンダーの日付を選択すると、<br />「候補日程」に日付が入力されます
             </div>
-
+<br />
             第一候補：<input
               type="date"
               id="dateFirstChoice"
@@ -52,8 +54,10 @@
             <br />
             <br />
             <div class="timeZoneTitle">
-              <th id="title">海外との日時調整</th>
+              <th id="title" class="heading01">海外との日時調整</th><br />
+調整したい海外都市を選択することも可能です。<br />
               <div id="timeZone">
+                  <br />
                 <input
                   type="checkbox"
                   id="shanghai"
@@ -114,7 +118,7 @@
 
           <td id="mainColumn">
             <div class="mainbox">
-              <h2><span>イベント新規作成</span></h2>
+             
               <form>
                 <div class="register">
                   <table width="100%">
@@ -252,9 +256,10 @@
           </td>
 
           <td id="rightside">
-                  <th id="title">海外の時差換算日時</th>
+                  <th id="title" class="heading01">海外の時差換算日時</th>
              <div class="flex">
   <div class="city1" v-show="showShanghai">
+      <div class="cityTitle">
             都市名
             {{timeZone1}}
     
@@ -301,8 +306,9 @@
               name="スケジュール"
               v-model="selectedTimeOption3"
             />
-            </div><br />
+            </div></div><br />
   <div class="city2" v-show="showNewyork">
+       <div class="cityTitle">
             都市名
             {{timeZone2}}
     
@@ -348,8 +354,8 @@
               name="スケジュール"
               v-model="selectedTimeOption3"
             />
-            </div><br />
-  <div class="city3" v-show="showLondon">
+            </div></div><br />
+  <div class="city3" v-show="showLondon"><div class="cityTitle">
             都市名
             {{timeZone3}}
     
@@ -395,8 +401,8 @@
               name="スケジュール"
               v-model="selectedTimeOption3"
             />
-            </div><br />
-  <div class="city4" v-show="showStokholm">
+            </div></div><br />
+  <div class="city4" v-show="showStokholm"><div class="cityTitle">
             都市名
             {{timeZone4}}
     
@@ -442,9 +448,9 @@
               name="スケジュール"
               v-model="selectedTimeOption3"
             />
-            </div><br />
+            </div></div><br />
 
-  <div class="city5" v-show="showJohannesburg">
+  <div class="city5" v-show="showJohannesburg"><div class="cityTitle">
             都市名
             {{timeZone5}}
     
@@ -493,6 +499,7 @@
             </div>
            
            </div>
+           </div>
           </td>
         </tr>
       </tbody>
@@ -537,11 +544,11 @@ export default class XXXComponent extends Vue {
   private selectedTimeOption2 ="";
   private selectedTimeOption3 ="";
   private eventIdIndex = 1;
-  private timeZone1 = [];
-  private timeZone2 = [];
-  private timeZone3 = [];
-  private timeZone4 = [];
-  private timeZone5 = [];
+  private timeZone1:string[] = [];
+  private timeZone2:string[] = [];
+  private timeZone3:string[] = [];
+  private timeZone4:string[] = [];
+  private timeZone5:string[] = [];
   private showShanghai=false;
   private showNewyork=false;
   private showLondon=false;
@@ -621,7 +628,6 @@ export default class XXXComponent extends Vue {
     if (existError === true) {
       return; //処理終了のreturn
     }
-
     this.$router.push("/eventConfirm");
   }
 
@@ -644,7 +650,6 @@ selectShanghai():void{
 this.showShanghai=true;
 this.timeZone1=["上海"];
 }
-
 selectNewyork():void{
 this.showNewyork=true;
 this.timeZone2=["ニューヨーク"];
@@ -670,12 +675,11 @@ this.timeZone5=["ヨハネスブルグ"];
 </script>
 
 <style scoped>
+.layoutTable{
+    margin-left:auto;margin-right:auto;
+}
 .error {
   color: red;
-}
-
-#title {
-  width: 150px;
 }
 
 .mainbox td{
@@ -684,7 +688,39 @@ text-align: left;
 .mainbox th{
 text-align: top;
 }
+/* h2のタイトル用 */
+.heading04 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 26px;
+	text-align: center;
+}
 
+.heading04::before,
+.heading04::after {
+	content: '';
+	width: 3px;
+	height: 40px;
+	background-color: #3fc1c9;
+}
+
+.heading04::before {
+	margin-right: 30px;
+	transform: rotate(-35deg)
+}
+.heading04::after {
+	margin-left: 30px;
+	transform: rotate(35deg)
+}
+/* h2のタイトル用 */
+
+/* サブタイトルの色 */
+.heading01 {
+	display: inline;
+	font-size: 20px;
+	background-image: linear-gradient(rgba(0,0,0,0) 70%, #3fc1c9 70%);
+}
 
 </style>
 
