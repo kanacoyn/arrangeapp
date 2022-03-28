@@ -34,7 +34,7 @@
       </div>
     </div>
     <button type="button" v-on:click="onClick">回答フォームに戻る</button>
-    <button type="button">ZoomのURLを発行する</button>
+    <button type="button" v-on:click="onZoom">ZoomのURLを発行する</button>
   </div>
 </template>
 
@@ -74,8 +74,18 @@ export default class XXXComponent extends Vue {
     }
   }
 
+  /**
+   * 回答者遷移ページに戻る.
+   */
   onClick(): void {
     this.$router.push("/answerQuestions");
+  }
+
+  /**
+   * zoomのログイン画面に遷移する.
+   */
+  onZoom(): void {
+    this.$router.push("https://zoom.us/signin");
   }
 }
 </script>
