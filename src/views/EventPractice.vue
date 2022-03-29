@@ -202,12 +202,12 @@
                           type="radio"
                           name="pw"
                           id="pw0"
-                          value="0"
+                          value="設定なし"
                           checked=""
                           v-model="password"
                         />
                         <label for="pw0">設定しない</label><br />
-                        <input type="radio" name="pw" id="pw1" value="1" />
+                        <input type="radio" name="pw" id="pw1" value="設定済み" />
                         <label for="pw1">設定する</label><br />
                         <input
                           type="text"
@@ -227,7 +227,7 @@
                           type="radio"
                           name="eventchoice"
                           id="eventchoice1"
-                          value="1"
+                          value="○△×"
                           checked=""
                           v-model="answerChoice"
                         />
@@ -237,7 +237,7 @@
                           type="radio"
                           name="eventchoice"
                           id="eventchoice2"
-                          value="2"
+                          value="○×"
                           v-model="answerChoice"
                         />
                         <label for="eventchoice2">「○×」から選択</label>
@@ -306,7 +306,7 @@
               step="900"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="city1TimeOption2"
+              v-model="city1TimeOption3"
             />
             </div></div><br />
   <div class="city2" v-show="showNewyork">
@@ -355,7 +355,7 @@
               step="900"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="city2TimeOption2"
+              v-model="city2TimeOption3"
             />
             </div></div><br />
   <div class="city3" v-show="showLondon"><div class="cityTitle">
@@ -403,7 +403,7 @@
               step="900"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="city3TimeOption2"
+              v-model="city3TimeOption3"
             />
             </div></div><br />
 
@@ -452,7 +452,7 @@
               step="900"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="city4TimeOption2"
+              v-model="city4TimeOption3"
             />
             </div></div><br />
   <div class="city5" v-show="showJohannesburg"><div class="cityTitle">
@@ -500,7 +500,7 @@
               step="900"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="city5TimeOption2"
+              v-model="city5TimeOption3"
             />
             </div></div>
           
@@ -645,8 +645,8 @@ this.timeZone5="ヨハネスブルグ";
 this.arrayTokyoDateOption.push(new Date2(1,this.selectedDateOption1),new Date2(1,this.selectedDateOption2),new Date2(1,this.selectedDateOption3),)
 this.arrayTokyoTimeOption.push(new Time(1,this.selectedTimeOption1),new Time(1,this.selectedTimeOption2),new Time(1,this.selectedTimeOption3))
 // 変更した日付を配列にpush
-this.arrayDateOption.push(new Date2(1,this.city1DateOption1),new Date2(2,this.city1DateOption2),new Date2(3,this.city1DateOption3))
-this.arrayTimeOption.push(new Time(1,this.city1TimeOption1),  new Time(2,this.city1TimeOption2), new Time(3,this.city1TimeOption3),  )
+this.arrayDateOption.push(new Date2(1,this.city1DateOption1),new Date2(2,this.city1DateOption2),new Date2(3,this.city1DateOption3),new Date2(4,this.city2DateOption1),new Date2(5,this.city2DateOption2),new Date2(6,this.city2DateOption3),new Date2(7,this.city3DateOption1),new Date2(8,this.city3DateOption2),new Date2(9,this.city3DateOption3),new Date2(10,this.city4DateOption1),new Date2(11,this.city4DateOption2),new Date2(12,this.city4DateOption3),new Date2(13,this.city5DateOption1),new Date2(14,this.city5DateOption2),new Date2(15,this.city5DateOption3),)
+this.arrayTimeOption.push(new Time(1,this.city1TimeOption1),  new Time(2,this.city1TimeOption2), new Time(3,this.city1TimeOption3), new Time(4,this.city2TimeOption1), new Time(5,this.city2TimeOption2),new Time(6,this.city2TimeOption3),new Time(7,this.city3TimeOption1),new Time(8,this.city3TimeOption2),new Time(9,this.city3TimeOption3),new Time(10,this.city4TimeOption1),new Time(11,this.city4TimeOption2),new Time(12,this.city4TimeOption3),new Time(13,this.city5TimeOption1),new Time(14,this.city5TimeOption2),new Time(15,this.city5TimeOption3),)
 
 
 

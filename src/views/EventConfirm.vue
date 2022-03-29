@@ -15,19 +15,24 @@
                 <h2><span>イベント新規作成</span></h2>
                 <form action="create" name="inputform" method="post">
                   内容を確認して、「作成する」ボタンを押してください。
-                  <tbody id="confirm" border="2">
+                  <tbody style="border: none">
                     <tr>
-                      <th class="must">イベント名</th>
+                      <th>イベント名</th>
                       <td>
                         {{ this.eventInfo.eventName }}
                       </td>
+                      <td></td>
+                      <td></td>
                     </tr>
 
                     <tr>
-                      <th class="must">候補日程</th>
-
+                      <th>候補日程</th>
                       <td>
-                        第1候補 第2候補 第3候補
+                        <div>第1候補</div>
+                        <div>第2候補</div>
+                        <div>第3候補</div>
+                      </td>
+                      <td>
                         <div
                           class="datelist"
                           v-for="date of eventInfo.date.date"
@@ -35,34 +40,46 @@
                         >
                           {{ date.date }}
                         </div>
+                      </td>
+                      <td>
                         <div
                           class="datelist date"
                           v-for="time of eventInfo.date.dateTime"
                           v-bind:key="time.id"
                         >
-                          <div>{{ time.dateTime }}</div>
+                          {{ time.dateTime }}
                         </div>
                       </td>
                     </tr>
 
+                    <tr></tr>
+
                     <tr>
                       <th>イベント説明文</th>
                       <td>{{ this.eventInfo.description }}</td>
+                      <td></td>
+                      <td></td>
                     </tr>
 
                     <tr>
                       <th>メールアドレス</th>
                       <td>{{ this.eventInfo.email }}</td>
+                      <td></td>
+                      <td></td>
                     </tr>
 
                     <tr>
                       <th>パスワード設定</th>
                       <td>{{ this.eventInfo.password }}</td>
+                      <td></td>
+                      <td></td>
                     </tr>
 
                     <tr>
                       <th>回答の選択肢</th>
                       <td>{{ this.eventInfo.answerChoice }}</td>
+                      <td></td>
+                      <td></td>
                     </tr>
                   </tbody>
                   <br />
