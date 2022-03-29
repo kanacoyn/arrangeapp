@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="block">
     <div v-show="showForm">
       <div class="item">
         <div>名前</div>
@@ -196,6 +196,10 @@ export default class XXXComponent extends Vue {
 </script>
 
 <style scoped>
+.block {
+  font-family: "Yu Gothic", "Noto Sans JP", sans-serif;
+}
+
 .datelist {
   justify-content: center;
   display: flex;

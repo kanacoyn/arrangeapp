@@ -1,11 +1,11 @@
 <template>
   <div class="block">
-  <div class="container">
     <h1 class="heading04">参加者回答画面</h1>
-    <div class="item">
-      <div class="title">{{ eventInfo.eventName }}</div>
-      <div class="description">{{ eventInfo.description }}</div>
-    </div>
+    <div class="container">
+      <div class="item">
+        <div class="title">{{ eventInfo.eventName }}</div>
+        <div class="description">{{ eventInfo.description }}</div>
+      </div>
       <div class="select-datelist">
         <div class="answer">
           <div>第1候補</div>
@@ -326,6 +326,7 @@ export default class AnswerFinished extends Vue {
 .block {
   width: 100%;
   height: 1000px;
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
 }
 
 .container {
@@ -337,7 +338,6 @@ export default class AnswerFinished extends Vue {
   border-radius: 10px;
   margin: 0 auto;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  font-family: "Yu Gothic";
 }
 
 .datelist {
@@ -413,7 +413,7 @@ table {
   margin-top: 20px;
   border: none;
   border-radius: 5px;
-  font-family: "Yu Gothic";
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
   transition: all 0.3s ease 0s;
 }
 
@@ -424,7 +424,7 @@ table {
   margin-top: 20px;
   border: none;
   border-radius: 5px;
-  font-family: "Yu Gothic";
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
   transition: all 0.3s ease 0s;
   background-color: orange;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,

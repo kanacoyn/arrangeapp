@@ -35,7 +35,7 @@ export default class Home extends Vue {}
 }
 
 .home {
-  font-family: "Yu Gothic";
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
 }
 
 h1 {
@@ -48,13 +48,13 @@ h1 {
 }
 
 .btn {
-  width: 150px;
+  width: 200px;
   height: 40px;
   margin-top: 20px;
   background-color: orange;
   border: none;
   border-radius: 5px;
-  font-family: "Yu Gothic";
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
   transition: all 0.3s ease 0s;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
