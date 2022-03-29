@@ -1,114 +1,91 @@
 <template>
-  <div class="container">
-    <div class="item">
-      <div class="title">{{ eventInfo.eventName }}</div>
-      <div class="description">{{ eventInfo.description }}</div>
-    </div>
-    <div class="select-datelist">
-      <div class="answer">
-        <div>第1候補</div>
-        <div>第2候補</div>
-        <div>第3候補</div>
+  <div class="block">
+    <div class="container">
+      <div class="item">
+        <div class="title">{{ eventInfo.eventName }}</div>
+        <div class="description">{{ eventInfo.description }}</div>
       </div>
-      <div class="country-list">
-        <div class="country">東京</div>
-        <div class="flex">
-          <div class="date">
-            <div v-for="date of eventInfo.date.date" v-bind:key="date.id">
-              {{ date.date }}
-            </div>
-          </div>
-          <div class="date">
-            <div v-for="time of eventInfo.date.dateTime" v-bind:key="time.id">
-              {{ time.dateTime }}
-            </div>
-          </div>
+      <div class="select-datelist">
+        <div class="answer">
+          <div>第1候補</div>
+          <div>第2候補</div>
+          <div>第3候補</div>
         </div>
-      </div>
-      <div class="global-city">
-        <div
-          class="country-list"
-          v-for="city of eventInfo.cityArray"
-          v-bind:key="city.id"
-        >
-          <div class="country">{{ city.name }}</div>
+        <div class="country-list">
+          <div class="country">東京</div>
           <div class="flex">
             <div class="date">
-              <div v-for="date of city.date.date" v-bind:key="date.id">
+              <div v-for="date of eventInfo.date.date" v-bind:key="date.id">
                 {{ date.date }}
               </div>
             </div>
             <div class="date">
-              <div v-for="time of city.date.dateTime" v-bind:key="time.id">
+              <div v-for="time of eventInfo.date.dateTime" v-bind:key="time.id">
                 {{ time.dateTime }}
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="message" v-show="showMessage">
-      <div>第3候補の日時がおすすめです</div>
-      <div>第1候補・第2候補は日時が適切ではない可能性があります</div>
-    </div>
-    <div>
-      <div class="item">
-        <div>名前</div>
-        <div class="input"><input type="text" v-model="name" /></div>
-        <div class="error">{{ errorName }}</div>
-      </div>
-      <div>
-        <div class="country">該当する都市を選択してください</div>
-        <div class="item">
-          <button class="btn" type="button" v-on:click="onClickTokyo">
-            東京
-          </button>
-          <button class="btn" type="button" v-on:click="onClickCity">
-            海外都市
-          </button>
-        </div>
-      </div>
-      <div class="item date-answer">
-        <div class="flex">
-          <div class="country-list" v-show="showTokyo">
-            <div class="country">日程候補 (東京)</div>
+        <div class="global-city">
+          <div
+            class="country-list"
+            v-for="city of eventInfo.cityArray"
+            v-bind:key="city.id"
+          >
+            <div class="country">{{ city.name }}</div>
             <div class="flex">
-              <div>
-                <div
-                  class="datelist"
-                  v-for="date of eventInfo.date.date"
-                  v-bind:key="date.id"
-                >
-                  <div>{{ date.date }}</div>
+              <div class="date">
+                <div v-for="date of city.date.date" v-bind:key="date.id">
+                  {{ date.date }}
                 </div>
               </div>
-              <div>
-                <div
-                  class="datelist date"
-                  v-for="time of eventInfo.date.dateTime"
-                  v-bind:key="time.id"
-                >
-                  <div>{{ time.dateTime }}</div>
-                  <comp-select-box
-                    v-bind:date-id="time.id"
-                    v-on:select-item="onSelectItem"
-                  ></comp-select-box>
+              <div class="date">
+                <div v-for="time of city.date.dateTime" v-bind:key="time.id">
+                  {{ time.dateTime }}
                 </div>
               </div>
             </div>
           </div>
-          <div class="flex" v-show="showCity">
-            <div
-              class="country-list"
-              v-for="city of eventInfo.cityArray"
-              v-bind:key="city.id"
+        </div>
+      </div>
+      <div class="message" v-show="showMessage">
+        <div>第3候補の日時がおすすめです</div>
+        <div>第1候補・第2候補は日時が適切ではない可能性があります</div>
+      </div>
+      <div>
+        <div class="item">
+          <div>名前</div>
+          <div class="input"><input type="text" v-model="name" /></div>
+          <div class="error">{{ errorName }}</div>
+        </div>
+        <div>
+          <div class="country">該当する都市を選択してください</div>
+          <div class="item">
+            <button
+              class="btn btn-color1"
+              type="button"
+              v-on:click="onClickTokyo"
             >
-              <div class="country">日程候補 ({{ city.name }})</div>
+              東京
+            </button>
+            <button
+              class="btn btn-color2"
+              type="button"
+              v-on:click="onClickCity"
+            >
+              海外都市
+            </button>
+          </div>
+        </div>
+        <div class="item date-answer">
+          <div class="flex">
+            <div class="country-list" v-show="showTokyo">
+              <div class="country">日程候補 (東京)</div>
               <div class="flex">
                 <div>
                   <div
                     class="datelist"
-                    v-for="date of city.date.date"
+                    v-for="date of eventInfo.date.date"
                     v-bind:key="date.id"
                   >
                     <div>{{ date.date }}</div>
@@ -117,7 +94,7 @@
                 <div>
                   <div
                     class="datelist date"
-                    v-for="time of city.date.dateTime"
+                    v-for="time of eventInfo.date.dateTime"
                     v-bind:key="time.id"
                   >
                     <div>{{ time.dateTime }}</div>
@@ -129,21 +106,59 @@
                 </div>
               </div>
             </div>
+            <div class="flex" v-show="showCity">
+              <div
+                class="country-list"
+                v-for="city of eventInfo.cityArray"
+                v-bind:key="city.id"
+              >
+                <div class="country">日程候補 ({{ city.name }})</div>
+                <div class="flex">
+                  <div>
+                    <div
+                      class="datelist"
+                      v-for="date of city.date.date"
+                      v-bind:key="date.id"
+                    >
+                      <div>{{ date.date }}</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      class="datelist date"
+                      v-for="time of city.date.dateTime"
+                      v-bind:key="time.id"
+                    >
+                      <div>{{ time.dateTime }}</div>
+                      <comp-select-box
+                        v-bind:date-id="time.id"
+                        v-on:select-item="onSelectItem"
+                      ></comp-select-box>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="error">{{ errorDate }}</div>
-      <div class="item">
-        <div>コメント</div>
-        <div class="input">
-          <input type="text" size="50" v-model="comment" />
+        <div class="error">{{ errorDate }}</div>
+        <div class="item">
+          <div>コメント</div>
+          <div class="input">
+            <input type="text" size="50" v-model="comment" />
+          </div>
+          <div class="error">{{ errorComment }}</div>
         </div>
-        <div class="error">{{ errorComment }}</div>
+        <div>
+          <button
+            class="register-btn"
+            type="button"
+            v-on:click="registerAnswer"
+          >
+            登録する
+          </button>
+        </div>
       </div>
-      <div>
-        <button type="button" v-on:click="registerAnswer">登録する</button>
-      </div>
-      <button type="button">イベントを編集する</button>
     </div>
   </div>
 </template>
@@ -156,8 +171,6 @@ import CompSelectBox from "@/components/CompSelectBox.vue";
 import { EventDate } from "@/types/date";
 import { Date2 } from "@/types/Date2";
 import { AnswerCount } from "@/types/AnswerCount";
-import { Time } from "@/types/Time";
-import { City } from "@/types/City";
 @Component({
   components: {
     CompSelectBox,
@@ -205,12 +218,6 @@ export default class AnswerFinished extends Vue {
   private showCity = false;
   // 忠告メッセージの表示・非表示
   private showMessage = true;
-  // 日本の候補時間
-  private tokyoTimeArray = Array<Time>();
-  // 世界の都市の配列
-  private currentCityArray = Array<City>();
-  // 都市の時間の配列
-  private cityTimeArray = Array<Time>();
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
@@ -226,8 +233,6 @@ export default class AnswerFinished extends Vue {
     for (let i = 1; i <= this.dateArray.length ?? 0; i++) {
       this.answerArray.push("0");
     }
-    this.tokyoTimeArray = this.$store.getters.getTimeTokyo;
-    this.currentCityArray = this.$store.getters.getCityArray;
   }
 
   /**
@@ -317,6 +322,23 @@ export default class AnswerFinished extends Vue {
 </script>
 
 <style scoped>
+.block {
+  width: 100%;
+  height: 1000px;
+}
+
+.container {
+  width: 600px;
+  height: 780px;
+  padding: 50px;
+  margin-top: 50px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  margin: 0 auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  font-family: "Yu Gothic";
+}
+
 .datelist {
   justify-content: center;
   display: flex;
@@ -374,8 +396,8 @@ table {
 }
 
 .answer {
-  font-size: 14px;
-  margin-top: 31px;
+  font-size: 15px;
+  margin-top: 40px;
   margin-right: 10px;
 }
 
@@ -385,6 +407,45 @@ table {
 
 .btn {
   margin-left: 10px;
+  width: 100px;
+  height: 30px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+  transition: all 0.3s ease 0s;
+}
+
+.register-btn {
+  width: 150px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+  transition: all 0.3s ease 0s;
+  background-color: orange;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.register-btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.btn-color1 {
+  background-color: rgb(255, 174, 128);
+}
+
+.btn-color2 {
+  background-color: rgb(142, 200, 255);
 }
 
 .title {
