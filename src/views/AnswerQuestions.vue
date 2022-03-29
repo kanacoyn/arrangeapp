@@ -110,7 +110,7 @@
             <div class="flex" v-show="showCity">
               <div
                 class="country-list"
-                v-for="city of eventInfo.cityArray"
+                v-for="city of currentCityArray"
                 v-bind:key="city.id"
               >
                 <div class="country">日程候補 ({{ city.name }})</div>
@@ -172,6 +172,7 @@ import CompSelectBox from "@/components/CompSelectBox.vue";
 import { EventDate } from "@/types/date";
 import { Date2 } from "@/types/Date2";
 import { AnswerCount } from "@/types/AnswerCount";
+import { City } from "@/types/City";
 @Component({
   components: {
     CompSelectBox,
@@ -219,10 +220,13 @@ export default class AnswerFinished extends Vue {
   private showCity = false;
   // 忠告メッセージの表示・非表示
   private showMessage = true;
+  // 現在格納されている海外都市
+  private currentCityArray = new Array<City>();
 
   created(): void {
     this.eventInfo = this.$store.getters.getEvent;
     this.userList = this.$store.getters.getUserArray;
+    this.currentCityArray = this.$store.getters.getCityArray;
     // 候補日程をgettersで取得する
     this.dateArray = this.$store.getters.getDateList;
     // 現在の〇のカウント数を配列に入れる
@@ -330,7 +334,7 @@ export default class AnswerFinished extends Vue {
 }
 
 .container {
-  width: 1000px;
+  max-width: 1000px;
   height: auto;
   padding: 50px;
   margin-top: 50px;

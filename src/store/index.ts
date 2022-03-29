@@ -5,6 +5,7 @@ import { UserList } from "@/types/UserList";
 import { RegisterUser } from "@/types/RegisterUser";
 import { EventDate } from "@/types/date";
 import { AnswerCount } from "@/types/AnswerCount";
+import { City } from "@/types/City";
 
 Vue.use(Vuex);
 
@@ -148,6 +149,21 @@ export default new Vuex.Store({
           (user) => user.userId === userId
         )[0];
       };
+    },
+
+    /**
+     * 選択された都市を取得する.
+     * @param state - ステート
+     * @returns 選択された都市
+     */
+    getCityArray(state) {
+      const cityArray = new Array<City>();
+      for (const city of state.eventInfo.cityArray) {
+        if (city.name !== "") {
+          cityArray.push(city);
+        }
+      }
+      return cityArray;
     },
   },
   modules: {},
