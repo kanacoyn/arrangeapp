@@ -13,52 +13,52 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // eventInfo: new Event(0, "", "", [], "", "", ""), ←ここ修正する必要あり
-    eventInfo: new Event(
-      1,
-      "定例MTG",
-      "1～1時間半くらいを予定しています",
-      new EventDate(
-        1,
-        [
-          new Date2(1, "2022/3/15"),
-          new Date2(2, "2022/3/20"),
-          new Date2(3, "2022/3/27"),
-        ],
-        [new Time(1, "9:00"), new Time(2, "13:00"), new Time(3, "22:00")]
-      ),
-      "abc@gmail.com",
-      "12345",
-      "",
-      [
-        new City(
-          1,
-          "ニューヨーク",
-          new EventDate(
-            1,
-            [
-              new Date2(4, "2022/3/14"),
-              new Date2(5, "2022/3/19"),
-              new Date2(6, "2022/3/20"),
-            ],
-            [new Time(3, "19:00"), new Time(4, "23:00"), new Time(5, "8:00")]
-          )
-        ),
-        new City(
-          1,
-          "ロンドン",
-          new EventDate(
-            2,
-            [
-              new Date2(4, "2022/3/15"),
-              new Date2(5, "2022/3/20"),
-              new Date2(6, "2022/3/27"),
-            ],
-            [new Time(3, "0:00"), new Time(4, "4:00"), new Time(5, "13:00")]
-          )
-        ),
-      ]
-    ),
+    eventInfo: new Event(0, "", "", new EventDate(0, [], []), "", "", "", []),
+    // eventInfo: new Event(
+    //   1,
+    //   "定例MTG",
+    //   "1～1時間半くらいを予定しています",
+    //   new EventDate(
+    //     1,
+    //     [
+    //       new Date2(1, "2022/3/15"),
+    //       new Date2(2, "2022/3/20"),
+    //       new Date2(3, "2022/3/27"),
+    //     ],
+    //     [new Time(1, "9:00"), new Time(2, "13:00"), new Time(3, "22:00")]
+    //   ),
+    //   "abc@gmail.com",
+    //   "12345",
+    //   "",
+    //   [
+    //     new City(
+    //       1,
+    //       "ニューヨーク",
+    //       new EventDate(
+    //         1,
+    //         [
+    //           new Date2(4, "2022/3/14"),
+    //           new Date2(5, "2022/3/19"),
+    //           new Date2(6, "2022/3/20"),
+    //         ],
+    //         [new Time(3, "19:00"), new Time(4, "23:00"), new Time(5, "8:00")]
+    //       )
+    //     ),
+    //     new City(
+    //       1,
+    //       "ロンドン",
+    //       new EventDate(
+    //         2,
+    //         [
+    //           new Date2(4, "2022/3/15"),
+    //           new Date2(5, "2022/3/20"),
+    //           new Date2(6, "2022/3/27"),
+    //         ],
+    //         [new Time(3, "0:00"), new Time(4, "4:00"), new Time(5, "13:00")]
+    //       )
+    //     ),
+    //   ]
+    // ),
 
     registerUser: new RegisterUser(0, "", [], [], ""),
 
@@ -81,6 +81,8 @@ export default new Vuex.Store({
 
     eventInfo(state, payload) {
       state.eventInfo = payload.event;
+      console.log("mutation受け取り");
+      console.log(state.eventInfo);
     },
     // },
     /**

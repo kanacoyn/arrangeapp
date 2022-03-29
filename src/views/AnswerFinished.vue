@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1 class="heading04">イベント日時確認</h1>
     <table align="center">
       <tr>
         <th></th>
@@ -102,4 +103,31 @@ table {
 .title {
   margin-bottom: 10px;
 }
+
+/* タイトル用 */
+.heading04 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  text-align: center;
+}
+
+.heading04::before,
+.heading04::after {
+  content: "";
+  width: 3px;
+  height: 40px;
+  background-color: orange;
+}
+
+.heading04::before {
+  margin-right: 30px;
+  transform: rotate(-35deg);
+}
+.heading04::after {
+  margin-left: 30px;
+  transform: rotate(35deg);
+}
+/* h2のタイトル用 */
 </style>
