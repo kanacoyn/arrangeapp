@@ -55,7 +55,9 @@
             <br />
             <div class="timeZoneTitle">
               <th id="title" class="heading01">海外との日時調整</th><br />
-調整したい海外都市を選択することも可能です。<br />
+先に日本での開催時間を入力してから<br />
+海外都市を選択してください<br />
+
               <div id="timeZone">
                   <br />
                 <input
@@ -260,24 +262,26 @@
              <div class="flex">
   <div class="city1" v-show="showShanghai">
       <div class="cityTitle">
+          <strong class="citynameTitle">
             都市名
-            {{timeZone1}}
-    
+            {{timeZone1}}</strong>
+    <div class="message timezone">日本と上海の時差はプラス1時間。  <br />今表示されている日本時間から1時間引いてください</div>
+
              <br />
             第一候補:
             <input
               type="date"
               id="dateFirstChoice"
               name="スケジュール"
-              v-model="selectedDateOption1"
+              v-bind:value="selectedDateOption1"
         
             /> / 
                     <input
               type="time"
-              step="1800"
+              step="900"
               id="dateFirstChoice"
               name="スケジュール"
-              v-model="selectedTimeOption1"
+              v-bind:value="selectedTimeOption1"
             />
             
             <br />
@@ -285,47 +289,48 @@
               type="date"
               id="dateSecondChoice"
               name="スケジュール"
-              v-model="selectedDateOption2"
+              v-bind:value="selectedDateOption2"
             />  /  <input
               type="time"
-              step="1800"
+              step="900"
               id="dateSecondChoice"
               name="スケジュール"
-              v-model="selectedTimeOption2"
+              v-bind:value="selectedTimeOption2"
             /><br />
 
             第三候補:<input
               type="date"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="selectedDateOption3"
+              v-bind:value="selectedDateOption3"
             />  /  <input
               type="time"
-              step="1800"
+              step="900"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="selectedTimeOption3"
+              v-bind:value="selectedTimeOption3"
             />
             </div></div><br />
   <div class="city2" v-show="showNewyork">
        <div class="cityTitle">
+           <strong class="citynameTitle">
             都市名
-            {{timeZone2}}
-    
+            {{timeZone2}}</strong>
+     <div class="message timezone">日本とNYの時差はプラス13時間。  <br />今表示されている日本時間から13時間引いてください</div>
              <br />
             第一候補:
             <input
               type="date"
               id="dateFirstChoice"
               name="スケジュール"
-              v-model="selectedDateOption1"
+              v-bind:value="selectedDateOption1"
             /> / 
                     <input
               type="time"
-              step="1800"
+              step="900"
               id="dateFirstChoice"
               name="スケジュール"
-              v-model="selectedTimeOption1"
+              v-bind:value="selectedTimeOption1"
             />
             
             <br />
@@ -333,46 +338,47 @@
               type="date"
               id="dateSecondChoice"
               name="スケジュール"
-              v-model="selectedDateOption2"
+              v-bind:value="selectedDateOption2"
             />  /  <input
               type="time"
-              step="1800"
+              step="900"
               id="dateSecondChoice"
               name="スケジュール"
-              v-model="selectedTimeOption2"
+              v-bind:value="selectedTimeOption2"
             /><br />
 
             第三候補:<input
               type="date"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="selectedDateOption3"
+              v-bind:value="selectedDateOption3"
             />  /  <input
               type="time"
-              step="1800"
+              step="900"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="selectedTimeOption3"
+              v-bind:value="selectedTimeOption3"
             />
             </div></div><br />
   <div class="city3" v-show="showLondon"><div class="cityTitle">
+            <strong class="citynameTitle">
             都市名
-            {{timeZone3}}
-    
+            {{timeZone3}}</strong>
+     <div class="message timezone">日本とロンドンの時差はプラス8時間。  <br />今表示されている日本時間から8時間引いてください</div>
              <br />
             第一候補:
             <input
               type="date"
               id="dateFirstChoice"
               name="スケジュール"
-              v-model="selectedDateOption1"
+              v-bind:value="selectedDateOption1"
             /> / 
                     <input
               type="time"
-              step="1800"
+              step="900"
               id="dateFirstChoice"
               name="スケジュール"
-              v-model="selectedTimeOption1"
+              v-bind:value="selectedTimeOption1"
             />
             
             <br />
@@ -380,46 +386,47 @@
               type="date"
               id="dateSecondChoice"
               name="スケジュール"
-              v-model="selectedDateOption2"
+              v-bind:value="selectedDateOption2"
             />  /  <input
               type="time"
-              step="1800"
+              step="900"
               id="dateSecondChoice"
               name="スケジュール"
-              v-model="selectedTimeOption2"
+              v-bind:value="selectedTimeOption2"
             /><br />
 
             第三候補:<input
               type="date"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="selectedDateOption3"
+              v-bind:value="selectedDateOption3"
             />  /  <input
               type="time"
-              step="1800"
+              step="900"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="selectedTimeOption3"
+              v-bind:value="selectedTimeOption3"
             />
             </div></div><br />
   <div class="city4" v-show="showStokholm"><div class="cityTitle">
+            <strong class="citynameTitle">
             都市名
-            {{timeZone4}}
-    
+            {{timeZone4}}</strong>
+      <div class="message timezone">日本とストックホルムの時差はプラス7時間。  <br />今表示されている日本時間から7時間引いてください</div>
              <br />
             第一候補:
             <input
               type="date"
               id="dateFirstChoice"
               name="スケジュール"
-              v-model="selectedDateOption1"
+              v-bind:value="selectedDateOption1"
             /> / 
                     <input
               type="time"
-              step="1800"
+              step="900"
               id="dateFirstChoice"
               name="スケジュール"
-              v-model="selectedTimeOption1"
+              v-bind:value="selectedTimeOption1"
             />
             
             <br />
@@ -427,47 +434,48 @@
               type="date"
               id="dateSecondChoice"
               name="スケジュール"
-              v-model="selectedDateOption2"
+              v-bind:value="selectedDateOption2"
             />  /  <input
               type="time"
-              step="1800"
+              step="900"
               id="dateSecondChoice"
               name="スケジュール"
-              v-model="selectedTimeOption2"
+              v-bind:value="selectedTimeOption2"
             /><br />
 
             第三候補:<input
               type="date"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="selectedDateOption3"
+              v-bind:value="selectedDateOption3"
             />  /  <input
               type="time"
-              step="1800"
+              step="900"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="selectedTimeOption3"
+              v-bind:value="selectedTimeOption3"
             />
             </div></div><br />
 
   <div class="city5" v-show="showJohannesburg"><div class="cityTitle">
+            <strong class="citynameTitle">
             都市名
-            {{timeZone5}}
-    
+            {{timeZone5}}</strong>
+              <div class="message timezone">日本とヨハネスブルグの時差はプラス7時間。  <br />今表示されている日本時間から7時間引いてください</div>
              <br />
             第一候補:
             <input
               type="date"
               id="dateFirstChoice"
               name="スケジュール"
-              v-model="selectedDateOption1"
+              v-bind:value="selectedDateOption1"
             /> / 
                     <input
               type="time"
-              step="1800"
+              step="900"
               id="dateFirstChoice"
               name="スケジュール"
-              v-model="selectedTimeOption1"
+              v-bind:value="selectedTimeOption1"
             />
             
             <br />
@@ -475,26 +483,26 @@
               type="date"
               id="dateSecondChoice"
               name="スケジュール"
-              v-model="selectedDateOption2"
+              v-bind:value="selectedDateOption2"
             />  /  <input
               type="time"
-              step="1800"
+              step="900"
               id="dateSecondChoice"
               name="スケジュール"
-              v-model="selectedTimeOption2"
+              v-bind:value="selectedTimeOption2"
             /><br />
 
             第三候補:<input
               type="date"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="selectedDateOption3"
+              v-bind:value="selectedDateOption3"
             />  /  <input
               type="time"
-              step="1800"
+              step="900"
               id="dateThirdChoice"
               name="スケジュール"
-              v-model="selectedTimeOption3"
+              v-bind:value="selectedTimeOption3"
             />
             </div>
            
@@ -536,39 +544,64 @@ export default class XXXComponent extends Vue {
   // メールアドレス
   private emailError = "";
 
-  private selectedDateOption = "";
+// 東京の開催日付
   private selectedDateOption1 = [];
   private selectedDateOption2 = [];
   private selectedDateOption3 = [];
+  // 東京の開催時間
   private selectedTimeOption1 ="";
   private selectedTimeOption2 ="";
   private selectedTimeOption3 ="";
   private eventIdIndex = 1;
+//   都市の名前
   private timeZone1="";
   private timeZone2="";
   private timeZone3="";
   private timeZone4="";
   private timeZone5="";
+//   チェックボックスで消える範囲
   private showShanghai=false;
   private showNewyork=false;
   private showLondon=false;
   private showStokholm=false;
   private showJohannesburg=false;
   
-
   private city = [];
    // 押下したら表示される時差を含んでいる候補日時
   private showTimeZone=true;
     // 世界の都市の配列
   private currentCityArray = Array<City>();
 
-
     private arrayDateOption = new Array<Date2>();
   private arrayTimeOption = new Array<Time>();
 
-  eventInfo(): void {
-    console.log("mutationに送る");
 
+// 都市名をクリックすることで時差を含んだ候補日時が右に表示される
+selectShanghai():void{
+this.showShanghai=true;
+this.timeZone1="上海";
+}
+selectNewyork():void{
+this.showNewyork=true;
+this.timeZone2="ニューヨーク";
+}
+selectLondon():void{
+this.showLondon=true;
+this.timeZone3="ロンドン";
+}
+selectStokholm():void{
+this.showStokholm=true;
+this.timeZone4="ストックホルム";
+}
+selectJohannesburg():void{
+this.showJohannesburg=true;
+this.timeZone5="ヨハネスブルグ";
+}
+
+
+
+// 次に進むボタン
+  eventInfo(): void {
     this.currentCityArray.push(
       new City(1, this.timeZone1,new EventDate(-1, this.arrayDateOption, this.arrayTimeOption)),
       new City(1, this.timeZone2,new EventDate(-1, this.arrayDateOption, this.arrayTimeOption)),
@@ -576,14 +609,9 @@ export default class XXXComponent extends Vue {
       new City(1, this.timeZone4,new EventDate(-1, this.arrayDateOption, this.arrayTimeOption)),
       new City(1, this.timeZone5,new EventDate(-1, this.arrayDateOption, this.arrayTimeOption)),
     );
-    console.log("都市の配列をpush");
+    console.log("都市の配列をcityにpush");
     
-//  this.arrayDateOption.push(
-//       new EventDate(1, this.selectedDateOption1, []),
-//       new EventDate(1, this.selectedDateOption2, []),
-//       new EventDate(1, this.selectedDateOption3, [])
-//     );
-
+console.log("mutationにイベント情報をcommit");
     this.$store.commit("eventInfo", {
       event: new Event(
         this.eventIdIndex,
@@ -645,27 +673,6 @@ this.showShanghai=false;
   this.showJohannesburg=false;
   }
 
-// 都市名をクリックすることで時差を含んだ候補日時が右に表示される
-selectShanghai():void{
-this.showShanghai=true;
-this.timeZone1="上海";
-}
-selectNewyork():void{
-this.showNewyork=true;
-this.timeZone2="ニューヨーク";
-}
-selectLondon():void{
-this.showLondon=true;
-this.timeZone3="ロンドン";
-}
-selectStokholm():void{
-this.showStokholm=true;
-this.timeZone4="ストックホルム";
-}
-selectJohannesburg():void{
-this.showJohannesburg=true;
-this.timeZone5="ヨハネスブルグ";
-}
 
 
 
@@ -680,6 +687,12 @@ this.timeZone5="ヨハネスブルグ";
 }
 .error {
   color: red;
+}
+
+.citynameTitle{
+color: orange;
+font-size:18px;
+
 }
 
 .mainbox td{
@@ -702,7 +715,7 @@ text-align: top;
 	content: '';
 	width: 3px;
 	height: 40px;
-	background-color: #3fc1c9;
+	background-color: orange;
 }
 
 .heading04::before {
@@ -719,7 +732,7 @@ text-align: top;
 .heading01 {
 	display: inline;
 	font-size: 20px;
-	background-image: linear-gradient(rgba(0,0,0,0) 70%, #3fc1c9 70%);
+	background-image: linear-gradient(rgba(0,0,0,0) 70%, orange 70%);
 }
 
 </style>

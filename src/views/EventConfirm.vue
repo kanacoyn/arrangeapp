@@ -25,19 +25,16 @@
 
                     <tr>
                       <th class="must">候補日程</th>
-                      <td>
-                        <div>第1候補</div>
-                        <div>第2候補</div>
-                        <div>第3候補</div>
 
+                      <td>
+                        第1候補 第2候補 第3候補
                         <div
                           class="datelist"
                           v-for="date of eventInfo.date.date"
                           v-bind:key="date.id"
                         >
-                          <div>{{ date.date }}</div>
+                          {{ date.date }}
                         </div>
-
                         <div
                           class="datelist date"
                           v-for="time of eventInfo.date.dateTime"
@@ -148,7 +145,7 @@ export default class XXXComponent extends Vue {
   content: "";
   width: 3px;
   height: 40px;
-  background-color: #3fc1c9;
+  background-color: orange;
 }
 
 .heading04::before {
