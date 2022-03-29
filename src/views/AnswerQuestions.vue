@@ -1,10 +1,11 @@
 <template>
   <div class="block">
-    <div class="container">
-      <div class="item">
-        <div class="title">{{ eventInfo.eventName }}</div>
-        <div class="description">{{ eventInfo.description }}</div>
-      </div>
+  <div class="container">
+    <h1 class="heading04">参加者回答画面</h1>
+    <div class="item">
+      <div class="title">{{ eventInfo.eventName }}</div>
+      <div class="description">{{ eventInfo.description }}</div>
+    </div>
       <div class="select-datelist">
         <div class="answer">
           <div>第1候補</div>
@@ -467,4 +468,31 @@ table {
   margin: auto;
   margin-bottom: 20px;
 }
+
+/* タイトル用 */
+.heading04 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  text-align: center;
+}
+
+.heading04::before,
+.heading04::after {
+  content: "";
+  width: 3px;
+  height: 40px;
+  background-color: orange;
+}
+
+.heading04::before {
+  margin-right: 30px;
+  transform: rotate(-35deg);
+}
+.heading04::after {
+  margin-left: 30px;
+  transform: rotate(35deg);
+}
+/* h2のタイトル用 */
 </style>

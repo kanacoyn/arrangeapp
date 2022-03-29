@@ -1,47 +1,49 @@
 <template>
   <div class="block">
     <div class="container">
-      <table align="center">
-        <tr>
-          <th></th>
-          <th>第1候補</th>
-          <th>第2候補</th>
-          <th>第3候補</th>
-        </tr>
-        <tr class="total">
-          <td>合計</td>
-          <td v-for="count of currentAnswerCount" v-bind:key="count.id">
-            {{ count.answerCount }}
-          </td>
-        </tr>
-        <tr v-for="user of userList" v-bind:key="user.userId">
-          <td>
-            <router-link v-bind:to="'/userAnswer/' + user.userId">{{
-              user.name
-            }}</router-link>
-          </td>
-          <td v-for="answer of user.registerAnswer" v-bind:key="answer.id">
-            {{ answer }}
-          </td>
-        </tr>
-      </table>
-      <div v-show="commentShow">
-        <div class="title">コメント</div>
-        <div v-for="user of commentUserArray" v-bind:key="user.userId">
-          <div>
-            {{ user.name }}: <span>{{ user.comment }}</span>
+      <div>
+        <h1 class="heading04">イベント日時確認</h1>
+        <table align="center">
+          <tr>
+            <th></th>
+            <th>第1候補</th>
+            <th>第2候補</th>
+            <th>第3候補</th>
+          </tr>
+          <tr class="total">
+            <td>合計</td>
+            <td v-for="count of currentAnswerCount" v-bind:key="count.id">
+              {{ count.answerCount }}
+            </td>
+          </tr>
+          <tr v-for="user of userList" v-bind:key="user.userId">
+            <td>
+              <router-link v-bind:to="'/userAnswer/' + user.userId">{{
+                user.name
+              }}</router-link>
+            </td>
+            <td v-for="answer of user.registerAnswer" v-bind:key="answer.id">
+              {{ answer }}
+            </td>
+          </tr>
+        </table>
+        <div v-show="commentShow">
+          <div class="title">コメント</div>
+          <div v-for="user of commentUserArray" v-bind:key="user.userId">
+            <div>
+              {{ user.name }}: <span>{{ user.comment }}</span>
+            </div>
           </div>
-          <hr />
+          <button class="btn btn-color1" type="button" v-on:click="onClick">
+            回答フォームに戻る
+          </button>
+          <a href="https://zoom.us/signin"
+            ><button class="btn btn-color2" type="button">
+              ZoomのURLを発行する
+            </button></a
+          >
         </div>
       </div>
-      <button class="btn btn-color1" type="button" v-on:click="onClick">
-        回答フォームに戻る
-      </button>
-      <a href="https://zoom.us/signin"
-        ><button class="btn btn-color2" type="button">
-          ZoomのURLを発行する
-        </button></a
-      >
     </div>
   </div>
 </template>
@@ -154,4 +156,30 @@ table {
 .btn-color2 {
   background-color: rgb(112, 186, 255);
 }
+/* タイトル用 */
+.heading04 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  text-align: center;
+}
+
+.heading04::before,
+.heading04::after {
+  content: "";
+  width: 3px;
+  height: 40px;
+  background-color: orange;
+}
+
+.heading04::before {
+  margin-right: 30px;
+  transform: rotate(-35deg);
+}
+.heading04::after {
+  margin-left: 30px;
+  transform: rotate(35deg);
+}
+/* h2のタイトル用 */
 </style>
