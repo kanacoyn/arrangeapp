@@ -28,8 +28,8 @@ const routes: Array<RouteConfig> = [
     component: () => import("../views/UserAnswer.vue"),
   },
   {
-    path: "/answerFinished",
-    component: () => import("../views/AnswerFinished.vue"),
+    path: "/riko",
+    component: () => import("../views/Riko.vue"),
   },
 ];
 
