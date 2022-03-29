@@ -26,7 +26,10 @@
                     </tr>
 
                     <tr>
-                      <th>候補日程</th>
+                      <th>
+                        候補日程<br />
+                        ※日本時間のみ表示
+                      </th>
                       <td>
                         <div>第1候補</div>
                         <div>第2候補</div>
@@ -38,7 +41,7 @@
                           v-for="date of eventInfo.date.date"
                           v-bind:key="date.id"
                         >
-                          {{ date.date }}
+                          {{ date.date }} /
                         </div>
                       </td>
                       <td>
@@ -140,6 +143,9 @@ export default class XXXComponent extends Vue {
   width: 100%;
   height: 1000px;
   font-family: "Yu Gothic";
+}
+.th {
+  vertical-align: top;
 }
 
 .layoutTable {

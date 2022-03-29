@@ -1,11 +1,11 @@
 <template>
   <div class="block">
-  <div class="container">
     <h1 class="heading04">参加者回答画面</h1>
-    <div class="item">
-      <div class="title">{{ eventInfo.eventName }}</div>
-      <div class="description">{{ eventInfo.description }}</div>
-    </div>
+    <div class="container">
+      <div class="item">
+        <div class="title">{{ eventInfo.eventName }}</div>
+        <div class="description">{{ eventInfo.description }}</div>
+      </div>
       <div class="select-datelist">
         <div class="answer">
           <div>第1候補</div>
