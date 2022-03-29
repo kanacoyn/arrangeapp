@@ -14,10 +14,7 @@ const routes: Array<RouteConfig> = [
     path: "/answerQuestions",
     component: () => import("../views/AnswerQuestions.vue"),
   },
-  {
-    path: "/eventPractice",
-    component: () => import("../views/EventPractice.vue"),
-  },
+
   {
     path: "/event",
     component: () => import("../views/Event.vue"),
