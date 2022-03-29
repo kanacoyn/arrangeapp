@@ -4,9 +4,6 @@ import { Event } from "@/types/event";
 import { UserList } from "@/types/UserList";
 import { RegisterUser } from "@/types/RegisterUser";
 import { EventDate } from "@/types/date";
-import { City } from "@/types/City";
-import { Date2 } from "@/types/Date2";
-import { Time } from "@/types/Time";
 import { AnswerCount } from "@/types/AnswerCount";
 
 Vue.use(Vuex);
@@ -81,8 +78,7 @@ export default new Vuex.Store({
 
     eventInfo(state, payload) {
       state.eventInfo = payload.event;
-      console.log("mutation受け取り");
-      console.log(state.eventInfo);
+      console.log(state.eventInfo.cityArray);
     },
     // },
     /**

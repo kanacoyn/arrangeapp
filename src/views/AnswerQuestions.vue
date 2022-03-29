@@ -326,6 +326,7 @@ export default class AnswerFinished extends Vue {
 .block {
   width: 100%;
   height: 1000px;
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
 }
 
 .container {
@@ -337,7 +338,6 @@ export default class AnswerFinished extends Vue {
   border-radius: 10px;
   margin: 0 auto;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  font-family: "Yu Gothic";
 }
 
 .datelist {
@@ -413,7 +413,7 @@ table {
   margin-top: 20px;
   border: none;
   border-radius: 5px;
-  font-family: "Yu Gothic";
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
   transition: all 0.3s ease 0s;
 }
 
@@ -424,7 +424,7 @@ table {
   margin-top: 20px;
   border: none;
   border-radius: 5px;
-  font-family: "Yu Gothic";
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
   transition: all 0.3s ease 0s;
   background-color: orange;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
