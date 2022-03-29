@@ -1,8 +1,8 @@
 <template>
   <div class="block">
+    <h1 class="heading04">イベント日時確認</h1>
     <div class="container">
       <div>
-        <h1 class="heading04">イベント日時確認</h1>
         <table align="center">
           <tr>
             <th></th>
