@@ -3,7 +3,7 @@
     <div class="top-wrapper">
       <div class="container">
         <h1 class="heading04">イベント確認画面</h1>
-        <table class="layoutTable" border="1">
+        <table class="layoutTable">
           <tbody id="main">
             <tr>
               <td id="leftSide">
@@ -84,7 +84,11 @@
                   </tbody>
                   <br />
 
-                  <button type="button" v-on:click="finishMakeEvent">
+                  <button
+                    class="btn"
+                    type="button"
+                    v-on:click="finishMakeEvent"
+                  >
                     送信する
                   </button>
                 </form>
@@ -132,15 +136,30 @@ export default class XXXComponent extends Vue {
 </script>
 
 <style scoped>
+.top-wrapper {
+  width: 100%;
+  height: 1000px;
+  font-family: "Yu Gothic";
+}
+
 .layoutTable {
   margin-left: auto;
   margin-right: auto;
+  background-color: white;
+  border-radius: 10px;
+  border-collapse: collapse;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 #leftSide {
   width: 150px;
   text-align: left;
   vertical-align: top;
+  border-right: 1px solid #bdbdbd;
+}
+
+#mainColumn {
+  padding: 20px;
 }
 
 #adSpace {
@@ -148,6 +167,11 @@ export default class XXXComponent extends Vue {
   height: 450px;
   background: rosybrown;
 }
+
+/* td {
+  border-right: 1px solid #000000;
+  border-left: 1px solid #000000;
+} */
 
 .heading04 {
   display: flex;
@@ -172,5 +196,24 @@ export default class XXXComponent extends Vue {
 .heading04::after {
   margin-left: 30px;
   transform: rotate(35deg);
+}
+
+.btn {
+  width: 150px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+  transition: all 0.3s ease 0s;
+  background-color: orange;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }
 </style>

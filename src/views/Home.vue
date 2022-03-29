@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div>イベント作成をラクに、快適に</div>
+    <div class="catch-copy">イベント作成をラクに、快適に</div>
     <div><h1>楽楽調整</h1></div>
     <div class="block">
       <div class="circle">
@@ -12,7 +12,9 @@
         <div>ミーティングの設定も</div>
       </div>
     </div>
-    <router-link to="/event"><button class="btn">イベントを作成する</button></router-link>
+    <router-link to="/event"
+      ><button class="btn">イベントを作成する</button></router-link
+    >
   </div>
 </template>
 
@@ -24,7 +26,15 @@ export default class Home extends Vue {}
 </script>
 
 <style scoped>
-.home{
+.catch-copy {
+  width: 260px;
+  margin: 0 auto;
+  padding: 3px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.home {
   font-family: "Yu Gothic";
 }
 
@@ -32,12 +42,12 @@ h1 {
   color: black;
 }
 
-.block{
+.block {
   display: flex;
   justify-content: center;
 }
 
-.btn{
+.btn {
   width: 150px;
   height: 40px;
   margin-top: 20px;
@@ -46,9 +56,12 @@ h1 {
   border-radius: 5px;
   font-family: "Yu Gothic";
   transition: all 0.3s ease 0s;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  margin-bottom: 180px;
 }
 
-.btn:hover{
+.btn:hover {
   opacity: 0.7;
   cursor: pointer;
 }

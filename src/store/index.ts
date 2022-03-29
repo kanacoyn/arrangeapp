@@ -153,22 +153,6 @@ export default new Vuex.Store({
         )[0];
       };
     },
-    /**
-     * 日本の候補時間を取得する.
-     * @param state - ステート
-     * @returns 時間の配列
-     */
-    getTimeTokyo(state) {
-      return state.eventInfo.date.dateTime;
-    },
-    /**
-     * 世界の都市の配列を取得する.
-     * @param state - ステート
-     * @returns 都市の配列
-     */
-    getCityArray(state) {
-      return state.eventInfo.cityArray;
-    },
   },
   modules: {},
 });
