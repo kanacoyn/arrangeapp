@@ -1,20 +1,18 @@
 <template>
   <div class="home">
-    <div class="catch-copy">イベント作成をラクに、快適に</div>
-    <div><h1>楽々調整</h1></div>
-    <div class="back-image"><img src="image/top3.png" width="1050px"></div>
+    <div>イベント作成をラクに、快適に</div>
+    <div><h1>楽楽調整</h1></div>
     <div class="block">
       <div class="circle">
         <img src="image/top2.png" width="300px" />
+        <div>飲み会の予定も</div>
       </div>
       <div class="circle">
         <img src="image/top1.png" width="300px" />
+        <div>ミーティングの設定も</div>
       </div>
     </div>
-    <div>
-
-    </div>
-    <router-link to="/event"> イベントを作成する</router-link>
+    <router-link to="/event"><button class="btn">イベントを作成する</button></router-link>
   </div>
 </template>
 
@@ -26,31 +24,32 @@ export default class Home extends Vue {}
 </script>
 
 <style scoped>
-.home {
-  max-width: 1920px;
-  height: 500px;
-  background-color: rgb(255, 145, 0);
-  position: relative;
-  margin: 0 auto;
+.home{
+  font-family: "Yu Gothic";
 }
 
-h1{
-  position: absolute;
-  top: 70px;
-  left: 700px;
-  margin:0 auto;
-  font-family: 'Yu Gothic';
+h1 {
   color: black;
 }
 
-.catch-copy {
-  border-radius: 15px;
-  width: 300px;
-  padding: 6px;
-  background-color: white;
-  position: absolute;
-  top: 5%;
-  left: 37%;
-  font-family: 'Yu Gothic';
+.block{
+  display: flex;
+  justify-content: center;
+}
+
+.btn{
+  width: 150px;
+  height: 40px;
+  margin-top: 20px;
+  background-color: orange;
+  border: none;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+  transition: all 0.3s ease 0s;
+}
+
+.btn:hover{
+  opacity: 0.7;
+  cursor: pointer;
 }
 </style>
