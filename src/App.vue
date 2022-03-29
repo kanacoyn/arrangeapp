@@ -22,6 +22,7 @@
   background-color: rgb(255, 221, 177);
   /* CSSの謎の余白を削除 */
   margin: calc(-50vw + 50%); 
+  height: auto;
 }
 
 #nav {

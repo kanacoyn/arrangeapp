@@ -329,7 +329,7 @@ export default class AnswerFinished extends Vue {
 
 .container {
   width: 600px;
-  height: 780px;
+  height: auto;
   padding: 50px;
   margin-top: 50px;
   background-color: rgb(255, 255, 255);

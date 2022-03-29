@@ -1,40 +1,48 @@
 <template>
-  <div>
-    <table align="center">
-      <tr>
-        <th></th>
-        <th>第1候補</th>
-        <th>第2候補</th>
-        <th>第3候補</th>
-      </tr>
-      <tr class="total">
-        <td>合計</td>
-        <td v-for="count of currentAnswerCount" v-bind:key="count.id">
-          {{ count.answerCount }}
-        </td>
-      </tr>
-      <tr v-for="user of userList" v-bind:key="user.userId">
-        <td>
-          <router-link v-bind:to="'/userAnswer/' + user.userId">{{
-            user.name
-          }}</router-link>
-        </td>
-        <td v-for="answer of user.registerAnswer" v-bind:key="answer.id">
-          {{ answer }}
-        </td>
-      </tr>
-    </table>
-    <div v-show="commentShow">
-      <div class="title">コメント</div>
-      <div v-for="user of commentUserArray" v-bind:key="user.userId">
-        <div>
-          {{ user.name }}: <span>{{ user.comment }}</span>
+  <div class="block">
+    <div class="container">
+      <table align="center">
+        <tr>
+          <th></th>
+          <th>第1候補</th>
+          <th>第2候補</th>
+          <th>第3候補</th>
+        </tr>
+        <tr class="total">
+          <td>合計</td>
+          <td v-for="count of currentAnswerCount" v-bind:key="count.id">
+            {{ count.answerCount }}
+          </td>
+        </tr>
+        <tr v-for="user of userList" v-bind:key="user.userId">
+          <td>
+            <router-link v-bind:to="'/userAnswer/' + user.userId">{{
+              user.name
+            }}</router-link>
+          </td>
+          <td v-for="answer of user.registerAnswer" v-bind:key="answer.id">
+            {{ answer }}
+          </td>
+        </tr>
+      </table>
+      <div v-show="commentShow">
+        <div class="title">コメント</div>
+        <div v-for="user of commentUserArray" v-bind:key="user.userId">
+          <div>
+            {{ user.name }}: <span>{{ user.comment }}</span>
+          </div>
+          <hr />
         </div>
-        <hr />
       </div>
+      <button class="btn btn-color1" type="button" v-on:click="onClick">
+        回答フォームに戻る
+      </button>
+      <a href="https://zoom.us/signin"
+        ><button class="btn btn-color2" type="button">
+          ZoomのURLを発行する
+        </button></a
+      >
     </div>
-    <button type="button" v-on:click="onClick">回答フォームに戻る</button>
-    <a href="https://zoom.us/signin">ZoomのURLを発行する</a>
   </div>
 </template>
 
@@ -84,6 +92,23 @@ export default class XXXComponent extends Vue {
 </script>
 
 <style scoped>
+.block {
+  width: 100%;
+  height: 1000px;
+}
+
+.container {
+  width: 600px;
+  height: auto;
+  padding: 50px;
+  margin-top: 50px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  margin: 0 auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  font-family: "Yu Gothic";
+}
+
 th,
 td {
   border: solid 1px;
@@ -91,15 +116,42 @@ td {
 }
 
 table {
+  margin-top: 20px;
   border-collapse: collapse;
   margin-bottom: 30px;
 }
 
 .total {
-  background-color: lavenderblush;
+  background-color: rgb(255, 221, 177);
 }
 
 .title {
   margin-bottom: 10px;
+}
+
+.btn {
+  margin-left: 10px;
+  width: 200px;
+  height: 40px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+  transition: all 0.3s ease 0s;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.btn-color1 {
+  background-color: orange;
+}
+
+.btn-color2 {
+  background-color: rgb(112, 186, 255);
 }
 </style>

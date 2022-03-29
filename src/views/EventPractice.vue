@@ -1,7 +1,8 @@
 <template>
+<div class="block">
   <div class="container">
        <h2 class="heading04"><span>イベント新規作成</span></h2>
-    <table class="layoutTable" border="1">
+    <table class="layoutTable">
       <tbody >
         <tr>
           <td id="leftside">
@@ -109,7 +110,7 @@
           
                 <br />
 
-                <button v-on:click="resetCity">
+                <button class="delete-btn btn-color1" v-on:click="resetCity">
                   チェックした項目を取り消す
                 </button>
               </div>
@@ -244,7 +245,7 @@
                     
                   </table>
                    <button
-                            class="btn"
+                            class="next-page-btn btn-color2"
                             type="button"
                             v-on:click="eventInfo"
                           >
@@ -505,6 +506,7 @@
       </tbody>
     </table>
   </div>
+</div>
 </template>
 
 <script lang="ts">
@@ -675,9 +677,32 @@ this.timeZone5="ヨハネスブルグ";
 </script>
 
 <style scoped>
+.block {
+  width: 100%;
+  height: 1000px;
+}
+
+.container{
+  font-family: "Yu Gothic";
+  
+}
+
 .layoutTable{
     margin-left:auto;margin-right:auto;
+    background-color: white;
+    border-radius: 10px;
 }
+
+#leftside{
+  padding: 20px;
+  border-right: 1px solid #bdbdbd;
+}
+
+#rightside{
+  padding: 20px;
+  border-left: 1px solid #bdbdbd;
+}
+
 .error {
   color: red;
 }
@@ -702,7 +727,7 @@ text-align: top;
 	content: '';
 	width: 3px;
 	height: 40px;
-	background-color: #3fc1c9;
+	background-color: orange;
 }
 
 .heading04::before {
@@ -719,8 +744,53 @@ text-align: top;
 .heading01 {
 	display: inline;
 	font-size: 20px;
-	background-image: linear-gradient(rgba(0,0,0,0) 70%, #3fc1c9 70%);
+	background-image: linear-gradient(rgba(0,0,0,0) 70%, #ff9100 70%);
 }
 
+.next-page-btn {
+  width: 150px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom:30px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+  transition: all 0.3s ease 0s;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.delete-btn{
+  width: 200px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom:30px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+  transition: all 0.3s ease 0s;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.next-page-btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.btn-color1 {
+  background-color: rgb(142, 200, 255);
+}
+
+.btn-color2 {
+  background-color: orange;
+}
 </style>
 
