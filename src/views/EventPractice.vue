@@ -9,7 +9,7 @@
             <div class="calenderTitle">
               <th id="title" class="heading01">日時調整</th>
               <br />
-              カレンダーの日付を選択すると、<br />「候補日程」に日付が入力されます
+              カレンダーの日付を選択すると、<br />「候補日程」に日付が表示されます
             </div>
 <br />
             第一候補：<input
@@ -266,7 +266,7 @@
           <strong class="citynameTitle">
             都市名
             {{timeZone1}}</strong>
-    <div class="message timezone">日本と上海の時差はプラス1時間。  <br />今表示されている日本時間から1時間引いてください</div>
+    <div class="message timezone">日本と上海の時差は<strong>プラス1時間。</strong>  <br />今表示されている<strong>日本時間から1時間引いて</strong>ください</div>
              <br />
             第一候補:
             <input
@@ -315,7 +315,8 @@
            <strong class="citynameTitle">
             都市名
             {{timeZone2}}</strong>
-     <div class="message timezone">日本とNYの時差はプラス13時間。  <br />今表示されている日本時間から13時間引いてください</div>
+     <div class="message timezone">日本と上海の時差は<strong>プラス13時間。</strong>  <br />今表示されている<strong>日本時間から13時間引いて</strong>ください</div>
+       
              <br />
              第一候補:
             <input
@@ -363,7 +364,7 @@
             <strong class="citynameTitle">
             都市名
             {{timeZone3}}</strong>
-     <div class="message timezone">日本とロンドンの時差はプラス8時間。  <br />今表示されている日本時間から8時間引いてください</div>
+     <div class="message timezone">日本と上海の時差は<strong>プラス8時間。</strong>  <br />今表示されている<strong>日本時間から8時間引いて</strong>ください</div>
             <br />
              第一候補:
             <input
@@ -412,7 +413,7 @@
             <strong class="citynameTitle">
             都市名
             {{timeZone4}}</strong>
-      <div class="message timezone">日本とストックホルムの時差はプラス7時間。  <br />今表示されている日本時間から7時間引いてください</div>
+      <div class="message timezone">日本と上海の時差は<strong>プラス7時間。</strong>  <br />今表示されている<strong>日本時間から7時間引いて</strong>ください</div>
              <br />
              第一候補:
             <input
@@ -460,7 +461,7 @@
             <strong class="citynameTitle">
             都市名
             {{timeZone5}}</strong>
-              <div class="message timezone">日本とヨハネスブルグの時差はプラス7時間。  <br />今表示されている日本時間から7時間引いてください</div>
+              <div class="message timezone">日本と上海の時差は<strong>プラス7時間。</strong>  <br />今表示されている<strong>日本時間から7時間引いて</strong>ください</div>
              <br />
              第一候補:
             <input
@@ -609,8 +610,17 @@ export default class XXXComponent extends Vue {
   private currentCityArray = Array<City>();
 
 // cityをイベントにpushするための配列
-    private arrayDateOption = new Array<Date2>();
-  private arrayTimeOption = new Array<Time>();
+    private arrayDateOption1 = new Array<Date2>();
+    private arrayDateOption2 = new Array<Date2>();
+    private arrayDateOption3 = new Array<Date2>();
+    private arrayDateOption4 = new Array<Date2>();
+    private arrayDateOption5 = new Array<Date2>();
+  private arrayTimeOption1 = new Array<Time>();
+  private arrayTimeOption2 = new Array<Time>();
+  private arrayTimeOption3 = new Array<Time>();
+  private arrayTimeOption4 = new Array<Time>();
+  private arrayTimeOption5 = new Array<Time>();
+
 // 東京をイベントにpushするための配列
     private arrayTokyoDateOption = new Array<Date2>();
   private arrayTokyoTimeOption = new Array<Time>();
@@ -640,30 +650,34 @@ this.timeZone5="ヨハネスブルグ";
 }
 
 
-
 // 次に進むボタン
   eventInfo(): void {
     //   選択された東京の日時
 this.arrayTokyoDateOption.push(new Date2(1,this.selectedDateOption1),new Date2(1,this.selectedDateOption2),new Date2(1,this.selectedDateOption3),)
 this.arrayTokyoTimeOption.push(new Time(1,this.selectedTimeOption1),new Time(1,this.selectedTimeOption2),new Time(1,this.selectedTimeOption3))
 // 変更した日付を配列にpush
-this.arrayDateOption.push(new Date2(1,this.city1DateOption1),new Date2(2,this.city1DateOption2),new Date2(3,this.city1DateOption3),new Date2(4,this.city2DateOption1),new Date2(5,this.city2DateOption2),new Date2(6,this.city2DateOption3),new Date2(7,this.city3DateOption1),new Date2(8,this.city3DateOption2),new Date2(9,this.city3DateOption3),new Date2(10,this.city4DateOption1),new Date2(11,this.city4DateOption2),new Date2(12,this.city4DateOption3),new Date2(13,this.city5DateOption1),new Date2(14,this.city5DateOption2),new Date2(15,this.city5DateOption3),)
-this.arrayTimeOption.push(new Time(1,this.city1TimeOption1),  new Time(2,this.city1TimeOption2), new Time(3,this.city1TimeOption3), new Time(4,this.city2TimeOption1), new Time(5,this.city2TimeOption2),new Time(6,this.city2TimeOption3),new Time(7,this.city3TimeOption1),new Time(8,this.city3TimeOption2),new Time(9,this.city3TimeOption3),new Time(10,this.city4TimeOption1),new Time(11,this.city4TimeOption2),new Time(12,this.city4TimeOption3),new Time(13,this.city5TimeOption1),new Time(14,this.city5TimeOption2),new Time(15,this.city5TimeOption3),)
+this.arrayDateOption1.push(new Date2(1,this.city1DateOption1),new Date2(2,this.city1DateOption2),new Date2(3,this.city1DateOption3))
+this.arrayDateOption2.push(new Date2(4,this.city2DateOption1),new Date2(5,this.city2DateOption2),new Date2(6,this.city2DateOption3))
+this.arrayDateOption3.push(new Date2(7,this.city3DateOption1),new Date2(8,this.city3DateOption2),new Date2(9,this.city3DateOption3))
+this.arrayDateOption4.push(new Date2(10,this.city4DateOption1),new Date2(11,this.city4DateOption2),new Date2(12,this.city4DateOption3))
+this.arrayDateOption5.push(new Date2(13,this.city5DateOption1),new Date2(14,this.city5DateOption2),new Date2(15,this.city5DateOption3))
 
-
+this.arrayTimeOption1.push(new Time(1,this.city1TimeOption1),  new Time(2,this.city1TimeOption2), new Time(3,this.city1TimeOption3))
+this.arrayTimeOption2.push(new Time(4,this.city2TimeOption1), new Time(5,this.city2TimeOption2),new Time(6,this.city2TimeOption3))
+this.arrayTimeOption3.push( new Time(7,this.city3TimeOption1),new Time(8,this.city3TimeOption2),new Time(9,this.city3TimeOption3))
+this.arrayTimeOption4.push( new Time(10,this.city4TimeOption1),new Time(11,this.city4TimeOption2),new Time(12,this.city4TimeOption3))
+this.arrayTimeOption5.push(new Time(13,this.city5TimeOption1),new Time(14,this.city5TimeOption2),new Time(15,this.city5TimeOption3))
 
  console.log("都市の配列をcityにpush");
     this.currentCityArray.push(
-      new City(1, this.timeZone1,new EventDate(-1, this.arrayDateOption, this.arrayTimeOption)),
-      new City(2, this.timeZone2,new EventDate(-1, this.arrayDateOption, this.arrayTimeOption)),
-      new City(3, this.timeZone3,new EventDate(-1, this.arrayDateOption, this.arrayTimeOption)),
-      new City(4, this.timeZone4,new EventDate(-1, this.arrayDateOption, this.arrayTimeOption)),
-      new City(5, this.timeZone5,new EventDate(-1, this.arrayDateOption, this.arrayTimeOption
+      new City(1, this.timeZone1,new EventDate(-1, this.arrayDateOption1, this.arrayTimeOption1)),
+      new City(2, this.timeZone2,new EventDate(-1, this.arrayDateOption2, this.arrayTimeOption2)),
+      new City(3, this.timeZone3,new EventDate(-1, this.arrayDateOption3, this.arrayTimeOption3)),
+      new City(4, this.timeZone4,new EventDate(-1, this.arrayDateOption4, this.arrayTimeOption4)),
+      new City(5, this.timeZone5,new EventDate(-1, this.arrayDateOption5, this.arrayTimeOption5
 )),
     );
     console.log(this.currentCityArray);
-    
-   
     
 console.log("mutationにイベント情報をcommit");
     this.$store.commit("eventInfo", {
@@ -739,6 +753,10 @@ this.showShanghai=false;
 .block {
   width: 100%;
   height: 1000px;
+}
+
+#title{
+  vertical-align: top;
 }
 
 .container{
