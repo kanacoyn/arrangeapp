@@ -544,11 +544,11 @@ export default class XXXComponent extends Vue {
   private selectedTimeOption2 ="";
   private selectedTimeOption3 ="";
   private eventIdIndex = 1;
-  private timeZone1:string[] = [];
-  private timeZone2:string[] = [];
-  private timeZone3:string[] = [];
-  private timeZone4:string[] = [];
-  private timeZone5:string[] = [];
+  private timeZone1="";
+  private timeZone2="";
+  private timeZone3="";
+  private timeZone4="";
+  private timeZone5="";
   private showShanghai=false;
   private showNewyork=false;
   private showLondon=false;
@@ -578,11 +578,11 @@ export default class XXXComponent extends Vue {
     );
     console.log("都市の配列をpush");
     
- this.arrayDateOption.push(
-      new EventDate(1, this.selectedDateOption1, []),
-      new EventDate(1, this.selectedDateOption2, []),
-      new EventDate(1, this.selectedDateOption3, [])
-    );
+//  this.arrayDateOption.push(
+//       new EventDate(1, this.selectedDateOption1, []),
+//       new EventDate(1, this.selectedDateOption2, []),
+//       new EventDate(1, this.selectedDateOption3, [])
+//     );
 
     this.$store.commit("eventInfo", {
       event: new Event(
@@ -633,11 +633,11 @@ export default class XXXComponent extends Vue {
 
 // 選択した都市をリセット
   resetCity(): void {
-    this.timeZone1 = [];
-    this.timeZone2 = [];
-    this.timeZone3 = [];
-    this.timeZone4 = [];
-    this.timeZone5 = [];
+    this.timeZone1 = "";
+    this.timeZone2 = "";
+    this.timeZone3 = "";
+    this.timeZone4 = "";
+    this.timeZone5 = "";
 this.showShanghai=false;
   this.showNewyork=false;
   this.showLondon=false;
@@ -648,23 +648,23 @@ this.showShanghai=false;
 // 都市名をクリックすることで時差を含んだ候補日時が右に表示される
 selectShanghai():void{
 this.showShanghai=true;
-this.timeZone1=["上海"];
+this.timeZone1="上海";
 }
 selectNewyork():void{
 this.showNewyork=true;
-this.timeZone2=["ニューヨーク"];
+this.timeZone2="ニューヨーク";
 }
 selectLondon():void{
 this.showLondon=true;
-this.timeZone3=["ロンドン"];
+this.timeZone3="ロンドン";
 }
 selectStokholm():void{
 this.showStokholm=true;
-this.timeZone4=["ストックホルム"];
+this.timeZone4="ストックホルム";
 }
 selectJohannesburg():void{
 this.showJohannesburg=true;
-this.timeZone5=["ヨハネスブルグ"];
+this.timeZone5="ヨハネスブルグ";
 }
 
 
