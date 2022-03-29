@@ -141,11 +141,8 @@ export default class XXXComponent extends Vue {
 <style scoped>
 .top-wrapper {
   width: 100%;
-  height: 1000px;
+  height: 1200px;
   font-family: "Yu Gothic";
-}
-.th {
-  vertical-align: top;
 }
 
 .layoutTable {
