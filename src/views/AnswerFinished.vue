@@ -34,15 +34,15 @@
               {{ user.name }}: <span>{{ user.comment }}</span>
             </div>
           </div>
-          <button class="btn btn-color1" type="button" v-on:click="onClick">
-            回答フォームに戻る
-          </button>
-          <a href="https://zoom.us/signin"
-            ><button class="btn btn-color2" type="button">
-              ZoomのURLを発行する
-            </button></a
-          >
         </div>
+        <button class="btn btn-color1" type="button" v-on:click="onClick">
+          回答フォームに戻る
+        </button>
+        <a href="https://zoom.us/signin"
+          ><button class="btn btn-color2" type="button">
+            ZoomのURLを発行する
+          </button></a
+        >
       </div>
     </div>
   </div>
@@ -97,6 +97,7 @@ export default class XXXComponent extends Vue {
 .block {
   width: 100%;
   height: 1000px;
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
 }
 
 .container {
@@ -108,7 +109,6 @@ export default class XXXComponent extends Vue {
   border-radius: 10px;
   margin: 0 auto;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  font-family: "Yu Gothic";
 }
 
 th,
@@ -138,7 +138,7 @@ table {
   margin-top: 20px;
   border: none;
   border-radius: 5px;
-  font-family: "Yu Gothic";
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
   transition: all 0.3s ease 0s;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;

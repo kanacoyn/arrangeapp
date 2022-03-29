@@ -142,7 +142,7 @@ export default class XXXComponent extends Vue {
 .top-wrapper {
   width: 100%;
   height: 1000px;
-  font-family: "Yu Gothic";
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
 }
 .th {
   vertical-align: top;
@@ -211,7 +211,7 @@ export default class XXXComponent extends Vue {
   margin-top: 20px;
   border: none;
   border-radius: 5px;
-  font-family: "Yu Gothic";
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
   transition: all 0.3s ease 0s;
   background-color: orange;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
