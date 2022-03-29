@@ -264,7 +264,7 @@
   <div class="city1" v-show="showShanghai">
       <div class="cityTitle">
           <strong class="citynameTitle">
-            都市名
+            
             {{timeZone1}}</strong>
     <div class="message timezone">日本と上海の時差は<strong>プラス1時間。</strong>  <br />今表示されている<strong>日本時間から1時間引いて</strong>ください</div>
              <br />
@@ -313,7 +313,7 @@
   <div class="city2" v-show="showNewyork">
        <div class="cityTitle">
            <strong class="citynameTitle">
-            都市名
+            
             {{timeZone2}}</strong>
      <div class="message timezone">日本と上海の時差は<strong>プラス13時間。</strong>  <br />今表示されている<strong>日本時間から13時間引いて</strong>ください</div>
        
@@ -362,7 +362,7 @@
             </div></div><br />
   <div class="city3" v-show="showLondon"><div class="cityTitle">
             <strong class="citynameTitle">
-            都市名
+            
             {{timeZone3}}</strong>
      <div class="message timezone">日本と上海の時差は<strong>プラス8時間。</strong>  <br />今表示されている<strong>日本時間から8時間引いて</strong>ください</div>
             <br />
@@ -411,7 +411,7 @@
 
   <div class="city4" v-show="showStokholm"><div class="cityTitle">
             <strong class="citynameTitle">
-            都市名
+            
             {{timeZone4}}</strong>
       <div class="message timezone">日本と上海の時差は<strong>プラス7時間。</strong>  <br />今表示されている<strong>日本時間から7時間引いて</strong>ください</div>
              <br />
@@ -459,7 +459,7 @@
             </div></div><br />
   <div class="city5" v-show="showJohannesburg"><div class="cityTitle">
             <strong class="citynameTitle">
-            都市名
+            
             {{timeZone5}}</strong>
               <div class="message timezone">日本と上海の時差は<strong>プラス7時間。</strong>  <br />今表示されている<strong>日本時間から7時間引いて</strong>ください</div>
              <br />
@@ -760,7 +760,7 @@ this.showShanghai=false;
 }
 
 .container{
-  font-family: "Yu Gothic";
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
   
 }
 
@@ -839,7 +839,7 @@ text-align: top;
   margin-bottom:30px;
   border: none;
   border-radius: 5px;
-  font-family: "Yu Gothic";
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
   transition: all 0.3s ease 0s;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -853,7 +853,7 @@ text-align: top;
   margin-bottom:30px;
   border: none;
   border-radius: 5px;
-  font-family: "Yu Gothic";
+  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
   transition: all 0.3s ease 0s;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;

@@ -326,11 +326,11 @@ export default class AnswerFinished extends Vue {
 .block {
   width: 100%;
   height: 1000px;
-  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
+  font-family: "Yu Gothic", "Noto Sans JP", sans-serif;
 }
 
 .container {
-  width: 600px;
+  width: 1000px;
   height: auto;
   padding: 50px;
   margin-top: 50px;
@@ -413,7 +413,7 @@ table {
   margin-top: 20px;
   border: none;
   border-radius: 5px;
-  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
+  font-family: "Yu Gothic", "Noto Sans JP", sans-serif;
   transition: all 0.3s ease 0s;
 }
 
@@ -424,7 +424,7 @@ table {
   margin-top: 20px;
   border: none;
   border-radius: 5px;
-  font-family: "Yu Gothic",'Noto Sans JP', sans-serif;
+  font-family: "Yu Gothic", "Noto Sans JP", sans-serif;
   transition: all 0.3s ease 0s;
   background-color: orange;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,

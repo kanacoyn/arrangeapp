@@ -7,8 +7,8 @@
           <tbody id="main">
             <tr>
               <td id="leftSide">
-                <h3>tableの左コラム</h3>
-                <div id="adSpace">広告枠</div>
+                <h3>広告枠1</h3>
+                <div id="adSpace">広告枠2</div>
               </td>
 
               <td id="mainColumn">
@@ -167,7 +167,7 @@ export default class XXXComponent extends Vue {
 
 #adSpace {
   width: 150px;
-  height: 450px;
+  height: 350px;
   background: rosybrown;
 }
 

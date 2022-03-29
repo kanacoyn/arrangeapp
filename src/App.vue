@@ -6,7 +6,6 @@
       <router-link to="/eventConfirm">イベントを作成しますか</router-link> |
       <router-link to="/answerQuestions">回答者遷移ページ</router-link> |
       <router-link to="/answerFinished">回答完了</router-link> |
-      <router-link to="/eventPractice">時差練習</router-link> |
     </div>
     <router-view />
   </div>
@@ -21,7 +20,7 @@
   color: #2c3e50;
   background-color: rgb(255, 221, 177);
   /* CSSの謎の余白を削除 */
-  margin: calc(-50vw + 50%); 
+  margin: calc(-50vw + 50%);
   height: auto;
 }
 
