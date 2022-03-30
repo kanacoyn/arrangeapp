@@ -6,6 +6,7 @@
       <router-link to="/eventConfirm">イベントを作成しますか</router-link> |
       <router-link to="/answerQuestions">回答者遷移ページ</router-link> |
       <router-link to="/answerFinished">回答完了</router-link> |
+      <router-link to="/riko">感想（吉田）</router-link> |
       <router-link to="/kanako">感想(矢野)</router-link> |
     </div>
     <router-view />
