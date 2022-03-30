@@ -35,6 +35,10 @@ const routes: Array<RouteConfig> = [
     path: "/riko",
     component: () => import("../views/Riko.vue"),
   },
+  {
+    path: "/answerFinished",
+    component: () => import("../views/AnswerFinished.vue"),
+  },
 ];
 
 const router = new VueRouter({
