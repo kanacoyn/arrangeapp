@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-      <!-- <router-link to="/">Home</router-link> |
+      <router-link to="/">Home</router-link> |
       <router-link to="/event">イベントを作る</router-link> |
       <router-link to="/eventConfirm">イベントを作成しますか</router-link> |
       <router-link to="/answerQuestions">回答者遷移ページ</router-link> |
-      <router-link to="/answerFinished">回答完了</router-link> | -->
+      <router-link to="/answerFinished">回答完了</router-link> |
       <router-link to="/riko">感想（吉田）</router-link> |
     </div>
     <router-view />
