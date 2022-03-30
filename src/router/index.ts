@@ -14,6 +14,10 @@ const routes: Array<RouteConfig> = [
     path: "/answerQuestions",
     component: () => import("../views/AnswerQuestions.vue"),
   },
+  {
+    path: "/kanako",
+    component: () => import("../views/Kanako.vue"),
+  },
 
   {
     path: "/event",
